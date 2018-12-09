@@ -1,4 +1,4 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.fornecedor;
 
 import org.w3c.dom.Text;
 

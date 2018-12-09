@@ -1,4 +1,7 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.fornecedor;
+
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servico;
 
 public class Promocao {
     private String id;

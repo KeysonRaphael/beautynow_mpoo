@@ -1,6 +1,11 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.clienteefornecedor;
 
 import java.util.Date;
+
+import kn.beautynow.dominio.cliente.Cliente;
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servico;
+import kn.beautynow.dominio.usuario.Endereco;
 
 public class Atividade {
     private String id;

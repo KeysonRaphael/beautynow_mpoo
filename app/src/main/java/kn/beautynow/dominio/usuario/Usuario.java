@@ -1,4 +1,4 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.usuario;
 
 public class Usuario {
     private String id;
@@ -7,6 +7,16 @@ public class Usuario {
     private String telefone;
     private String celular;
     private Endereco endereco;
+
+    private Usuario{
+        id = "";
+        nome = "";
+        cpf = "";
+        telefone = "";
+        celular = "";
+        endereco = new Endereco();
+
+    }
 
     private String getNome() {
         return nome;

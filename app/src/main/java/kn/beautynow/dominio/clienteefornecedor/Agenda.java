@@ -1,4 +1,4 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.clienteefornecedor;
 
 import java.util.List;
 

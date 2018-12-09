@@ -1,4 +1,4 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.usuario;
 
 public class Endereco {
     private String id;

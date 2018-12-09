@@ -1,4 +1,8 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.fornecedor;
+
+import kn.beautynow.dominio.clienteefornecedor.Agenda;
+import kn.beautynow.dominio.clienteefornecedor.Avaliacao;
+import kn.beautynow.dominio.usuario.Usuario;
 
 public class Fornecedor {
     private String id;

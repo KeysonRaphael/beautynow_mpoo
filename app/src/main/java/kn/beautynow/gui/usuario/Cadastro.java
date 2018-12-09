@@ -3,6 +3,7 @@ package kn.beautynow.gui.usuario;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,6 +33,11 @@ public class Cadastro extends AppCompatActivity {
         sexo.setAdapter(adapters);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
     public void cadastrarUsuario(View view){
         EditText nome = (EditText) findViewById(R.id.inputNome);
         EditText email = (EditText) findViewById(R.id.inputEmail);
@@ -50,8 +56,9 @@ public class Cadastro extends AppCompatActivity {
             CadastrarUsuario cadastro = new CadastrarUsuario(getBaseContext());
             cadastro.cadastroUser(vnome,vcpf,vemail,vsenha,vtipo,vsexo);
             Toast.makeText(getApplicationContext(),"incluido",Toast.LENGTH_LONG).show();
-            Intent login = new Intent(cadastro.this, Login.class);
+            Intent login = new Intent(Cadastro.this, Login.class);
             startActivity(login);
+            finish();
         }
     }
     public int validarCampos(){
@@ -64,7 +71,7 @@ public class Cadastro extends AppCompatActivity {
         String vemail = email.getText().toString();
         String vcpf = cpf.getText().toString();
         String vsenha = senha.getText().toString();
-        String vrsenha = senha.getText().toString();
+        String vrsenha = rsenha.getText().toString();
 
         int resultado = 0;
         //validar campo nome
@@ -102,6 +109,12 @@ public class Cadastro extends AppCompatActivity {
         }
         if (vsenha.length() <= 7) {
             senha.setError("Senha deve conter pelo menos 8 caracteres!");
+            return resultado;
+        }
+        if (!vrsenha.equals(vsenha)) {
+            Log.d("senha", vrsenha);
+            Log.d("rsenha", vsenha);
+            rsenha.setError("Repita a senha!");
             return resultado;
         }
         resultado = 1;

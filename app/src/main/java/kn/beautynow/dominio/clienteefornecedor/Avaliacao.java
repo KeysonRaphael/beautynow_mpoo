@@ -1,4 +1,4 @@
-package kn.beautynow.dominio;
+package kn.beautynow.dominio.clienteefornecedor;
 
 public class Avaliacao {
     private String id;
