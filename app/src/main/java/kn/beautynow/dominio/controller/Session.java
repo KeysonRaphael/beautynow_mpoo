@@ -2,8 +2,12 @@ package kn.beautynow.dominio.controller;
 
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+
 import java.util.Map;
 import java.util.Set;
+
+import kn.beautynow.dominio.usuario.Usuario;
 
 
 public class Session {
@@ -13,15 +17,15 @@ public class Session {
             return null;
         }
 
-        @androidx.annotation.Nullable
+        @android.support.annotation.Nullable
         @Override
-        public String getString(String key, @androidx.annotation.Nullable String defValue) {
+        public String getString(String key, @android.support.annotation.Nullable String defValue) {
             return null;
         }
 
-        @androidx.annotation.Nullable
+        @android.support.annotation.Nullable
         @Override
-        public Set<String> getStringSet(String key, @androidx.annotation.Nullable Set<String> defValues) {
+        public Set<String> getStringSet(String key, @android.support.annotation.Nullable Set<String> defValues) {
             return null;
         }
 
@@ -66,13 +70,15 @@ public class Session {
         }
     };
 
-    private SharedPreferences getSessao() {
+    public SharedPreferences getSessao() {
         return sessao;
     }
-    public SharedPreferences editSessao(String email, String senha){
+
+    public SharedPreferences editSessao(Usuario user){
         SharedPreferences.Editor editor = sessao.edit();
-        editor.putString("email", email);
-        editor.putString("senha", senha);
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        editor.putString("usuario", json);
         editor.commit();
         return sessao;
     }

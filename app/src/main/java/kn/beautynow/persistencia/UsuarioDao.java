@@ -4,10 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import kn.beautynow.dominio.usuario.Endereco;
-import kn.beautynow.dominio.usuario.Usuario;
+import java.util.ArrayList;
 
 public class UsuarioDao {
     private SQLiteDatabase db;
@@ -46,7 +44,8 @@ public class UsuarioDao {
 
     }
 
-    public String selectUsuario(String vemail, String vsenha){
+    public ArrayList<String> selectUsuario(String vemail, String vsenha){
+        ArrayList<String> retorno = new ArrayList<>();
         String selectUser = "SELECT * FROM "+ Banco.TABLE_USUARIO +" WHERE email = '"+ vemail
                 + "' AND senha = '"+ vsenha +"' limit 1";
         db = banco.getReadableDatabase();
@@ -54,13 +53,11 @@ public class UsuarioDao {
         if(cursor.getCount() >= 1){
             while(cursor.moveToNext()){
                 if(cursor.getCount() > 0){
-                    Usuario user = new Usuario();
-                    user.setNome(cursor.getString(1));
-                    user.setCpf(cursor.getString(2));
-                    user.setEmail(cursor.getString(3));
-                    user.setTipo_usuario(cursor.getString(4));
-                    user.setSexo(cursor.getString(5));
-                    Endereco endereco = new Endereco();
+                    retorno.add(0, cursor.getString(1));
+                    retorno.add(1, cursor.getString(2));
+                    retorno.add(2, cursor.getString(3));
+                    retorno.add(3, cursor.getString(4));
+                    retorno.add(4, cursor.getString(5));
                     String selectEndereco = "SELECT * FROM "+ Banco.TABLE_ENDERECO +
                             " WHERE id_user = '"+ cursor.getString(0) + "' limit 1";
                     db = banco.getReadableDatabase();
@@ -68,26 +65,26 @@ public class UsuarioDao {
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
-                                endereco.setCep(cursorend.getString(1));
-                                endereco.setRua(cursorend.getString(2));
-                                endereco.setNumero(cursorend.getString(3));
-                                endereco.setBairro(cursorend.getString(4));
-                                endereco.setCidade(cursorend.getString(5));
-                                endereco.setEstado(cursorend.getString(6));
-                                endereco.setPais(cursorend.getString(7));
-                                user.setEndereco(endereco);
+                                retorno.add(5,cursorend.getString(1));
+                                retorno.add(6,cursorend.getString(2));
+                                retorno.add(7,cursorend.getString(3));
+                                retorno.add(8,cursorend.getString(4));
+                                retorno.add(9,cursorend.getString(5));
+                                retorno.add(10,cursorend.getString(6));
+                                retorno.add(11,cursorend.getString(7));
+                                retorno.add(12,cursorend.getString(7));
                                 cursorend.close();
-                                return "";
+                                return retorno;
                             }
                         }
                     }
                     cursor.close();
                     db.close();
-                    return "";
+                    return retorno;
                 }
             }
         }
-        return "";
+        return retorno;
     }
 
 }
