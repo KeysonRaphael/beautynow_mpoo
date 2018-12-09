@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gui.usuario.splash">
+    android:background="@color/white"
+    tools:context=".gui.usuario.Splash">
 
     <ImageView
         android:id="@+id/icon"
@@ -21,8 +22,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon"
-        />
+        app:srcCompat="@drawable/icon" />
 
     <ImageView
         android:id="@+id/name"
@@ -51,8 +51,9 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="132dp"
-        android:text="@string/Acessar"
         android:background="@android:color/holo_blue_light"
+        android:onClick="goToLogin"
+        android:text="@string/Acessar"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,13 +70,13 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:text="@string/cadastrar_se"
         android:background="@android:color/holo_blue_light"
+        android:onClick="goToCadastro"
+        android:text="@string/cadastrar_se"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/acessar"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/acessar" />
 
 </android.support.constraint.ConstraintLayout>

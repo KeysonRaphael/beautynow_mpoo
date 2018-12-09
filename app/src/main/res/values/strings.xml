@@ -9,6 +9,32 @@
     <string name="icone">icone</string>
     <string name="nome">nome</string>
     <string name="Acessar">Acessar</string>
-    <string name="Cadastrar" />
+    <string name="Cadastrar">Cadastrar</string>
     <string name="cadastrar_se">Cadastrar-se</string>
+    <string name="Nome">Nome</string>
+    <string name="nameInput" />
+    <string name="digite_seu_e_mail">Digite seu e-mail</string>
+    <string name="digite_seu_cpf">Digite seu CPF</string>
+    <string name="digite_seu_nome">Digite seu nome</string>
+    <string name="CPF">CPF</string>
+    <string name="Email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="Digite_sua_senha">Digite sua senha</string>
+    <string name="fornecedor">Fornecedor</string>
+    <string name="cliente">Cliente</string>
+    <string name="switchcf">switch cliente forncedor</string>
+    <string name="tipo">Tipo</string>
+    <string name="Repita_sua_senha">Repita sua senha</string>
+    <string name="sexo">Sexo</string>
+
+    <string-array name="tipos_usuario">
+        <item>Cliente</item>
+        <item>Fornecedor</item>
+    </string-array>
+
+    <string-array name="sexos">
+        <item>Masculino</item>
+        <item>Feminino</item>
+        <item>Outros</item>
+    </string-array>
 </resources>

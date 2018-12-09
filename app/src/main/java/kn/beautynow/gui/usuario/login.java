@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import kn.beautynow.R;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

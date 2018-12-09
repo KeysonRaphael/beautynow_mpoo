@@ -4,46 +4,63 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
-public class banco extends SQLiteOpenHelper{
-    private static final String NOME_BANCO = "banco.db";
+public class Banco extends SQLiteOpenHelper{
+    private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
-
     static {
-        VERSAO = 1;
+        VERSAO = 3;
     }
+    //Tabela Usuario
+    public static final String TABLE_USUARIO = "usuario";
+    public static final String COLUMN_USUARIO_ID = "Id";
+    public static final String COLUMN_USUARIO_NOME = "nome";
+    public static final String COLUMN_USUARIO_EMAIL = "email";
+    public static final String COLUMN_USUARIO_CPF = "cpf";
+    public static final String COLUMN_USUARIO_SENHA = "senha";
+    public static final String COLUMN_USUARIO_TIPO = "tipo";
+    public static final String COLUMN_USUARIO_SEXO = "sexo";
+    public static final String COLUMN_USUARIO_ID_TIPO = "id_tipo";
+    //Tabela Cliente
+    public static final String TABLE_CLIENTE = "cliente";
+    public static final String COLUMN_CLIENTE_ID = "Id";
+    public static final String COLUMN_CLIENTE_ID_USUARIO = "id_usuario";
+    //Tabela Fornecedor
+    public static final String TABLE_FORNECEDOR = "fornecedor";
+    public static final String COLUMN_FORNECEDOR_ID = "Id";
+    public static final String COLUMN_FORNECEDOR_ID_USUARIO = "id_usuario";
 
-    public banco(Context context){
+    public Banco(Context context){
         super(context, NOME_BANCO,null,VERSAO);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlUser = "CREATE TABLE usuario( id integer primary key autoincrement, nome text, cpf text,"+
-                " telefone int,celular  int, cod_endereco int)";
-        String sqlEndereco = "CREATE TABLE endereco(id integer primary key autoincrement, rua text,"+
-                "numero int, bairro text, cidade text, estado text, pais text, cod_usuario int)";
-        String sqlCliente = "CREATE TABLE cliente(id integer primary key autoincrement, cod_usuario int)";
-        String sqlFornecedor = "CREATE TABLE fornecedor(id integer primary key autoincrement, cod_usuario int)";
-        String sqlServicos = "CREATE TABLE servicos(id integer primary key autoincrement, nome text)";
-        String sqlServicosFornecedor = "CREATE TABLE servico_fornecedor(id integer primary key autoincrement,"+
-                " cod_fornecedor int, cod_servico int)";
+        //create table usuario
+        String sqlUser = "CREATE TABLE " + this.TABLE_USUARIO + " (" +
+                this.COLUMN_USUARIO_ID + " INTEGER PRIMARY KEY," +
+                this.COLUMN_USUARIO_NOME + " TEXT," +
+                this.COLUMN_USUARIO_EMAIL + " TEXT," +
+                this.COLUMN_USUARIO_CPF + " TEXT," +
+                this.COLUMN_USUARIO_SENHA + " TEXT," +
+                this.COLUMN_USUARIO_TIPO + " TEXT," +
+                this.COLUMN_USUARIO_ID_TIPO + " TEXT," +
+                this.COLUMN_USUARIO_SEXO + " TEXT" + " )";
         db.execSQL(sqlUser);
-        db.execSQL(sqlEndereco);
+        //create table cliente
+        String sqlCliente = "CREATE TABLE " + this.TABLE_CLIENTE + " (" +
+                this.COLUMN_CLIENTE_ID + " INTEGER PRIMARY KEY," +
+                this.COLUMN_CLIENTE_ID_USUARIO + " TEXT" + " )";
         db.execSQL(sqlCliente);
+        //create table fornecedor
+        String sqlFornecedor = "CREATE TABLE " + this.TABLE_FORNECEDOR + " (" +
+                this.COLUMN_FORNECEDOR_ID + " INTEGER PRIMARY KEY," +
+                this.COLUMN_FORNECEDOR_ID_USUARIO + " TEXT" + " )";
         db.execSQL(sqlFornecedor);
-        db.execSQL(sqlServicos);
-        db.execSQL(sqlServicosFornecedor);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS usuario");
-        db.execSQL("DROP TABLE IF EXISTS endereco");
-        db.execSQL("DROP TABLE IF EXISTS cliente");
-        db.execSQL("DROP TABLE IF EXISTS fornecedor");
-        db.execSQL("DROP TABLE IF EXISTS servicos");
-        db.execSQL("DROP TABLE IF EXISTS servico_fornecedor");
         onCreate(db);
     }
 
