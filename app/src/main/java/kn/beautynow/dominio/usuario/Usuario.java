@@ -7,54 +7,82 @@ public class Usuario {
     private String telefone;
     private String celular;
     private Endereco endereco;
+    private String email;
+    private String tipo_usuario;
+    private String sexo;
 
-    private Usuario{
+    public Usuario(){
         id = "";
         nome = "";
         cpf = "";
         telefone = "";
         celular = "";
         endereco = new Endereco();
+        email = "";
 
     }
 
-    private String getNome() {
+    public String getNome() {
         return nome;
     }
 
-    private void setNome(String nome) {
+    public void setNome(String nome) {
         this.nome = nome;
     }
 
-    private String getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    private void setCpf(String cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    private String getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    private void setTelefone(String telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
-    private String getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    private void setCelular(String celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
-    private Endereco getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    private void setEndereco(Endereco endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTipo_usuario() {
+        return tipo_usuario;
+    }
+
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 }
