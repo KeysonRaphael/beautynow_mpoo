@@ -22,18 +22,26 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
     public void Logar(View view) {
-        EditText email = (EditText) findViewById(R.id.inputEmail);
-        EditText senha = (EditText) findViewById(R.id.inputSenha);
+        EditText email = findViewById(R.id.inputEmail);
+        EditText senha = findViewById(R.id.inputSenha);
         String semail = email.getText().toString();
         String ssenha = senha.getText().toString();
         ValidarUsuario validar = new ValidarUsuario(getBaseContext());
-        Usuario teste = validar.existeBanco(semail,ssenha);
-        Toast.makeText(getBaseContext(),"E-mail ou senha incorretos!",Toast.LENGTH_LONG).show();
-        Log.d("nome", teste.getNome());
-//        Session sessao = new Session();
-//        sessao.editSessao(semail,ssenha);
-//        Intent login = new Intent(Login.this, Login.class);
-//        startActivity(login);
+        Usuario user = validar.existeBanco(semail,ssenha);
+        if(user.getNome().equals("")){
+            Toast.makeText(getBaseContext(),"E-mail ou senha incorretos!",Toast.LENGTH_LONG).show();
+            return;
+        }
+        Session sessao = new Session();
+        sessao.editSessao(user);
+        if (user.getTipo_usuario().equals("Cliente")) {
+            Intent listaFornecedores = new Intent(Login.this, Login.class);
+            startActivity(listaFornecedores);
+        }
+        if (user.getTipo_usuario().equals("Fornecedor")) {
+            Intent fornecedor = new Intent(Login.this, Login.class);
+            startActivity(fornecedor);
+        }
     }
     public void goToCadastro(View view) {
         Intent cadastro = new Intent(Login.this, Cadastro.class);
