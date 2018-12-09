@@ -8,19 +8,24 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity
-            android:name=".gui.usuario.Splash"
-            android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme">
+        <activity android:name=".gui.usuario.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".gui.usuario.Login" />
-        <activity android:name=".gui.usuario.Cadastro" />
-        <activity android:name=".gui.cliente.ListaFornecedore"></activity>
+        <activity
+            android:name=".gui.usuario.Login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".gui.usuario.Cadastro"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".gui.cliente.ClienteMenu"
+            android:label="@string/title_activity_cliente_menu"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,8 @@
 package kn.beautynow.dominio.controller;
 
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 
@@ -74,8 +76,9 @@ public class Session {
         return sessao;
     }
 
-    public SharedPreferences editSessao(Usuario user){
-        SharedPreferences.Editor editor = sessao.edit();
+    public SharedPreferences editSessao(Usuario user, Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(user);
         editor.putString("usuario", json);

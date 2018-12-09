@@ -53,11 +53,14 @@ public class UsuarioDao {
         if(cursor.getCount() >= 1){
             while(cursor.moveToNext()){
                 if(cursor.getCount() > 0){
-                    retorno.add(0, cursor.getString(1));
-                    retorno.add(1, cursor.getString(2));
-                    retorno.add(2, cursor.getString(3));
-                    retorno.add(3, cursor.getString(4));
-                    retorno.add(4, cursor.getString(5));
+                    retorno.add(0, cursor.getString(0));
+                    retorno.add(1, cursor.getString(1));
+                    retorno.add(2, cursor.getString(2));
+                    retorno.add(3, cursor.getString(3));
+                    retorno.add(4, cursor.getString(4));
+                    retorno.add(5, cursor.getString(5));
+                    retorno.add(6, cursor.getString(6));
+                    retorno.add(7, cursor.getString(7));
                     String selectEndereco = "SELECT * FROM "+ Banco.TABLE_ENDERECO +
                             " WHERE id_user = '"+ cursor.getString(0) + "' limit 1";
                     db = banco.getReadableDatabase();
@@ -65,14 +68,14 @@ public class UsuarioDao {
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
-                                retorno.add(5,cursorend.getString(1));
-                                retorno.add(6,cursorend.getString(2));
-                                retorno.add(7,cursorend.getString(3));
-                                retorno.add(8,cursorend.getString(4));
-                                retorno.add(9,cursorend.getString(5));
-                                retorno.add(10,cursorend.getString(6));
-                                retorno.add(11,cursorend.getString(7));
-                                retorno.add(12,cursorend.getString(7));
+                                retorno.add(8,cursorend.getString(1));
+                                retorno.add(9,cursorend.getString(2));
+                                retorno.add(10,cursorend.getString(3));
+                                retorno.add(11,cursorend.getString(4));
+                                retorno.add(12,cursorend.getString(5));
+                                retorno.add(13,cursorend.getString(6));
+                                retorno.add(14,cursorend.getString(7));
+                                retorno.add(15,cursorend.getString(7));
                                 cursorend.close();
                                 return retorno;
                             }

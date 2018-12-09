@@ -21,22 +21,23 @@ public class ValidarUsuario {
         {
             return user;
         }
-        user.setNome(result.get(0).toString());
-        user.setCpf(result.get(1).toString());
+        user.setNome(result.get(1).toString());
         user.setEmail(result.get(2).toString());
-        user.setTipo_usuario(result.get(3).toString());
-        user.setSexo(result.get(4).toString());
-        if(5 >= result.size()){
+        user.setCpf(result.get(3).toString());
+        user.setTipo_usuario(result.get(5).toString());
+        user.setSexo((String) result.get(7));
+        if(8 >= result.size()){
             return user;
         }
         Endereco endereco = new Endereco();
-        endereco.setCep(result.get(5).toString());
-        endereco.setNumero(result.get(6).toString());
-        endereco.setRua(result.get(7).toString());
-        endereco.setBairro(result.get(8).toString());
-        endereco.setCidade(result.get(9).toString());
-        endereco.setEstado(result.get(10).toString());
-        endereco.setPais(result.get(11).toString());
+        endereco.setCep(result.get(8).toString());
+        endereco.setNumero(result.get(9).toString());
+        endereco.setRua(result.get(10).toString());
+        endereco.setBairro(result.get(11).toString());
+        endereco.setCidade(result.get(12).toString());
+        endereco.setEstado(result.get(13).toString());
+        endereco.setPais(result.get(14).toString());
+        user.setEndereco(endereco);
         return user;
     }
 }
