@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import kn.beautynow.R;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
+import kn.beautynow.gui.fornecedor.FornecedorMenu;
 
 public class Splash extends AppCompatActivity {
     @Override
@@ -30,7 +31,7 @@ public class Splash extends AppCompatActivity {
                 finish();
             }
             if (obj.getTipo_usuario().equals("Fornecedor")) {
-                Intent fornecedor = new Intent(Splash.this, Login.class);
+                Intent fornecedor = new Intent(Splash.this, FornecedorMenu.class);
                 startActivity(fornecedor);
                 finish();
             }

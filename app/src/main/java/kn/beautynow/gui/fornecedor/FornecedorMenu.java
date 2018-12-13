@@ -1,8 +1,12 @@
 package kn.beautynow.gui.fornecedor;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,9 +18,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.cliente.ClienteMenu;
+import kn.beautynow.gui.usuario.Login;
 
 public class FornecedorMenu extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        PerfilFornecedor.OnFragmentInteractionListener,
+        AgendaFornecedor.OnFragmentInteractionListener,
+        ServicosFornecedor.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +35,6 @@ public class FornecedorMenu extends AppCompatActivity
         setContentView(R.layout.activity_fornecedor_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,6 +44,13 @@ public class FornecedorMenu extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setTitle("Perfil");
+        navigationView.setCheckedItem(R.id.perfil_fornecedor);
+        Fragment fragment = new PerfilFornecedor();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fornecedor_frame, fragment);
+        ft.commit();
     }
 
     @Override
@@ -70,7 +79,12 @@ public class FornecedorMenu extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Session sessao = new Session();
+            Usuario user = new Usuario();
+            sessao.editSessao(user, getApplicationContext());
+            Intent login = new Intent(FornecedorMenu.this, Login.class);
+            startActivity(login);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -82,22 +96,33 @@ public class FornecedorMenu extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.perfil_fornecedor) {
+            setTitle("Perfil");
+            Fragment fragment = new PerfilFornecedor();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        } else if (id == R.id.agenda_fornecedor) {
+            setTitle("Agenda");
+            Fragment fragment = new AgendaFornecedor();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        } else if (id == R.id.servicos) {
+            setTitle("Servicos");
+            Fragment fragment = new ServicosFornecedor();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

@@ -52,5 +52,6 @@ public class Login extends AppCompatActivity {
     public void goToCadastro(View view) {
         Intent cadastro = new Intent(Login.this, Cadastro.class);
         startActivity(cadastro);
+        finish();
     }
 }
