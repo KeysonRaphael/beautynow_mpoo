@@ -18,7 +18,7 @@ import kn.beautynow.R;
  * Use the {@link PerfilCliente#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PerfilCliente extends Fragment{
+public class PerfilCliente extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,7 +65,7 @@ public class PerfilCliente extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil, container, false);
+        return inflater.inflate(R.layout.fragment_perfil_cliente, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

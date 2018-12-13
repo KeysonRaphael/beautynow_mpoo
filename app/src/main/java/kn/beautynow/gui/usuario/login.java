@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 
-import kn.beautynow.R;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.negocio.usuario.ValidarUsuario;

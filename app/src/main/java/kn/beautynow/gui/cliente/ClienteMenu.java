@@ -2,11 +2,8 @@ package kn.beautynow.gui.cliente;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import kn.beautynow.R;
+
 
 public class ClienteMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -46,7 +44,7 @@ public class ClienteMenu extends AppCompatActivity
         navigationView.setCheckedItem(R.id.perfil);
         Fragment fragment = new PerfilCliente();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.mainFrame, fragment);
+        ft.replace(R.id.frame, fragment);
         ft.commit();
     }
 
@@ -92,19 +90,19 @@ public class ClienteMenu extends AppCompatActivity
             setTitle("Perfil");
             Fragment fragment = new PerfilCliente();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, fragment);
+            ft.replace(R.id.frame, fragment);
             ft.commit();
         } else if (id == R.id.agenda) {
             setTitle("Agenda");
             Fragment fragment = new AgendaCliente();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, fragment);
+            ft.replace(R.id.frame, fragment);
             ft.commit();
         } else if (id == R.id.fornecedores) {
             setTitle("Fornecedores");
             Fragment fragment = new ListaFornecedores();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.mainFrame, fragment);
+            ft.replace(R.id.frame, fragment);
             ft.commit();
         }
 
