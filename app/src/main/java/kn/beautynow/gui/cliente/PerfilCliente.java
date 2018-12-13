@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -124,7 +126,8 @@ public class PerfilCliente extends Fragment {
             cursor.close();
 
             ImageView perfil = (ImageView)getView().findViewById(R.id.imagePerfil);
-            perfil.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            Bitmap img = BitmapFactory.decodeFile(picturePath);
+            perfil.setImageBitmap(img);
             perfil.setBackgroundColor(getResources().getColor(R.color.white));
         }
     }
