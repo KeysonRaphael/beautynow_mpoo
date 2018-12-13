@@ -1,14 +1,36 @@
 package kn.beautynow.gui.cliente;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.fornecedor.Imagem;
+import kn.beautynow.dominio.usuario.Usuario;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,13 +81,56 @@ public class PerfilCliente extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfil_cliente, container, false);
+        View inf = inflater.inflate(R.layout.fragment_perfil_cliente, container, false);
+        TextView tv = (TextView) inf.findViewById(R.id.nomeUsuario);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Gson gson = new Gson();
+        String json = preferences.getString("usuario", "");
+        Usuario obj = gson.fromJson(json, Usuario.class);
+        tv.setText(obj.getNome());
+        Button editarPerfil = (Button)inf.findViewById(R.id.editFoto);
+        editarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, 1000);
+            }
+        });
+
+        return inf;
+    }
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1000  && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getActivity().getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            ImageView perfil = (ImageView)getView().findViewById(R.id.imagePerfil);
+            perfil.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            perfil.setBackgroundColor(getResources().getColor(R.color.white));
+        }
+    }
+    public void setUsuario(String text){
+        TextView nomeusuario = (TextView)getView().findViewById(R.id.nomeUsuario);
+        nomeusuario.setText(text);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

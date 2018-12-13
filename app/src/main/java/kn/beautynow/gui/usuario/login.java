@@ -37,10 +37,12 @@ public class Login extends AppCompatActivity {
             if (user.getTipo_usuario().equals("Cliente")) {
                 Intent clienteMenu = new Intent(Login.this, ClienteMenu.class);
                 startActivity(clienteMenu);
+                finish();
             }
             if (user.getTipo_usuario().equals("Fornecedor")) {
                 Intent fornecedor = new Intent(Login.this, Login.class);
                 startActivity(fornecedor);
+                finish();
             }
         }
 

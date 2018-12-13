@@ -1,5 +1,6 @@
 package kn.beautynow.gui.cliente;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.usuario.Login;
+import kn.beautynow.gui.usuario.Splash;
 
 
 public class ClienteMenu extends AppCompatActivity
@@ -74,7 +79,12 @@ public class ClienteMenu extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Session sessao = new Session();
+            Usuario user = new Usuario();
+            sessao.editSessao(user, getApplicationContext());
+            Intent login = new Intent(ClienteMenu.this, Login.class);
+            startActivity(login);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

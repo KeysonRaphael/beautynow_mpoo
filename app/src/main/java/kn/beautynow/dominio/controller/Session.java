@@ -84,6 +84,12 @@ public class Session {
         editor.putString("usuario", json);
         editor.commit();
         return sessao;
+    }public Usuario getSession(Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Gson gson = new Gson();
+        String json = sharedPreferences.getString("MyObject", "");
+        Usuario obj = gson.fromJson(json, Usuario.class);
+        return obj;
     }
 
 }
