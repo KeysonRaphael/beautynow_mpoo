@@ -12,6 +12,7 @@ import kn.beautynow.dominio.controller.Session;
 
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
+import kn.beautynow.gui.fornecedor.FornecedorMenu;
 import kn.beautynow.negocio.usuario.ValidarUsuario;
 
 public class Login extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class Login extends AppCompatActivity {
                 finish();
             }
             if (user.getTipo_usuario().equals("Fornecedor")) {
-                Intent fornecedor = new Intent(Login.this, Login.class);
+                Intent fornecedor = new Intent(Login.this, FornecedorMenu.class);
                 startActivity(fornecedor);
                 finish();
             }
