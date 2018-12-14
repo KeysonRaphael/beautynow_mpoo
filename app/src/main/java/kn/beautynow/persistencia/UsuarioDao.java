@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class UsuarioDao {
@@ -35,6 +36,9 @@ public class UsuarioDao {
         if (tipo == "Cliente"){
             ClienteDao cliente = new ClienteDao(context);
             cliente.insereCliente(resultado);
+        }else if (tipo == "Fornecedor"){
+            FornecedorDao fornecedor = new FornecedorDao(context);
+            fornecedor.insereFornecedor(resultado);
         }
 
         if (resultado ==-1)
@@ -88,6 +92,18 @@ public class UsuarioDao {
             }
         }
         return retorno;
+    }
+
+    public Boolean buscaUsuario(String cpfv, String tipov){
+        String querySql = "SELECT cpf FROM usuario WHERE cpf = ? AND tipo = ?";
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery(querySql, new String[] {cpfv, tipov});
+        if(cursor.getCount()>0){
+            cursor.close();
+            return true;
+        }
+        cursor.close();
+        return false;
     }
 
 }

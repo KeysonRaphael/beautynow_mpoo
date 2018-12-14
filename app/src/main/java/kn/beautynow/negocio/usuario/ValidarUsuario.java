@@ -21,6 +21,7 @@ public class ValidarUsuario {
         {
             return user;
         }
+        user.setId(result.get(0).toString());
         user.setNome(result.get(1).toString());
         user.setEmail(result.get(2).toString());
         user.setCpf(result.get(3).toString());

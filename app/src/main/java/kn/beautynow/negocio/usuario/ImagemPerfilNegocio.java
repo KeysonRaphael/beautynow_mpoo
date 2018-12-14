@@ -1,0 +1,44 @@
+package kn.beautynow.negocio.usuario;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.ByteArrayOutputStream;
+
+import kn.beautynow.persistencia.GaleriaPerfilDao;
+
+public class ImagemPerfilNegocio {
+    private Context context;
+    public ImagemPerfilNegocio(Context context){
+        this.context = context;
+    }
+    public Boolean insertImgPerfil(String id, Bitmap bmp) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+        byte[] buffer = out.toByteArray();
+        GaleriaPerfilDao galeria = new GaleriaPerfilDao(this.context);
+        galeria.insereImagemGaleria(id,buffer);
+        return true;
+    }
+    public Boolean updateImgPerfil(String id, Bitmap bmp) {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+        byte[] buffer = out.toByteArray();
+        GaleriaPerfilDao galeria = new GaleriaPerfilDao(this.context);
+        galeria.updateimgPerfil(id,buffer);
+        return true;
+    }
+    public Bitmap getImgPerfil(String iduser) {
+        Bitmap bitmap = null;
+        GaleriaPerfilDao galeriaPerfil = new GaleriaPerfilDao(this.context);
+        byte[] resultado = galeriaPerfil.getImagem(iduser);
+        if (resultado != null){
+        bitmap = BitmapFactory.decodeByteArray(resultado, 0, resultado.length);
+        }else {
+            return bitmap;
+        }
+        return bitmap;
+    }
+
+}

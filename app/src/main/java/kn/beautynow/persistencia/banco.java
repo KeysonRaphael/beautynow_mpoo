@@ -8,7 +8,7 @@ public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 4;
+        VERSAO = 5;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
@@ -31,6 +31,11 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_ENDERECO_ESTADO = "estado";
     public static final String COLUMN_ENDERECO_PAIS = "pais";
     public static final String COLUMN_ENDERECO_ID_USER = "id_user";
+    //Tabela Galeria Perfil
+    public static final String TABLE_GALERIA_PERFIL = "galeria_perfil";
+    public static final String COLUMN_GALERIA_PERFIL_ID = "Id";
+    public static final String COLUMN_GALERIA_PERFIL_USUARIO_ID = "id_usuario";
+    public static final String COLUMN_GALERIA_PERFIL_IMAGE = "imagem";
     //Tabela Cliente
     public static final String TABLE_CLIENTE = "cliente";
     public static final String COLUMN_CLIENTE_ID = "Id";
@@ -57,7 +62,7 @@ public class Banco extends SQLiteOpenHelper{
                 this.COLUMN_USUARIO_ID_TIPO + " TEXT," +
                 this.COLUMN_USUARIO_SEXO + " TEXT" + " )";
         db.execSQL(sqlUser);
-        //create table usuario
+        //create table endereço
         String sqlEndereco = "CREATE TABLE " + this.TABLE_ENDERECO + " (" +
                 this.COLUMN_ENDERECO_ID + " INTEGER PRIMARY KEY," +
                 this.COLUMN_ENDERECO_CEP + " TEXT," +
@@ -69,6 +74,12 @@ public class Banco extends SQLiteOpenHelper{
                 this.COLUMN_ENDERECO_PAIS + " TEXT," +
                 this.COLUMN_ENDERECO_ID_USER + " TEXT" + " )";
         db.execSQL(sqlEndereco);
+        //create table galeria perfil
+        String sqlGaleriaPerfil = "CREATE TABLE " + this.TABLE_GALERIA_PERFIL + " (" +
+                this.COLUMN_GALERIA_PERFIL_ID + " INTEGER PRIMARY KEY," +
+                this.COLUMN_GALERIA_PERFIL_USUARIO_ID + " TEXT," +
+                this.COLUMN_GALERIA_PERFIL_IMAGE + " BLOB " + ")";
+        db.execSQL(sqlGaleriaPerfil);
         //create table cliente
         String sqlCliente = "CREATE TABLE " + this.TABLE_CLIENTE + " (" +
                 this.COLUMN_CLIENTE_ID + " INTEGER PRIMARY KEY," +
@@ -87,6 +98,7 @@ public class Banco extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS endereco");
         db.execSQL("DROP TABLE IF EXISTS cliente");
         db.execSQL("DROP TABLE IF EXISTS fornecedor");
+        db.execSQL("DROP TABLE IF EXISTS galeria_perfil");
         onCreate(db);
     }
 
