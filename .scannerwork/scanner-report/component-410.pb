@@ -1,0 +1,1 @@
+šTapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13 :™rTapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13

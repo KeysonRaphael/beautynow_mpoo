@@ -1,0 +1,1 @@
+&papp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java 2javaXÔhrpapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java

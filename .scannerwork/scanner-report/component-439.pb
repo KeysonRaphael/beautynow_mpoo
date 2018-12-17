@@ -1,0 +1,2 @@
+·^app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml 2xmlX
+hr^app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml

@@ -1,0 +1,1 @@
+japp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils :rjapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils

@@ -1,0 +1,1 @@
+napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/cursoradapter :rnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/cursoradapter

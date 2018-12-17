@@ -1,0 +1,1 @@
+òLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq :ñrLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq

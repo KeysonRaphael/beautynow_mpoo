@@ -1,0 +1,2 @@
+Õfapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml 2xmlX
+hrfapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml

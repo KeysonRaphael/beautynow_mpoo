@@ -1,0 +1,1 @@
+7lapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/mediacompat :6rlapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/mediacompat

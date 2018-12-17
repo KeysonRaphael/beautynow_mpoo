@@ -1,0 +1,1 @@
+“\app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml 2xmlXÀhr\app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml

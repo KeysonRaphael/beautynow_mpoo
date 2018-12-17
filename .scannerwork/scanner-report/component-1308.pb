@@ -1,0 +1,2 @@
+œ
+^app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml 2xmlX3hr^app/build/intermediates/merged_manifests/debug/processDebugManifest/merged/AndroidManifest.xml

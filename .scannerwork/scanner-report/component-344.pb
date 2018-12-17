@@ -1,0 +1,1 @@
+ØTapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml 2xmlXÐ$hrTapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml

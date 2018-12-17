@@ -1,0 +1,1 @@
+I6app/build/generated/res/pngs/debug/drawable-anydpi-v21 :Hr6app/build/generated/res/pngs/debug/drawable-anydpi-v21

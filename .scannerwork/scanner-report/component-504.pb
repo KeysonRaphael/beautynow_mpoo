@@ -1,0 +1,1 @@
+øUapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13 :örUapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13

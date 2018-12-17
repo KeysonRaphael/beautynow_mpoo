@@ -1,0 +1,1 @@
+=capp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v4 :<rcapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v4

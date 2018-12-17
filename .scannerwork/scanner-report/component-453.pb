@@ -1,0 +1,1 @@
+ÅZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml 2xmlX hrZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml

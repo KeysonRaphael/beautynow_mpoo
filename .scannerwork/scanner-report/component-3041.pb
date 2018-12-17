@@ -1,0 +1,1 @@
+á6app/src/main/res/layout/activity_lista_fornecedore.xml 2xmlXhr6app/src/main/res/layout/activity_lista_fornecedore.xml

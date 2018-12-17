@@ -1,0 +1,149 @@
+Environment variables:
+  - =::=::\
+  - =C:=C:\Users\keyso\Documents\GitHub\beautynow_mpoo
+  - =ExitCode=00000000
+  - ALLUSERSPROFILE=C:\ProgramData
+  - APPDATA=C:\Users\keyso\AppData\Roaming
+  - COMPUTERNAME=LAPTOP-P5CCI2FK
+  - ComSpec=C:\WINDOWS\System32\cmd.exe
+  - CommonProgramFiles=C:\Program Files\Common Files
+  - CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+  - CommonProgramW6432=C:\Program Files\Common Files
+  - DriverData=C:\Windows\System32\Drivers\DriverData
+  - ERROR_CODE=0
+  - FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+  - FPS_BROWSER_USER_PROFILE_STRING=Default
+  - HOMEDRIVE=C:
+  - HOMEPATH=\Users\keyso
+  - JAVA_EXEC="C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..\jre\bin\java.exe"
+  - JAVA_HOME=C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..\jre
+  - LOCALAPPDATA=C:\Users\keyso\AppData\Local
+  - LOGONSERVER=\\LAPTOP-P5CCI2FK
+  - NUMBER_OF_PROCESSORS=4
+  - OS=Windows_NT
+  - OneDrive=C:\Users\keyso\OneDrive
+  - PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+  - PROCESSOR_ARCHITECTURE=AMD64
+  - PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+  - PROCESSOR_LEVEL=6
+  - PROCESSOR_REVISION=8e09
+  - PROJECT_HOME=C:\Users\keyso\Documents\GitHub\beautynow_mpoo
+  - PROMPT=$P$G
+  - PSModulePath=C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+  - PUBLIC=C:\Users\Public
+  - Path=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\xampp\php;C:\composer;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Local\atom\bin;C:\Users\keyso\AppData\Local\GitHubDesktop\bin;C:\Users\keyso\AppData\Roaming\Composer\vendor\bin;C:\Users\keyso\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+  - ProgramData=C:\ProgramData
+  - ProgramFiles=C:\Program Files
+  - ProgramFiles(x86)=C:\Program Files (x86)
+  - ProgramW6432=C:\Program Files
+  - SESSIONNAME=Console
+  - SONAR_SCANNER_HOME=C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..
+  - SystemDrive=C:
+  - SystemRoot=C:\WINDOWS
+  - TEMP=C:\Users\keyso\AppData\Local\Temp
+  - TMP=C:\Users\keyso\AppData\Local\Temp
+  - USERDOMAIN=LAPTOP-P5CCI2FK
+  - USERDOMAIN_ROAMINGPROFILE=LAPTOP-P5CCI2FK
+  - USERNAME=keyson.rapha
+  - USERPROFILE=C:\Users\keyso
+  - VBOX_MSI_INSTALL_PATH=C:\Program Files\Oracle\VirtualBox\
+  - VS140COMNTOOLS=C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\Tools\
+  - configsetroot=C:\WINDOWS\ConfigSetRoot
+  - scriptdir=C:\Windows\sonar-scanner-3.2.0.1227-windows\bin
+  - use_embedded_jre=true
+  - windir=C:\WINDOWS
+System properties:
+  - awt.toolkit=sun.awt.windows.WToolkit
+  - file.encoding=Cp1252
+  - file.encoding.pkg=sun.io
+  - file.separator=\
+  - java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+  - java.awt.headless=true
+  - java.awt.printerjob=sun.awt.windows.WPrinterJob
+  - java.class.path=C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..\lib\sonar-scanner-cli-3.2.0.1227.jar
+  - java.class.version=52.0
+  - java.endorsed.dirs=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\endorsed
+  - java.ext.dirs=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+  - java.home=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre
+  - java.io.tmpdir=C:\Users\keyso\AppData\Local\Temp\
+  - java.library.path=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\xampp\php;C:\composer;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Local\atom\bin;C:\Users\keyso\AppData\Local\GitHubDesktop\bin;C:\Users\keyso\AppData\Roaming\Composer\vendor\bin;C:\Users\keyso\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;.
+  - java.runtime.name=Java(TM) SE Runtime Environment
+  - java.runtime.version=1.8.0_121-b13
+  - java.specification.name=Java Platform API Specification
+  - java.specification.vendor=Oracle Corporation
+  - java.specification.version=1.8
+  - java.vendor=Oracle Corporation
+  - java.vendor.url=http://java.oracle.com/
+  - java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+  - java.version=1.8.0_121
+  - java.vm.info=mixed mode
+  - java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+  - java.vm.specification.name=Java Virtual Machine Specification
+  - java.vm.specification.vendor=Oracle Corporation
+  - java.vm.specification.version=1.8
+  - java.vm.vendor=Oracle Corporation
+  - java.vm.version=25.121-b13
+  - line.separator=
+
+  - os.arch=amd64
+  - os.name=Windows 10
+  - os.version=10.0
+  - path.separator=;
+  - project.home=C:\Users\keyso\Documents\GitHub\beautynow_mpoo
+  - scanner.home=C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..
+  - sun.arch.data.model=64
+  - sun.boot.class.path=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\resources.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\rt.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\sunrsasign.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\jsse.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\jce.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\charsets.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\jfr.jar;C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\classes
+  - sun.boot.library.path=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\bin
+  - sun.cpu.endian=little
+  - sun.cpu.isalist=amd64
+  - sun.desktop=windows
+  - sun.io.unicode.encoding=UnicodeLittle
+  - sun.java.command=org.sonarsource.scanner.cli.Main -X
+  - sun.java.launcher=SUN_STANDARD
+  - sun.jnu.encoding=Cp1252
+  - sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+  - sun.os.patch.level=
+  - sun.stderr.encoding=cp850
+  - sun.stdout.encoding=cp850
+  - user.country=BR
+  - user.dir=C:\Users\keyso\Documents\GitHub\beautynow_mpoo
+  - user.home=C:\Users\keyso
+  - user.language=pt
+  - user.name=keyson.rapha
+  - user.script=
+  - user.timezone=America/Cayenne
+  - user.variant=
+SonarQube plugins:
+  - SonarPython 1.10.0.2131 (python)
+  - SonarCSS 1.0.2.611 (cssfamily)
+  - JaCoCo 1.0.1.143 (jacoco)
+  - SonarGo 1.1.0.1612 (go)
+  - SonarKotlin 1.2.1.2009 (kotlin)
+  - Svn 1.9.0.1295 (scmsvn)
+  - SonarJS 5.0.0.6962 (javascript)
+  - SonarRuby 1.2.1.2009 (ruby)
+  - SonarC# 7.7.0.7192 (csharp)
+  - SonarJava 5.9.2.16552 (java)
+  - LDAP 2.2.0.608 (ldap)
+  - Git 1.6.0.1349 (scmgit)
+  - SonarFlex 2.4.0.1222 (flex)
+  - SonarXML 1.5.1.1452 (xml)
+  - SonarPHP 2.14.0.3569 (php)
+  - SonarTS 1.8.0.3332 (typescript)
+  - SonarVB 7.7.0.7192 (vbnet)
+Global properties:
+  - sonar.core.id=BF41A1F2-AWeula0Hg8M-_1s_7zgf
+  - sonar.core.startTime=2018-12-14T18:18:22-0300
+Settings for module: beautynow_mpoo
+  - sonar.host.url=http://localhost:9000
+  - sonar.java.binaries=app
+  - sonar.projectBaseDir=C:\Users\keyso\Documents\GitHub\beautynow_mpoo
+  - sonar.projectKey=beautynow_mpoo
+  - sonar.projectName=beautynow_mpoo
+  - sonar.projectVersion=1.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.2.0.1227
+  - sonar.sourceEncoding=windows-1252
+  - sonar.sources=./
+  - sonar.verbose=true
+  - sonar.working.directory=C:\Users\keyso\Documents\GitHub\beautynow_mpoo\.scannerwork

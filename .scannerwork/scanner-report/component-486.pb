@@ -1,0 +1,1 @@
+æPapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rBR :årPapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rBR

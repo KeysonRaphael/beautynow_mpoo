@@ -1,0 +1,1 @@
+¬1app/build/intermediates/split-apk/debug/resources :«r1app/build/intermediates/split-apk/debug/resources

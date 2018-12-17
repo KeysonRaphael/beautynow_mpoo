@@ -1,0 +1,1 @@
+Ü7app/build/intermediates/incremental/mergeDebugResources :³r7app/build/intermediates/incremental/mergeDebugResources

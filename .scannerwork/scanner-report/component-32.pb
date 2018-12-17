@@ -1,0 +1,1 @@
+ napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/design/R.java 2javaXÒhrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/design/R.java

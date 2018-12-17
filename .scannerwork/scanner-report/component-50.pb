@@ -1,0 +1,1 @@
+2mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print/R.java 2javaXhrmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print/R.java

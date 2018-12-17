@@ -1,0 +1,1 @@
+Cpapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/recyclerview :Brpapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/recyclerview

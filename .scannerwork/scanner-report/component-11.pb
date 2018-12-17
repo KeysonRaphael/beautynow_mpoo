@@ -1,0 +1,2 @@
+bapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/core :
+rbapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/core

@@ -1,0 +1,1 @@
+„Papp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-es-rUS :ƒrPapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-es-rUS

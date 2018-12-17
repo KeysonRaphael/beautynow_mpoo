@@ -1,0 +1,1 @@
+9rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/transition/R.java 2javaXÂhrrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/transition/R.java

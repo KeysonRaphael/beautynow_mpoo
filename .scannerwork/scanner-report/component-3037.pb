@@ -1,0 +1,1 @@
+Ýapp/src/main/res/layout :,Úßàáãäâåæçèéêëìîíïðñòórapp/src/main/res/layout
