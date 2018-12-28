@@ -3,6 +3,7 @@ package kn.beautynow.gui.usuario;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -16,6 +17,7 @@ import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.fornecedor.FornecedorMenu;
 import kn.beautynow.negocio.usuario.ValidarUsuario;
+
 
 public class Login extends AppCompatActivity {
 
@@ -42,8 +44,9 @@ public class Login extends AppCompatActivity {
             Toast.makeText(getBaseContext(),"E-mail ou senha incorretos!",Toast.LENGTH_LONG).show();
             return;
         }else{
-            Session sessao = new Session();
-            sessao.editSessao(user, getApplicationContext());
+            Session session = new Session();
+            session.editSessao(user, getBaseContext());
+            Log.d("teste", session.getSession(getBaseContext()).getNome());
             if (user.getTipoUsuario().equals("Cliente")) {
                 Intent clienteMenu = new Intent(Login.this, ClienteMenu.class);
                 startActivity(clienteMenu);

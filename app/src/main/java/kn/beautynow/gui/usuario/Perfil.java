@@ -1,4 +1,4 @@
-package kn.beautynow.gui.fornecedor;
+package kn.beautynow.gui.usuario;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,47 +25,42 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link PerfilFornecedor.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link PerfilFornecedor#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class PerfilFornecedor extends Fragment {
+public class Perfil extends Fragment {
+
     private OnFragmentInteractionListener mListener;
 
-    public PerfilFornecedor() {
+    public Perfil() {
         // Required empty public constructor
     }
 
-    public static PerfilFornecedor newInstance() {
-        return new PerfilFornecedor();
+    public static Perfil newInstance(String param1, String param2) {
+        Perfil fragment = new Perfil();
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View inf = inflater.inflate(R.layout.fragment_perfil_cliente, container, false);
+        View inf = inflater.inflate(R.layout.fragment_perfil, container, false);
         TextView tv = (TextView) inf.findViewById(R.id.nomeUsuario);
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-        Gson gson = new Gson();
-        String json = preferences.getString("usuario", "");
-        Usuario obj = gson.fromJson(json, Usuario.class);
+        Session session = new Session();
+        Usuario obj = session.getSession(this.getActivity().getBaseContext());
         tv.setText(obj.getNome());
-
         ImagemPerfilNegocio imagem = new ImagemPerfilNegocio(getContext());
         Bitmap img = imagem.getImgPerfil(obj.getId());
         if (img != null) {
             ImageView perfil = (ImageView) inf.findViewById(R.id.imagePerfil);
             perfil.setImageBitmap(img);
         }
-
         Button editarPerfil = (Button)inf.findViewById(R.id.editFoto);
         editarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,9 +71,9 @@ public class PerfilFornecedor extends Fragment {
                 startActivityForResult(i, 1000);
             }
         });
-
         return inf;
     }
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -110,6 +106,11 @@ public class PerfilFornecedor extends Fragment {
                 perfil.setImageBitmap(img);
                 perfil.setBackgroundColor(getResources().getColor(R.color.white));}
         }
+    }
+
+    public void setUsuario(String text){
+        TextView nomeusuario = (TextView)getView().findViewById(R.id.nomeUsuario);
+        nomeusuario.setText(text);
     }
 
     public void onButtonPressed(Uri uri) {

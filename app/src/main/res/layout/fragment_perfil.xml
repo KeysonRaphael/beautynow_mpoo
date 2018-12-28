@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".gui.cliente.PerfilCliente">
+    tools:context=".gui.usuario.Perfil">
 
     <ImageView
         android:id="@+id/imagePerfil"
@@ -44,7 +43,9 @@
         android:layout_height="wrap_content"
         android:text="Editar endereço"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="50dp"/>
+        android:layout_marginLeft="50dp"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/editFoto"
@@ -52,6 +53,8 @@
         android:layout_height="wrap_content"
         android:text="Editar foto"
         android:layout_marginTop="300dp"
-        android:layout_marginLeft="225dp"/>
+        android:layout_marginLeft="225dp"
+        android:background="@android:color/holo_blue_light"
+        android:textColor="@color/white"/>
 
 </FrameLayout>

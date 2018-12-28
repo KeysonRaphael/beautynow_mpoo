@@ -28,11 +28,13 @@
     <string name="sexo">Sexo</string>
 
     <string-array name="tipos_usuario">
+        <item>Qual seu tipo de usuario?</item>
         <item>Cliente</item>
         <item>Fornecedor</item>
     </string-array>
 
     <string-array name="sexos">
+        <item>Selecione seu genero</item>
         <item>Masculino</item>
         <item>Feminino</item>
         <item>Outros</item>

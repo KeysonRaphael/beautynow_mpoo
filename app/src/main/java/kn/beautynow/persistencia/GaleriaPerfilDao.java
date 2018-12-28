@@ -42,10 +42,11 @@ public class GaleriaPerfilDao {
         try {
             String selectQuery = "SELECT * FROM " + Banco.TABLE_GALERIA_PERFIL + " WHERE id_usuario = '" + id +"'";
             Cursor cursor = db.rawQuery(selectQuery, null);
-
             if (cursor.getCount() > 0) {
-                while (cursor.moveToNext()) {
-                    return cursor.getBlob(cursor.getColumnIndex(Banco.COLUMN_GALERIA_PERFIL_IMAGE));
+                while (!cursor.isAfterLast()) {
+                    byte[] retorno =  cursor.getBlob(cursor.getColumnIndex(Banco.COLUMN_GALERIA_PERFIL_IMAGE));
+                    cursor.close();
+                    return retorno;
                 }
             }
             db.setTransactionSuccessful();

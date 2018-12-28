@@ -20,12 +20,12 @@ import android.view.MenuItem;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
-import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.usuario.Login;
+import kn.beautynow.gui.usuario.Perfil;
 
 public class FornecedorMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-        PerfilFornecedor.OnFragmentInteractionListener,
+        Perfil.OnFragmentInteractionListener,
         AgendaFornecedor.OnFragmentInteractionListener,
         ServicosFornecedor.OnFragmentInteractionListener {
 
@@ -47,7 +47,7 @@ public class FornecedorMenu extends AppCompatActivity
 
         setTitle("Perfil");
         navigationView.setCheckedItem(R.id.perfil_fornecedor);
-        Fragment fragment = new PerfilFornecedor();
+        Fragment fragment = new Perfil();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fornecedor_frame, fragment);
         ft.commit();
@@ -98,7 +98,7 @@ public class FornecedorMenu extends AppCompatActivity
 
         if (id == R.id.perfil_fornecedor) {
             setTitle("Perfil");
-            Fragment fragment = new PerfilFornecedor();
+            Fragment fragment = new Perfil();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fornecedor_frame, fragment);
             ft.commit();

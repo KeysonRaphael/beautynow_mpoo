@@ -18,12 +18,13 @@ import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.usuario.Login;
+import kn.beautynow.gui.usuario.Perfil;
 import kn.beautynow.gui.usuario.Splash;
 
 
 public class ClienteMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    PerfilCliente.OnFragmentInteractionListener,
+                    Perfil.OnFragmentInteractionListener,
                     ListaFornecedores.OnFragmentInteractionListener,
                     AgendaCliente.OnFragmentInteractionListener{
 
@@ -47,7 +48,7 @@ public class ClienteMenu extends AppCompatActivity
 
         setTitle("Perfil");
         navigationView.setCheckedItem(R.id.perfil);
-        Fragment fragment = new PerfilCliente();
+        Fragment fragment = new Perfil();
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.frame, fragment);
         ft.commit();
@@ -98,7 +99,7 @@ public class ClienteMenu extends AppCompatActivity
 
         if (id == R.id.perfil) {
             setTitle("Perfil");
-            Fragment fragment = new PerfilCliente();
+            Fragment fragment = new Perfil();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, fragment);
             ft.commit();
