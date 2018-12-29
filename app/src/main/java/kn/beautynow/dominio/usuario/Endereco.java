@@ -1,14 +1,16 @@
 package kn.beautynow.dominio.usuario;
 
+import android.support.annotation.NonNull;
+import android.util.Log;
+
 public class Endereco {
-    private String id;
-    private String rua;
-    private String numero;
-    private String bairro;
-    private String cidade;
-    private String estado;
-    private String pais;
-    private String cep;
+    private String id = "";
+    private String rua = "";
+    private String numero = "";
+    private String bairro = "";
+    private String cidade = "";
+    private String estado = "";
+    private String cep = "";
 
     public String getRua() {
         return rua;
@@ -50,19 +52,15 @@ public class Endereco {
         this.estado = estado;
     }
 
-    public String getPais() {
-        return pais;
-    }
-
-    public void setPais(String pais) {
-        this.pais = pais;
-    }
-
     public String getCep() {
         return cep;
     }
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String printEndereco(){
+        return rua + " "+ numero +" "+ bairro +" "+ cidade + " " + estado;
     }
 }

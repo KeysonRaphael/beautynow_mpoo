@@ -15,7 +15,7 @@ public class ImagemPerfilNegocio {
     }
     public Boolean insertImgPerfil(String id, Bitmap bmp) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+        bmp.compress(Bitmap.CompressFormat.PNG, 10, out);
         byte[] buffer = out.toByteArray();
         GaleriaPerfilDao galeria = new GaleriaPerfilDao(this.context);
         galeria.insereImagemGaleria(id,buffer);
@@ -23,7 +23,7 @@ public class ImagemPerfilNegocio {
     }
     public Boolean updateImgPerfil(String id, Bitmap bmp) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.PNG, 100, out);
+        bmp.compress(Bitmap.CompressFormat.PNG, 10, out);
         byte[] buffer = out.toByteArray();
         GaleriaPerfilDao galeria = new GaleriaPerfilDao(this.context);
         galeria.updateimgPerfil(id,buffer);

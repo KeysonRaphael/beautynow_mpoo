@@ -14,6 +14,8 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.FixCursorWindow;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
@@ -44,6 +47,7 @@ public class Perfil extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        FixCursorWindow.fix();
         super.onCreate(savedInstanceState);
     }
 
@@ -56,6 +60,11 @@ public class Perfil extends Fragment {
         Usuario obj = session.getSession(this.getActivity().getBaseContext());
         tv.setText(obj.getNome());
         ImagemPerfilNegocio imagem = new ImagemPerfilNegocio(getContext());
+        if (!obj.getEndereco().getRua().equals("")){
+            //get endereco
+            TextView enderecot = inf.findViewById(R.id.enderecoUsuario);
+            enderecot.setText(obj.getEndereco().printEndereco());
+        }
         Bitmap img = imagem.getImgPerfil(obj.getId());
         if (img != null) {
             ImageView perfil = (ImageView) inf.findViewById(R.id.imagePerfil);
@@ -69,6 +78,17 @@ public class Perfil extends Fragment {
                         Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, 1000);
+            }
+        });
+        Button editarEndereco = inf.findViewById(R.id.editEndereco);
+        editarEndereco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().setTitle("Editar Endereço");
+                FragmentTransaction t = getFragmentManager().beginTransaction();
+                Fragment mFrag = new EditarEndereco();
+                t.replace(R.id.frame, mFrag);
+                t.commit();
             }
         });
         return inf;

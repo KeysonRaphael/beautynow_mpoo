@@ -11,6 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.negocio.usuario.CadastrarUsuario;
 
 import static kn.beautynow.negocio.ValidaCpf.*;
@@ -31,6 +32,9 @@ public class Cadastro extends AppCompatActivity {
                 R.array.sexos, R.layout.spinner_item);
         adapters.setDropDownViewResource(R.layout.spinner_dropdown_item);
         sexo.setAdapter(adapters);
+
+        EditText cpf = findViewById(R.id.inputCpf);
+        cpf.addTextChangedListener(MaskEditUtil.mask(cpf,MaskEditUtil.FORMAT_CPF));
     }
 
     @Override
@@ -47,7 +51,7 @@ public class Cadastro extends AppCompatActivity {
         Spinner sexo = (Spinner) findViewById(R.id.sexo);
         String vnome = nome.getText().toString();
         String vemail = email.getText().toString();
-        String vcpf = cpf.getText().toString();
+        String vcpf = MaskEditUtil.unmask(cpf.getText().toString());
         String vsenha = senha.getText().toString();
         String vtipo = tipo.getSelectedItem().toString();
         String vsexo = sexo.getSelectedItem().toString();
@@ -73,7 +77,7 @@ public class Cadastro extends AppCompatActivity {
         EditText rsenha = (EditText) findViewById(R.id.rsenha);
         String vnome = nome.getText().toString();
         String vemail = email.getText().toString();
-        String vcpf = cpf.getText().toString();
+        String vcpf = MaskEditUtil.unmask(cpf.getText().toString());
         String vsenha = senha.getText().toString();
         String vrsenha = rsenha.getText().toString();
 

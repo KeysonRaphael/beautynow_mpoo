@@ -4,57 +4,91 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".gui.usuario.Perfil">
+    tools:context=".gui.usuario.Perfil"
+    >
+    <GridLayout android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:columnCount="2"
+        android:rowCount="9">
 
-    <ImageView
-        android:id="@+id/imagePerfil"
-        android:layout_width="116dp"
-        android:layout_height="118dp"
-        android:layout_gravity="center_horizontal"
-        android:contentDescription="Imagem Perfil"
-        android:layout_marginTop="20dp"/>
+        <ImageView
+            android:id="@+id/imagePerfil"
+            android:layout_width="116dp"
+            android:layout_height="118dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="start"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="Imagem Perfil" />
 
-    <TextView
-        android:id="@+id/nomeUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="160dp"
-        android:text="@string/Nome" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nome"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="Endereço:" />
+        <TextView
+            android:id="@+id/nomeUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_gravity="start|top"
+            android:layout_marginTop="40dp"
+            android:text="@string/Nome"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/enderecoUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="75dp"
-        android:layout_marginTop="200dp"
-        android:text="Endereço não cadastrado" />
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginTop="70dp"
+            android:text="Endereço"
+            android:textAllCaps="true"
+            android:textColor="@android:color/holo_blue_light"
+            android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/editEndereco"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar endereço"
-        android:layout_marginTop="300dp"
-        android:layout_marginLeft="50dp"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@color/white"/>
+        <TextView
+            android:id="@+id/enderecoUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginTop="90dp"
+            android:text="Endereço não cadastrado"
+            android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/editFoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar foto"
-        android:layout_marginTop="300dp"
-        android:layout_marginLeft="225dp"
-        android:background="@android:color/holo_blue_light"
-        android:textColor="@color/white"/>
+        <Button
+            android:id="@+id/editEndereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="Editar endereço"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/editFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="Editar foto"
+            android:textColor="@color/white" />
+    </GridLayout>
+
 
 </FrameLayout>

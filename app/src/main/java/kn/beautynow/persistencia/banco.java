@@ -29,7 +29,6 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_ENDERECO_BAIRRO = "bairro";
     public static final String COLUMN_ENDERECO_CIDADE = "cidade";
     public static final String COLUMN_ENDERECO_ESTADO = "estado";
-    public static final String COLUMN_ENDERECO_PAIS = "pais";
     public static final String COLUMN_ENDERECO_ID_USER = "id_user";
     //Tabela Galeria Perfil
     public static final String TABLE_GALERIA_PERFIL = "galeria_perfil";
@@ -75,7 +74,6 @@ public class Banco extends SQLiteOpenHelper{
                 Banco.COLUMN_ENDERECO_BAIRRO + tipotexto +
                 Banco.COLUMN_ENDERECO_CIDADE + tipotexto +
                 Banco.COLUMN_ENDERECO_ESTADO + tipotexto +
-                Banco.COLUMN_ENDERECO_PAIS + tipotexto +
                 Banco.COLUMN_ENDERECO_ID_USER + tipotexton + " )";
         db.execSQL(sqlEndereco);
         //create table galeria perfil

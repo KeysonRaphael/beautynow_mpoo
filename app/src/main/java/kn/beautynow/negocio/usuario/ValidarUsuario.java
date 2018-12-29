@@ -37,7 +37,6 @@ public class ValidarUsuario {
         endereco.setBairro(result.get(11).toString());
         endereco.setCidade(result.get(12).toString());
         endereco.setEstado(result.get(13).toString());
-        endereco.setPais(result.get(14).toString());
         user.setEndereco(endereco);
         return user;
     }

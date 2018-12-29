@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteException;
+import android.util.Log;
 
 
 public class GaleriaPerfilDao {
@@ -42,12 +43,12 @@ public class GaleriaPerfilDao {
         try {
             String selectQuery = "SELECT * FROM " + Banco.TABLE_GALERIA_PERFIL + " WHERE id_usuario = '" + id +"'";
             Cursor cursor = db.rawQuery(selectQuery, null);
-            if (cursor.getCount() > 0) {
-                while (!cursor.isAfterLast()) {
+            if (cursor.getCount() == 1) {
+                    cursor.moveToFirst();
+                    Log.d("cursorteste", String.valueOf(cursor.getCount()));
                     byte[] retorno =  cursor.getBlob(cursor.getColumnIndex(Banco.COLUMN_GALERIA_PERFIL_IMAGE));
                     cursor.close();
                     return retorno;
-                }
             }
             db.setTransactionSuccessful();
         } catch (SQLiteException e) {

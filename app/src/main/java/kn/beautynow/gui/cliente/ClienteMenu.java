@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.usuario.EditarEndereco;
 import kn.beautynow.gui.usuario.Login;
 import kn.beautynow.gui.usuario.Perfil;
 import kn.beautynow.gui.usuario.Splash;
@@ -26,7 +27,8 @@ public class ClienteMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                     Perfil.OnFragmentInteractionListener,
                     ListaFornecedores.OnFragmentInteractionListener,
-                    AgendaCliente.OnFragmentInteractionListener{
+                    AgendaCliente.OnFragmentInteractionListener,
+                    EditarEndereco.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
