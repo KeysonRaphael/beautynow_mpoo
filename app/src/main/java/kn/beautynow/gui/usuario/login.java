@@ -16,7 +16,7 @@ import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.fornecedor.FornecedorMenu;
-import kn.beautynow.negocio.usuario.ValidarUsuario;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 
 public class Login extends AppCompatActivity {
@@ -38,7 +38,7 @@ public class Login extends AppCompatActivity {
         String semail = email.getText().toString();
         String ssenha = senha.getText().toString();
         String stipo = tipo.getSelectedItem().toString();
-        ValidarUsuario validar = new ValidarUsuario(getBaseContext());
+        UsuarioNegocio validar = new UsuarioNegocio(getBaseContext());
         Usuario user = validar.existeBanco(semail,ssenha,stipo);
         if(user.getNome().equals("")){
             Toast.makeText(getBaseContext(),"E-mail ou senha incorretos!",Toast.LENGTH_LONG).show();

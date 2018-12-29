@@ -13,6 +13,8 @@ import android.widget.EditText;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.MaskEditUtil;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class EditarEndereco extends Fragment implements Perfil.OnFragmentInteractionListener{
 
@@ -36,14 +38,29 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View inf = inflater.inflate(R.layout.fragment_editar_endereco, container, false);
-        EditText cep = inf.findViewById(R.id.editCep);
+        final View inf = inflater.inflate(R.layout.fragment_editar_endereco, container, false);
+        final EditText cep = inf.findViewById(R.id.editCep);
         cep.addTextChangedListener(MaskEditUtil.mask(cep,MaskEditUtil.FORMAT_CEP));
+        final String id = Session.getSession(inf.getContext()).getId();
         Button cadastrarEndereco = inf.findViewById(R.id.cadastrarEndereco);
         cadastrarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                EditText rua = inf.findViewById(R.id.editRua);
+                EditText numero = inf.findViewById(R.id.editNumero);
+                EditText complemento = inf.findViewById(R.id.editComplemento);
+                EditText bairro = inf.findViewById(R.id.editBairro);
+                EditText cidade = inf.findViewById(R.id.editCidade);
+                EditText estado = inf.findViewById(R.id.editEstado);
+                String ruat = rua.getText().toString();
+                String numerot = numero.getText().toString();
+                String complementot = complemento.getText().toString();
+                String bairrot = bairro.getText().toString();
+                String cidadet = cidade.getText().toString();
+                String estadot = estado.getText().toString();
+                String cept = MaskEditUtil.unmask(cep.getText().toString());
+                UsuarioNegocio usuarioneg = new UsuarioNegocio(getContext());
+                usuarioneg.cadastrarEndereco(id, ruat, numerot, complementot, bairrot, cidadet, estadot, cept);
                 getActivity().setTitle("Perfil");
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new Perfil();

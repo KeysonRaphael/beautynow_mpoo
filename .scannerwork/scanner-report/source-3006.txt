@@ -11,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import kn.beautynow.R;
-import kn.beautynow.negocio.usuario.CadastrarUsuario;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 import static kn.beautynow.negocio.ValidaCpf.*;
 

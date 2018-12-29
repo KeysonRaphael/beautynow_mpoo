@@ -79,7 +79,6 @@ public class UsuarioDao {
                                 retorno.add(12,cursorend.getString(5));
                                 retorno.add(13,cursorend.getString(6));
                                 retorno.add(14,cursorend.getString(7));
-                                retorno.add(15,cursorend.getString(7));
                                 cursorend.close();
                                 return retorno;
                             }

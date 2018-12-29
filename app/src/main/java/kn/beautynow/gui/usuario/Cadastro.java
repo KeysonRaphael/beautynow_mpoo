@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.MaskEditUtil;
-import kn.beautynow.negocio.usuario.CadastrarUsuario;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 import static kn.beautynow.negocio.ValidaCpf.*;
 
@@ -57,7 +57,7 @@ public class Cadastro extends AppCompatActivity {
         String vsexo = sexo.getSelectedItem().toString();
         int check = this.validarCampos();
         if (check == 1) {
-            CadastrarUsuario cadastro = new CadastrarUsuario(getBaseContext());
+            UsuarioNegocio cadastro = new UsuarioNegocio(getBaseContext());
             Boolean resultado = cadastro.cadastroUser(vnome,vcpf,vemail,vsenha,vtipo,vsexo);
             if (resultado) {
                 Toast.makeText(getApplicationContext(), "incluido", Toast.LENGTH_LONG).show();

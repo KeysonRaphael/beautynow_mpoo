@@ -10,6 +10,7 @@ public class Endereco {
     private String bairro = "";
     private String cidade = "";
     private String estado = "";
+    private String complemento = "";
     private String cep = "";
 
     public String getRua() {
@@ -62,5 +63,13 @@ public class Endereco {
 
     public String printEndereco(){
         return rua + " "+ numero +" "+ bairro +" "+ cidade + " " + estado;
+    }
+
+    public String getComplemento() {
+        return complemento;
+    }
+
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 }
