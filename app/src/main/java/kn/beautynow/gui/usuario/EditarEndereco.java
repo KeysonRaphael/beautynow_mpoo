@@ -58,7 +58,7 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
                 String bairrot = bairro.getText().toString();
                 String cidadet = cidade.getText().toString();
                 String estadot = estado.getText().toString();
-                String cept = MaskEditUtil.unmask(cep.getText().toString());
+                String cept = cep.getText().toString();
                 UsuarioNegocio usuarioneg = new UsuarioNegocio(getContext());
                 usuarioneg.cadastrarEndereco(id, ruat, numerot, complementot, bairrot, cidadet, estadot, cept);
                 getActivity().setTitle("Perfil");

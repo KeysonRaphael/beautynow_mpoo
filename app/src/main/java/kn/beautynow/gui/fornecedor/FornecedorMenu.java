@@ -27,7 +27,8 @@ public class FornecedorMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         Perfil.OnFragmentInteractionListener,
         AgendaFornecedor.OnFragmentInteractionListener,
-        ServicosFornecedor.OnFragmentInteractionListener {
+        ServicosFornecedor.OnFragmentInteractionListener,
+        NovoServico.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

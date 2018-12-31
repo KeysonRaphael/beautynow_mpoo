@@ -62,7 +62,7 @@ public class Endereco {
     }
 
     public String printEndereco(){
-        return rua + " "+ numero +" "+ bairro +" "+ cidade + " " + estado;
+        return "Rua "+ rua + " nº "+ numero +" - "+ bairro +", "+ cidade + " - " + estado + " - " + cep;
     }
 
     public String getComplemento() {

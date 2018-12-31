@@ -65,12 +65,15 @@ public class UsuarioNegocio {
             enderecodao.inserirEndereco(iduser, rua, numero, complemento, bairro, cidade, estado, cep);
         }
         ArrayList endereco = enderecodao.buscarEndereco(iduser);
-        Session.getSession(contexto).getEndereco().setCep(endereco.get(1).toString());
-        Session.getSession(contexto).getEndereco().setRua(endereco.get(2).toString());
-        Session.getSession(contexto).getEndereco().setNumero(endereco.get(3).toString());
-        Session.getSession(contexto).getEndereco().setComplemento(endereco.get(4).toString());
-        Session.getSession(contexto).getEndereco().setBairro(endereco.get(5).toString());
-        Session.getSession(contexto).getEndereco().setCidade(endereco.get(6).toString());
-        Session.getSession(contexto).getEndereco().setEstado(endereco.get(7).toString());
+        Usuario sessaold = Session.getSession(contexto);
+        sessaold.getEndereco().setCep(endereco.get(1).toString());
+        sessaold.getEndereco().setRua(endereco.get(2).toString());
+        sessaold.getEndereco().setNumero(endereco.get(3).toString());
+        sessaold.getEndereco().setComplemento(endereco.get(4).toString());
+        sessaold.getEndereco().setBairro(endereco.get(5).toString());
+        sessaold.getEndereco().setCidade(endereco.get(6).toString());
+        sessaold.getEndereco().setEstado(endereco.get(7).toString());
+        Session session = new Session();
+        session.editSessao(sessaold,contexto);
     }
 }

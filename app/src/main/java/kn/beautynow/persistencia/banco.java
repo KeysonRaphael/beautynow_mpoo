@@ -8,7 +8,7 @@ public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 6;
+        VERSAO = 8;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
@@ -44,6 +44,17 @@ public class Banco extends SQLiteOpenHelper{
     public static final String TABLE_FORNECEDOR = "fornecedor";
     public static final String COLUMN_FORNECEDOR_ID = "Id";
     public static final String COLUMN_FORNECEDOR_ID_USUARIO = "id_usuario";
+    //Tabela Servicos
+    public static final String TABLE_SERVICOS = "servicos";
+    public static final String COLUMN_SERVICOS_ID = "Id";
+    public static final String COLUMN_SERVICOS_DESCRICAO = "descricao";
+    //Tabela Servicos Fornecedor
+    public static final String TABLE_SERVICOS_FORNECEDOR = "servicos_fornecedor";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_ID = "Id";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR = "id_fornecedor";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_VALOR = "id_fornecedor";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM = "id_fornecedor";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO = "id_servico";
 
     public Banco(Context context){
         super(context, NOME_BANCO,null,VERSAO);
@@ -94,6 +105,19 @@ public class Banco extends SQLiteOpenHelper{
                 Banco.COLUMN_FORNECEDOR_ID + prim +
                 Banco.COLUMN_FORNECEDOR_ID_USUARIO + tipotexton + " )";
         db.execSQL(sqlFornecedor);
+        //create table servicos
+        String sqlServicos = create + Banco.TABLE_SERVICOS + " (" +
+                Banco.COLUMN_SERVICOS_ID + prim +
+                Banco.COLUMN_SERVICOS_DESCRICAO + tipotexton + " )";
+        db.execSQL(sqlServicos);
+        //create table servicos fornecedor
+        String sqlServicosFornecedor = create + Banco.TABLE_SERVICOS_FORNECEDOR + " (" +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_ID + prim +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR + tipotexto +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR + tipotexto +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM + " BLOB," +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO + tipotexton + " )";
+        db.execSQL(sqlServicosFornecedor);
     }
 
     @Override
@@ -103,6 +127,8 @@ public class Banco extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS cliente");
         db.execSQL("DROP TABLE IF EXISTS fornecedor");
         db.execSQL("DROP TABLE IF EXISTS galeria_perfil");
+        db.execSQL("DROP TABLE IF EXISTS servicos");
+        db.execSQL("DROP TABLE IF EXISTS servicos_fornecedor");
         onCreate(db);
     }
 
