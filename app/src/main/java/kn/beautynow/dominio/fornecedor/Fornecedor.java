@@ -6,66 +6,66 @@ import kn.beautynow.dominio.usuario.Usuario;
 
 public class Fornecedor {
     private String id;
-    private Usuario usuario;
-    private Servicos servicos;
-    private Galeria galeria;
-    private Avaliacao avaliacao;
-    private Agenda agenda;
-    private Promocao promocao;
+    private Usuario usuario = new Usuario();
+    private Servicos servicos = new Servicos();
+    private Galeria galeria = new Galeria();
+    private Avaliacao avaliacao = new Avaliacao();
+    private Agenda agenda = new Agenda();
+    private Promocao promocao = new Promocao();
 
-    private String getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    private void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    private Galeria getGaleria() {
+    public Galeria getGaleria() {
         return galeria;
     }
 
-    private void setGaleria(Galeria galeria) {
+    public void setGaleria(Galeria galeria) {
         this.galeria = galeria;
     }
 
-    private Avaliacao getAvaliacao() {
+    public Avaliacao getAvaliacao() {
         return avaliacao;
     }
 
-    private void setAvaliacao(Avaliacao avaliacao) {
+    public void setAvaliacao(Avaliacao avaliacao) {
         this.avaliacao = avaliacao;
     }
 
-    private Agenda getAgenda() {
+    public Agenda getAgenda() {
         return agenda;
     }
 
-    private void setAgenda(Agenda agenda) {
+    public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
     }
 
-    private Servicos getServicos() {
+    public Servicos getServicos() {
         return servicos;
     }
 
-    private void setServicos(Servicos servicos) {
+    public void setServicos(Servicos servicos) {
         this.servicos = servicos;
     }
 
-    private Promocao getPromocao() {
+    public Promocao getPromocao() {
         return promocao;
     }
 
-    private void setPromocao(Promocao promocao) {
+    public void setPromocao(Promocao promocao) {
         this.promocao = promocao;
     }
 }

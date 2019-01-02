@@ -59,7 +59,7 @@
         android:autofillHints="@string/digite_seu_cpf"
         android:ems="10"
         android:hint="@string/digite_seu_cpf"
-        android:inputType="textPersonName"
+        android:inputType="text|number"
         android:maxLength="14"
         android:singleLine="true"
         android:textColor="@color/black"

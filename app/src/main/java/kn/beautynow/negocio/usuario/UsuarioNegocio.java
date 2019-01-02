@@ -18,7 +18,7 @@ public class UsuarioNegocio {
     }
 
     public Boolean cadastroUser(String nome,String cpf,String email,String senha,String tipo, String sexo){
-        UsuarioDao usuariodao = new UsuarioDao(contexto);
+        UsuarioDao usuariodao = new UsuarioDao(this.contexto);
         if (!usuariodao.buscaUsuario(cpf, tipo)){
             usuariodao.insereDado(nome, cpf, email, senha, tipo, sexo);
             return true;
@@ -41,17 +41,18 @@ public class UsuarioNegocio {
         user.setCpf(result.get(3).toString());
         user.setTipoUsuario(result.get(5).toString());
         user.setSexo((String) result.get(7));
-        if(8 >= result.size()){
+        user.setIdUser((String) result.get(8));
+        if(9 >= result.size()){
             return user;
         }
         Endereco endereco = new Endereco();
-        endereco.setCep(result.get(8).toString());
-        endereco.setRua(result.get(9).toString());
-        endereco.setNumero(result.get(10).toString());
-        endereco.setComplemento(result.get(11).toString());
-        endereco.setBairro(result.get(12).toString());
-        endereco.setCidade(result.get(13).toString());
-        endereco.setEstado(result.get(14).toString());
+        endereco.setCep(result.get(9).toString());
+        endereco.setRua(result.get(10).toString());
+        endereco.setNumero(result.get(11).toString());
+        endereco.setComplemento(result.get(12).toString());
+        endereco.setBairro(result.get(13).toString());
+        endereco.setCidade(result.get(14).toString());
+        endereco.setEstado(result.get(15).toString());
         user.setEndereco(endereco);
         return user;
     }

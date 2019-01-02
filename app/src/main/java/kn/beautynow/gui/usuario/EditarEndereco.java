@@ -14,6 +14,7 @@ import android.widget.EditText;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class EditarEndereco extends Fragment implements Perfil.OnFragmentInteractionListener{
@@ -64,7 +65,12 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
                 getActivity().setTitle("Perfil");
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new Perfil();
-                t.replace(R.id.frame, mFrag);
+                Usuario obj = Session.getSession(getContext());
+                if(obj.getTipoUsuario() == "Cliente"){
+                    t.replace(R.id.frame, mFrag);
+                }else{
+                    t.replace(R.id.fornecedor_frame, mFrag);
+                }
                 t.commit();
             }
         });
@@ -75,7 +81,12 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
                 getActivity().setTitle("Perfil");
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new Perfil();
-                t.replace(R.id.frame, mFrag);
+                Usuario obj = Session.getSession(getContext());
+                if(obj.getTipoUsuario() == "Cliente"){
+                    t.replace(R.id.frame, mFrag);
+                }else{
+                    t.replace(R.id.fornecedor_frame, mFrag);
+                }
                 t.commit();
             }
         });

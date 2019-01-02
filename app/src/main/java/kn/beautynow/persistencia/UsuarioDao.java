@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.sql.Blob;
 import java.util.ArrayList;
@@ -11,15 +12,16 @@ import java.util.ArrayList;
 public class UsuarioDao {
     private SQLiteDatabase db;
     private Banco banco;
-    private Context context;
+    private Context contexto;
 
     public UsuarioDao(Context context){
+        this.contexto = context;
         banco = new Banco(context);
     }
 
-    public String insereDado(String nome, String cpf, String email, String senha, String tipo, String sexo){
+    public void insereDado(String nome, String cpf, String email, String senha, String tipo, String sexo){
         ContentValues valores;
-        long resultado;
+        String resultado;
 
 
         db = banco.getWritableDatabase();
@@ -31,21 +33,22 @@ public class UsuarioDao {
         valores.put(Banco.COLUMN_USUARIO_TIPO, tipo);
         valores.put(Banco.COLUMN_USUARIO_SEXO, sexo);
 
-        resultado = db.insert(Banco.TABLE_USUARIO, null, valores);
+        resultado = String.valueOf(db.insert(Banco.TABLE_USUARIO, null, valores));
+        String idTipo;
         db.close();
-        if (tipo == "Cliente"){
-            ClienteDao cliente = new ClienteDao(context);
-            cliente.insereCliente(resultado);
-        }else if (tipo == "Fornecedor"){
-            FornecedorDao fornecedor = new FornecedorDao(context);
-            fornecedor.insereFornecedor(resultado);
+        if (tipo.equals("Cliente")){
+            ClienteDao cliente = new ClienteDao(contexto);
+            idTipo = cliente.insereCliente(resultado);
+        }else{
+            FornecedorDao fornecedor = new FornecedorDao(contexto);
+            idTipo = fornecedor.insereFornecedor(resultado);
         }
-
-        if (resultado ==-1)
-            return "Erro ao inserir registro";
-        else
-            return "Registro Inserido com sucesso";
-
+        db = banco.getWritableDatabase();
+        ContentValues valor = new ContentValues();
+        valor.put(Banco.COLUMN_USUARIO_ID_USER_TIPO,idTipo);
+        Log.d("resultado1", resultado);
+        db.update(Banco.TABLE_USUARIO,valor ,"Id =?" ,new String[]{resultado});
+        db.close();
     }
 
     public ArrayList<String> selectUsuario(String vemail, String vsenha, String vtipo){
@@ -65,6 +68,7 @@ public class UsuarioDao {
                     retorno.add(5, cursor.getString(5));
                     retorno.add(6, cursor.getString(6));
                     retorno.add(7, cursor.getString(7));
+                    retorno.add(8, cursor.getString(8));
                     String selectEndereco = "SELECT * FROM "+ Banco.TABLE_ENDERECO +
                             " WHERE id_user = '"+ cursor.getString(0) + "' limit 1";
                     db = banco.getReadableDatabase();
@@ -72,13 +76,13 @@ public class UsuarioDao {
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
-                                retorno.add(8,cursorend.getString(1));
-                                retorno.add(9,cursorend.getString(2));
-                                retorno.add(10,cursorend.getString(3));
-                                retorno.add(11,cursorend.getString(4));
-                                retorno.add(12,cursorend.getString(5));
-                                retorno.add(13,cursorend.getString(6));
-                                retorno.add(14,cursorend.getString(7));
+                                retorno.add(9,cursorend.getString(1));
+                                retorno.add(10,cursorend.getString(2));
+                                retorno.add(11,cursorend.getString(3));
+                                retorno.add(12,cursorend.getString(4));
+                                retorno.add(13,cursorend.getString(5));
+                                retorno.add(14,cursorend.getString(6));
+                                retorno.add(15,cursorend.getString(7));
                                 cursorend.close();
                                 return retorno;
                             }

@@ -10,25 +10,37 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="1"
+        android:columnCount="2"
         android:rowCount="9">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/inputServicoImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:layout_row="0"
             android:layout_column="0"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/icon" />
 
+        <Button
+            android:id="@+id/inserirImagemServico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="60dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="Inserir Imagem"
+            android:textColor="@color/white" />
+
         <EditText
             android:id="@+id/inputServicoNome"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_row="1"
-            android:layout_column="0"
+            android:layout_columnSpan="2"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:ems="10"
@@ -43,7 +55,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_row="2"
-            android:layout_column="0"
+            android:layout_columnSpan="2"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:ems="10"
@@ -58,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="3"
-            android:layout_column="0"
+            android:layout_columnSpan="2"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:background="@android:color/holo_blue_light"

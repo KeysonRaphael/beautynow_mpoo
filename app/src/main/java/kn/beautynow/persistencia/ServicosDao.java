@@ -2,7 +2,15 @@ package kn.beautynow.persistencia;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
+
+import java.util.ArrayList;
+
+import kn.beautynow.dominio.fornecedor.Servico;
 
 public class ServicosDao {
     private Banco banco;
@@ -11,14 +19,67 @@ public class ServicosDao {
     public ServicosDao(Context context){
         banco = new Banco(context);
     }
-    public long inserirServico(String descricao){
+
+    public ArrayList selectServicos(String idfornecedor) {
+        ArrayList<Servico> retorno = new ArrayList<>();
+        String selectServicos = "SELECT * FROM "+ Banco.TABLE_SERVICOS_FORNECEDOR +" WHERE id_fornecedor = '"+ idfornecedor
+                + "' ";
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectServicos,new String[]{});
+        if (cursor.getCount()>0){
+            int index = 0;
+            cursor.moveToFirst();
+            while (cursor.getCount() >= (index+1)){
+                Servico servico = new Servico();
+                servico.setId(cursor.getString(0));
+                servico.setDescricao(cursor.getString(1));
+                servico.setValor(cursor.getString(2));
+                byte[]imagem = cursor.getBlob(3);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+                servico.setImagem(bitmap);
+                retorno.add(index,servico);
+                index += 1;
+                cursor.moveToNext();
+            }
+            return retorno;
+        }
+        return retorno;
+    }
+
+    public String inserirServico(String descricao){
         ContentValues valores;
-        long resultado;
+        String resultado;
         db = banco.getWritableDatabase();
         valores = new ContentValues();
-        valores.put(Banco.COLUMN_CLIENTE_ID_USUARIO, descricao);
-        resultado = db.insert(Banco.TABLE_CLIENTE, null, valores);
+        valores.put(Banco.COLUMN_SERVICOS_DESCRICAO, descricao);
+        resultado = String.valueOf(db.insert(Banco.TABLE_SERVICOS, null, valores));
         db.close();
+        return resultado;
+    }
+    public String inserirServicoForncedorDao(String idforncedor, String idservico, String valor,  byte[] imagem){
+        ContentValues valores;
+        String resultado;
+        db = banco.getWritableDatabase();
+        valores = new ContentValues();
+        valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR, idforncedor);
+        valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO, idservico);
+        valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR, valor);
+        valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM, imagem);
+        resultado = String.valueOf(db.insert(Banco.TABLE_SERVICOS_FORNECEDOR, null, valores));
+        db.close();
+        return resultado;
+    }
+    public String buscarServicoDao(String descricao){
+        String querySql = "SELECT * FROM servicos WHERE descricao = ?";
+        db = banco.getReadableDatabase();
+        String resultado = "0";
+        Cursor cursor = db.rawQuery(querySql, new String[] {descricao});
+        if(cursor.getCount()>0){
+            resultado = cursor.getString(0);
+            cursor.close();
+            return resultado;
+        }
+        cursor.close();
         return resultado;
     }
 }

@@ -1,31 +1,32 @@
 package kn.beautynow.dominio.fornecedor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Servicos {
     private String id;
-    private List<Servico> servicos;
+    private ArrayList<Servico> listaServicos = new ArrayList<Servico>();
 
-    private String getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private List<Servico> getServicos() {
-        return servicos;
+    public List<Servico> getListaServicos() {
+        return listaServicos;
     }
 
-    private void setServicos(List<Servico> servicos) {
-        this.servicos = servicos;
+    public void setListaServicos(ArrayList<Servico> servicos) {
+        this.listaServicos = servicos;
     }
 
-    private void adicionarServico(Servico servico){
-        this.servicos.add(servico);
+    public void adicionarServico(Servico servico){
+        this.listaServicos.add(servico);
     }
-    private void removerServico(int id){
-        this.servicos.remove(id);
+    public void removerServico(int id){
+        this.listaServicos.remove(id);
     }
 }

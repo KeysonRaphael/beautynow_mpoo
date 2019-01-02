@@ -9,6 +9,7 @@ public class Usuario {
     private Endereco endereco;
     private String email;
     private String tipoUsuario;
+    private String idUser;
     private String sexo;
 
     public Usuario(){
@@ -92,5 +93,13 @@ public class Usuario {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 }

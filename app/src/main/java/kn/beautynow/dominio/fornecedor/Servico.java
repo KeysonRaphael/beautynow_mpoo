@@ -1,31 +1,42 @@
 package kn.beautynow.dominio.fornecedor;
 
+import android.graphics.Bitmap;
+
 public class Servico {
     private String id;
-    private String nome;
-    private Imagem imagem;
+    private String descricao;
+    private Bitmap imagem;
+    private String valor;
 
-    private String getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private String getNome() {
-        return nome;
+    public String getDescricao() {
+        return descricao;
     }
 
-    private void setNome(String nome) {
-        this.nome = nome;
+    public void setDescricao(String nome) {
+        this.descricao = nome;
     }
 
-    private Imagem getImagem() {
+    public Bitmap getImagem() {
         return imagem;
     }
 
-    private void setImagem(Imagem imagem) {
+    public void setImagem(Bitmap imagem) {
         this.imagem = imagem;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 }

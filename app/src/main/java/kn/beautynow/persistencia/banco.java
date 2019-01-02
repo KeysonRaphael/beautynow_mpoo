@@ -8,7 +8,7 @@ public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 8;
+        VERSAO = 12;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
@@ -20,6 +20,7 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_USUARIO_TIPO = "tipo";
     public static final String COLUMN_USUARIO_SEXO = "sexo";
     public static final String COLUMN_USUARIO_ID_TIPO = "id_tipo";
+    public static final String COLUMN_USUARIO_ID_USER_TIPO = "id_user_tipo";
     //Tabela Endereco
     public static final String TABLE_ENDERECO = "endereco";
     public static final String COLUMN_ENDERECO_ID = "Id";
@@ -52,8 +53,8 @@ public class Banco extends SQLiteOpenHelper{
     public static final String TABLE_SERVICOS_FORNECEDOR = "servicos_fornecedor";
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID = "Id";
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR = "id_fornecedor";
-    public static final String COLUMN_SERVICOS_FORNECEDOR_VALOR = "id_fornecedor";
-    public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM = "id_fornecedor";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_VALOR = "valor";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM = "imagem";
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO = "id_servico";
 
     public Banco(Context context){
@@ -75,7 +76,8 @@ public class Banco extends SQLiteOpenHelper{
                 Banco.COLUMN_USUARIO_SENHA + tipotexto +
                 Banco.COLUMN_USUARIO_TIPO + tipotexto +
                 Banco.COLUMN_USUARIO_ID_TIPO + tipotexto +
-                Banco.COLUMN_USUARIO_SEXO + tipotexton + " )";
+                Banco.COLUMN_USUARIO_SEXO + tipotexto +
+                Banco.COLUMN_USUARIO_ID_USER_TIPO + tipotexton + " )";
         db.execSQL(sqlUser);
         //create table endereço
         String sqlEndereco = create + Banco.TABLE_ENDERECO + " (" +

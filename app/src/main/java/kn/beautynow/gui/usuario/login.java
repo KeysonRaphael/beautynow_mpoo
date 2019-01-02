@@ -11,11 +11,15 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.cliente.Cliente;
 import kn.beautynow.dominio.controller.Session;
 
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.fornecedor.FornecedorMenu;
+import kn.beautynow.negocio.fornecedor.FornecedorNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 
@@ -46,15 +50,19 @@ public class Login extends AppCompatActivity {
         }else{
             Session session = new Session();
             session.editSessao(user, getBaseContext());
-            Log.d("teste", session.getSession(getBaseContext()).getNome());
             if (user.getTipoUsuario().equals("Cliente")) {
+                Cliente cliente = new Cliente();
+                session.editSessaoCliente(cliente,getBaseContext());
                 Intent clienteMenu = new Intent(Login.this, ClienteMenu.class);
                 startActivity(clienteMenu);
                 finish();
             }
             if (user.getTipoUsuario().equals("Fornecedor")) {
-                Intent fornecedor = new Intent(Login.this, FornecedorMenu.class);
-                startActivity(fornecedor);
+                Fornecedor fornecedor = new FornecedorNegocio(getBaseContext()).montarFornecedor(Session.getSession(getBaseContext()).getIdUser());
+                fornecedor.setUsuario(Session.getSession(getBaseContext()));
+                session.editSessaoFornecedor(fornecedor,getBaseContext());
+                Intent fornecedort = new Intent(Login.this, FornecedorMenu.class);
+                startActivity(fornecedort);
                 finish();
             }
         }

@@ -7,25 +7,20 @@ import android.database.sqlite.SQLiteDatabase;
 public class ClienteDao {
 
     private Banco banco;
+    private SQLiteDatabase db;
+
     public ClienteDao(Context context){
         banco = new Banco(context);
     }
-    public String insereCliente(long iduser){
-        SQLiteDatabase db;
+    public String insereCliente(String iduser){
         ContentValues valores;
-        long resultado;
 
         db = banco.getWritableDatabase();
         valores = new ContentValues();
         valores.put(Banco.COLUMN_CLIENTE_ID_USUARIO, iduser);
 
-        resultado = db.insert(Banco.TABLE_CLIENTE, null, valores);
+        String resultado = String.valueOf(db.insert(Banco.TABLE_CLIENTE, null, valores));
         db.close();
-
-        if (resultado ==-1)
-            return "Erro ao inserir registro";
-        else
-            return "Registro Inserido com sucesso";
-
+        return resultado;
     }
 }

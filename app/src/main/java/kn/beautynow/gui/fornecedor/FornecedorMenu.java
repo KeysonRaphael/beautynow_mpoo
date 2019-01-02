@@ -20,12 +20,14 @@ import android.view.MenuItem;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.usuario.EditarEndereco;
 import kn.beautynow.gui.usuario.Login;
 import kn.beautynow.gui.usuario.Perfil;
 
 public class FornecedorMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         Perfil.OnFragmentInteractionListener,
+        EditarEndereco.OnFragmentInteractionListener,
         AgendaFornecedor.OnFragmentInteractionListener,
         ServicosFornecedor.OnFragmentInteractionListener,
         NovoServico.OnFragmentInteractionListener{
@@ -110,8 +112,14 @@ public class FornecedorMenu extends AppCompatActivity
             ft.replace(R.id.fornecedor_frame, fragment);
             ft.commit();
         } else if (id == R.id.servicos) {
-            setTitle("Servicos");
+            setTitle("Serviços");
             Fragment fragment = new ServicosFornecedor();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        }else if (id == R.id.novo_servicos) {
+            setTitle("Adicionar Serviço");
+            Fragment fragment = new NovoServico();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fornecedor_frame, fragment);
             ft.commit();

@@ -57,7 +57,7 @@ public class Perfil extends Fragment {
         View inf = inflater.inflate(R.layout.fragment_perfil, container, false);
         TextView tv = (TextView) inf.findViewById(R.id.nomeUsuario);
         Session session = new Session();
-        Usuario obj = session.getSession(this.getActivity().getBaseContext());
+        final Usuario obj = session.getSession(this.getActivity().getBaseContext());
         tv.setText(obj.getNome());
         ImagemPerfilNegocio imagem = new ImagemPerfilNegocio(getContext());
         if (!obj.getEndereco().getRua().equals("")){
@@ -87,7 +87,11 @@ public class Perfil extends Fragment {
                 getActivity().setTitle("Editar Endereço");
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new EditarEndereco();
-                t.replace(R.id.frame, mFrag);
+                if(obj.getTipoUsuario() == "Cliente"){
+                    t.replace(R.id.frame, mFrag);
+                }else{
+                    t.replace(R.id.fornecedor_frame, mFrag);
+                }
                 t.commit();
             }
         });
