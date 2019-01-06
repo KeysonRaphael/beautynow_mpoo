@@ -5,19 +5,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ListView;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Fornecedor;
-import kn.beautynow.dominio.usuario.Usuario;
-import kn.beautynow.gui.usuario.EditarEndereco;
 
 public class ServicosFornecedor extends Fragment implements NovoServico.OnFragmentInteractionListener{
     private OnFragmentInteractionListener mListener;
@@ -48,11 +46,14 @@ public class ServicosFornecedor extends Fragment implements NovoServico.OnFragme
             Fragment mFrag = new NovoServico();
             t.replace(R.id.fornecedor_frame, mFrag);
             t.commit();
-        }
+        }else{
         RecyclerView reciclerview = inf.findViewById(R.id.recycler);
         RecyclerView.Adapter adapter = new AdapterServicos(obj.getServicos());
-        reciclerview.setAdapter(adapter);
-        return inflater.inflate(R.layout.fragment_servicos_fornecedor, container, false);
+        LinearLayoutManager llm = new LinearLayoutManager(this.getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        reciclerview.setLayoutManager(llm);
+        reciclerview.setAdapter(adapter);}
+        return inf;
     }
 
     public void onButtonPressed(Uri uri) {

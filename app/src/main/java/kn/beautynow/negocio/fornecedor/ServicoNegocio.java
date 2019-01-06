@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.persistencia.ServicosDao;
 
 public class ServicoNegocio {
@@ -20,13 +23,14 @@ public class ServicoNegocio {
         String resultado = servicos.buscarServicoDao(descricao);
         return resultado;
     }
+
     public String inserirServico(String descricao){
         ServicosDao servicos= new ServicosDao(contexto);
         String busca = this.BuscarServico(descricao);
         if (busca.equals("0")){
-            busca = servicos.inserirServico(descricao);
+            servicos.inserirServico(descricao);
         }
-        return busca;
+        return descricao;
     }
     public void inserirServicoFornecedor(String descricao, String valor, String idfornecedor, Bitmap image){
         ServicosDao servicos= new ServicosDao(contexto);
@@ -35,6 +39,12 @@ public class ServicoNegocio {
         image.compress(Bitmap.CompressFormat.PNG, 10, out);
         byte[] imagem = out.toByteArray();
         servicos.inserirServicoForncedorDao(idfornecedor,idservico,valor,imagem);
+        Fornecedor fornecedorn = Session.getSessionFornecedor(contexto);
+        Servicos servicosn = new Servicos();
+        servicosn.setListaServicos(new FornecedorNegocio(contexto).carregarServicos(Session.getSession(contexto).getIdUser()));
+        fornecedorn.setServicos(servicosn);
+        Session session = new Session();
+        session.editSessaoFornecedor(fornecedorn,contexto);
     }
     public void getServicosFornecedor(){
         //atualizar

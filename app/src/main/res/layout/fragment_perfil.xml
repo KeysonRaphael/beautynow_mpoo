@@ -20,8 +20,7 @@
             android:layout_gravity="start"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:contentDescription="Imagem Perfil"
-            android:background="@drawable/new_icon"/>
+            android:contentDescription="Imagem Perfil"/>
 
         <TextView
             android:id="@+id/textView2"

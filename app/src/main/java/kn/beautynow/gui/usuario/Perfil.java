@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import kn.beautynow.R;
 import kn.beautynow.dominio.controller.FixCursorWindow;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.negocio.ImagemNegocio;
 import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 
 public class Perfil extends Fragment {
@@ -69,6 +71,9 @@ public class Perfil extends Fragment {
         if (img != null) {
             ImageView perfil = (ImageView) inf.findViewById(R.id.imagePerfil);
             perfil.setImageBitmap(img);
+        }else {
+            ImageView perfil = (ImageView) inf.findViewById(R.id.imagePerfil);
+            perfil.setImageResource(R.drawable.new_icon);
         }
         Button editarPerfil = (Button)inf.findViewById(R.id.editFoto);
         editarPerfil.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +119,8 @@ public class Perfil extends Fragment {
             cursor.close();
 
             ImageView perfil = (ImageView)getView().findViewById(R.id.imagePerfil);
-            Bitmap img = BitmapFactory.decodeFile(picturePath);
+            Bitmap entrada = BitmapFactory.decodeFile(picturePath);
+            Bitmap img = ImagemNegocio.getResizedBitmap(entrada,250);
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
             Gson gson = new Gson();
             String json = preferences.getString("usuario", "");

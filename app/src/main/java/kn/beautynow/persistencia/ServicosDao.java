@@ -32,7 +32,7 @@ public class ServicosDao {
             while (cursor.getCount() >= (index+1)){
                 Servico servico = new Servico();
                 servico.setId(cursor.getString(0));
-                servico.setDescricao(cursor.getString(1));
+                servico.setDescricao(cursor.getString(4));
                 servico.setValor(cursor.getString(2));
                 byte[]imagem = cursor.getBlob(3);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
@@ -46,7 +46,7 @@ public class ServicosDao {
         return retorno;
     }
 
-    public String inserirServico(String descricao){
+    public void inserirServico(String descricao){
         ContentValues valores;
         String resultado;
         db = banco.getWritableDatabase();
@@ -54,9 +54,8 @@ public class ServicosDao {
         valores.put(Banco.COLUMN_SERVICOS_DESCRICAO, descricao);
         resultado = String.valueOf(db.insert(Banco.TABLE_SERVICOS, null, valores));
         db.close();
-        return resultado;
     }
-    public String inserirServicoForncedorDao(String idforncedor, String idservico, String valor,  byte[] imagem){
+    public void inserirServicoForncedorDao(String idforncedor, String idservico, String valor,  byte[] imagem){
         ContentValues valores;
         String resultado;
         db = banco.getWritableDatabase();
@@ -67,7 +66,6 @@ public class ServicosDao {
         valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM, imagem);
         resultado = String.valueOf(db.insert(Banco.TABLE_SERVICOS_FORNECEDOR, null, valores));
         db.close();
-        return resultado;
     }
     public String buscarServicoDao(String descricao){
         String querySql = "SELECT * FROM servicos WHERE descricao = ?";
@@ -75,9 +73,8 @@ public class ServicosDao {
         String resultado = "0";
         Cursor cursor = db.rawQuery(querySql, new String[] {descricao});
         if(cursor.getCount()>0){
-            resultado = cursor.getString(0);
             cursor.close();
-            return resultado;
+            return descricao;
         }
         cursor.close();
         return resultado;

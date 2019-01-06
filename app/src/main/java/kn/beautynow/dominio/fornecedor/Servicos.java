@@ -15,7 +15,7 @@ public class Servicos {
         this.id = id;
     }
 
-    public List<Servico> getListaServicos() {
+    public ArrayList<Servico> getListaServicos() {
         return listaServicos;
     }
 

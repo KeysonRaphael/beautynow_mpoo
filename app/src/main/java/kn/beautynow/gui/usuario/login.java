@@ -16,6 +16,7 @@ import kn.beautynow.dominio.controller.Session;
 
 import kn.beautynow.dominio.fornecedor.Fornecedor;
 import kn.beautynow.dominio.fornecedor.Servico;
+import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.fornecedor.FornecedorMenu;
@@ -58,7 +59,10 @@ public class Login extends AppCompatActivity {
                 finish();
             }
             if (user.getTipoUsuario().equals("Fornecedor")) {
-                Fornecedor fornecedor = new FornecedorNegocio(getBaseContext()).montarFornecedor(Session.getSession(getBaseContext()).getIdUser());
+                Fornecedor fornecedor = new Fornecedor();
+                Servicos servicos = new Servicos();
+                servicos.setListaServicos(new FornecedorNegocio(getBaseContext()).carregarServicos(Session.getSession(getBaseContext()).getIdUser()));
+                fornecedor.setServicos(servicos);
                 fornecedor.setUsuario(Session.getSession(getBaseContext()));
                 session.editSessaoFornecedor(fornecedor,getBaseContext());
                 Intent fornecedort = new Intent(Login.this, FornecedorMenu.class);

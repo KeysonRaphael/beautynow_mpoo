@@ -1,6 +1,7 @@
 package kn.beautynow.dominio.fornecedor;
 
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 
 public class Servico {
     private String id;

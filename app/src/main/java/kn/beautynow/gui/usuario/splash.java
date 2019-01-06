@@ -11,10 +11,14 @@ import android.view.View;
 import com.google.gson.Gson;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.cliente.Cliente;
 import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.fornecedor.FornecedorMenu;
+import kn.beautynow.negocio.fornecedor.FornecedorNegocio;
 
 public class Splash extends AppCompatActivity {
     @Override
@@ -26,11 +30,19 @@ public class Splash extends AppCompatActivity {
         obj = session.getSession(getBaseContext());
         if (obj != null){
             if (obj.getTipoUsuario().equals("Cliente")) {
+                Cliente cliente = new Cliente();
+                session.editSessaoCliente(cliente,getBaseContext());
                 Intent clienteMenu = new Intent(Splash.this, ClienteMenu.class);
                 startActivity(clienteMenu);
                 finish();
             }
             else {
+                Fornecedor fornecedor = new Fornecedor();
+                Servicos servicos = new Servicos();
+                servicos.setListaServicos(new FornecedorNegocio(getBaseContext()).carregarServicos(Session.getSession(getBaseContext()).getIdUser()));
+                fornecedor.setServicos(servicos);
+                fornecedor.setUsuario(Session.getSession(getBaseContext()));
+                session.editSessaoFornecedor(fornecedor,getBaseContext());
                 Intent fornecedorMenu = new Intent(Splash.this, FornecedorMenu.class);
                 startActivity(fornecedorMenu);
                 finish();
