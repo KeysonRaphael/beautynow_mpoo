@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.persistencia.ServicosDao;
 
@@ -21,6 +22,11 @@ public class ServicoNegocio {
     public String BuscarServico(String descricao){
         ServicosDao servicos= new ServicosDao(contexto);
         String resultado = servicos.buscarServicoDao(descricao);
+        return resultado;
+    }
+    public Servico BuscarServicoFornecedor(String id){
+        ServicosDao servicos= new ServicosDao(contexto);
+        Servico resultado = servicos.buscarServicoFornecedorDao(id);
         return resultado;
     }
 
@@ -46,7 +52,10 @@ public class ServicoNegocio {
         Session session = new Session();
         session.editSessaoFornecedor(fornecedorn,contexto);
     }
-    public void getServicosFornecedor(){
-        //atualizar
+    public Servicos listarServicos(){
+        ServicosDao servicosDao = new ServicosDao(contexto);
+        Servicos servicos = new Servicos();
+        servicos.setListaServicos(servicosDao.selectServicos());
+        return servicos;
     }
 }

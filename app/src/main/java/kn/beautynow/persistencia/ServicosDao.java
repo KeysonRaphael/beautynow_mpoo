@@ -41,6 +41,33 @@ public class ServicosDao {
                 index += 1;
                 cursor.moveToNext();
             }
+            cursor.close();
+            return retorno;
+        }
+        return retorno;
+    }
+    public ArrayList selectServicos() {
+        ArrayList<Servico> retorno = new ArrayList<>();
+        String selectServicos = "SELECT * FROM "+ Banco.TABLE_SERVICOS_FORNECEDOR +" ";
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectServicos,new String[]{});
+        if (cursor.getCount()>0){
+            int index = 0;
+            cursor.moveToFirst();
+            while (cursor.getCount() >= (index+1)){
+                Servico servico = new Servico();
+                servico.setId(cursor.getString(0));
+                servico.setIdFornecedor(cursor.getString(1));
+                servico.setDescricao(cursor.getString(4));
+                servico.setValor(cursor.getString(2));
+                byte[]imagem = cursor.getBlob(3);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+                servico.setImagem(bitmap);
+                retorno.add(index,servico);
+                index += 1;
+                cursor.moveToNext();
+            }
+            cursor.close();
             return retorno;
         }
         return retorno;
@@ -78,5 +105,25 @@ public class ServicosDao {
         }
         cursor.close();
         return resultado;
+    }
+
+    public Servico buscarServicoFornecedorDao(String id) {
+        Servico retorno = new Servico();
+        String selectServicos = "SELECT * FROM "+ Banco.TABLE_SERVICOS_FORNECEDOR +" "+ "WHERE " + Banco.COLUMN_SERVICOS_FORNECEDOR_ID + " = '"+ id +"' ";
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectServicos,new String[]{});
+        if (cursor.getCount()>0){
+            cursor.moveToFirst();
+            retorno.setId(cursor.getString(0));
+            retorno.setIdFornecedor(cursor.getString(1));
+            retorno.setDescricao(cursor.getString(4));
+            retorno.setValor(cursor.getString(2));
+            byte[]imagem = cursor.getBlob(3);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+            retorno.setImagem(bitmap);
+            cursor.close();
+            return retorno;
+        }
+        return retorno;
     }
 }

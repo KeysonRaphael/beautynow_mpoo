@@ -66,7 +66,7 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new Perfil();
                 Usuario obj = Session.getSession(getContext());
-                if(obj.getTipoUsuario() == "Cliente"){
+                if(obj.getTipoUsuario().equals("Cliente")){
                     t.replace(R.id.frame, mFrag);
                 }else{
                     t.replace(R.id.fornecedor_frame, mFrag);
@@ -82,7 +82,7 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new Perfil();
                 Usuario obj = Session.getSession(getContext());
-                if(obj.getTipoUsuario() == "Cliente"){
+                if(obj.getTipoUsuario().equals("Cliente")){
                     t.replace(R.id.frame, mFrag);
                 }else{
                     t.replace(R.id.fornecedor_frame, mFrag);

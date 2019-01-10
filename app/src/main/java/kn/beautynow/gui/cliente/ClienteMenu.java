@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.fornecedor.NovoServico;
+import kn.beautynow.gui.fornecedor.ServicosFornecedor;
 import kn.beautynow.gui.usuario.EditarEndereco;
 import kn.beautynow.gui.usuario.Login;
 import kn.beautynow.gui.usuario.Perfil;
@@ -26,8 +28,10 @@ import kn.beautynow.gui.usuario.Splash;
 public class ClienteMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                     Perfil.OnFragmentInteractionListener,
-                    ListaFornecedores.OnFragmentInteractionListener,
+                    ServicosFornecedor.OnFragmentInteractionListener,
                     AgendaCliente.OnFragmentInteractionListener,
+                    NovoServico.OnFragmentInteractionListener,
+                    ClienteServico.OnFragmentInteractionListener,
                     EditarEndereco.OnFragmentInteractionListener {
 
     @Override
@@ -113,7 +117,7 @@ public class ClienteMenu extends AppCompatActivity
             ft.commit();
         } else if (id == R.id.fornecedores) {
             setTitle("Fornecedores");
-            Fragment fragment = new ListaFornecedores();
+            Fragment fragment = new ServicosFornecedor();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, fragment);
             ft.commit();

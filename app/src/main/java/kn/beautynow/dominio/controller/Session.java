@@ -46,7 +46,7 @@ public class Session {
         return object;
     }
 
-    public static Cliente getSessionTipo(Context context, String tipo){
+    public static Cliente getSessionCliente(Context context){
         Gson gson = new Gson();
         String json = getSharedPreferences(context).getString("Cliente", "");
         Cliente object = gson.fromJson(json, Cliente.class);

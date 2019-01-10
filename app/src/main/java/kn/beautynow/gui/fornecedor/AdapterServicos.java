@@ -23,11 +23,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.fornecedor.Servicos;
+import kn.beautynow.gui.cliente.ClienteServico;
 
 public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.ServicosViewHolder> {
     private Servicos servicos;
@@ -48,7 +52,14 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
     public void onBindViewHolder(@NonNull ServicosViewHolder servicosViewHolder, int i) {
         Servico servico = servicos.getListaServicos().get(i);
         servicosViewHolder.descricao.setText(servico.getDescricao());
-        servicosViewHolder.valor.setText(servico.getValor());
+        String valormon;
+        Locale meuLocal = new Locale( "pt", "BR" );
+        NumberFormat nfVal = NumberFormat.getCurrencyInstance( meuLocal );
+        double teste = (double) Double.parseDouble(servico.getValor());
+        valormon = (nfVal.format(teste));
+        servicosViewHolder.valor.setText(valormon);
+        servicosViewHolder.fornecedor = servico.getIdFornecedor();
+        servicosViewHolder.servico = servico.getId();
         servicosViewHolder.imagem.setImageBitmap(servico.getImagem());
     }
 
@@ -66,24 +77,41 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
         protected ImageView imagem;
         protected TextView descricao;
         protected TextView valor;
+        protected String fornecedor;
+        protected String servico;
+
 
         public ServicosViewHolder(View v) {
             super(v);
             imagem = v.findViewById(R.id.image_servico);
             descricao = v.findViewById(R.id.servico_name);
             valor = v.findViewById(R.id.servico_valor);
+            fornecedor = "";
+            servico = "";
             final Context contexto = v.getContext();
             v.setOnClickListener(new View.OnClickListener() {
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override public void onClick(View v) {
-                    ((Activity)contexto).setTitle("Editar Serviço");
-                    FragmentTransaction t = ((AppCompatActivity)contexto).getSupportFragmentManager().beginTransaction();
-                    Fragment mFrag = new NovoServico();
-                    NovoServico.valor = (valor.getText().toString());
-                    NovoServico.descricao = (descricao.getText().toString());
-                    NovoServico.imagen = ((BitmapDrawable)imagem.getDrawable()).getBitmap();
-                    t.replace(R.id.fornecedor_frame, mFrag);
-                    t.commit();
+                    if (Session.getSession(contexto).getTipoUsuario().equals("Fornecedor")){
+                        ((Activity)contexto).setTitle("Editar Serviço");
+                        FragmentTransaction t = ((AppCompatActivity)contexto).getSupportFragmentManager().beginTransaction();
+                        Fragment mFrag = new NovoServico();
+                        NovoServico.imagen = ((BitmapDrawable)imagem.getDrawable()).getBitmap();
+                        NovoServico.idfornecedor = fornecedor;
+                        NovoServico.idservico = servico;
+                        t.replace(R.id.fornecedor_frame, mFrag);
+                        t.commit();
+                    }else{
+                        ((Activity)contexto).setTitle("Serviço");
+                        FragmentTransaction t = ((AppCompatActivity)contexto).getSupportFragmentManager().beginTransaction();
+                        Fragment mFrag = new ClienteServico();
+                        ClienteServico.valor = (valor.getText().toString());
+                        ClienteServico.descricao = (descricao.getText().toString());
+                        ClienteServico.imagen = ((BitmapDrawable)imagem.getDrawable()).getBitmap();
+                        ClienteServico.idfornecedor = fornecedor;
+                        t.replace(R.id.frame, mFrag);
+                        t.commit();
+                    }
                 }
             });
         }

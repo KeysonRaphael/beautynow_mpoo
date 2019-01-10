@@ -6,9 +6,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".gui.fornecedor.ServicosFornecedor"
     android:background="@color/white">
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recycler"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="vertical"/>
+
+    <EditText
+        android:id="@+id/findServico"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Digite o servico que procura"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="70dp"
+        android:scrollbars="vertical" />
 </FrameLayout>

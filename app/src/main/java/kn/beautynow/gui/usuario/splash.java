@@ -25,9 +25,8 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Usuario obj = new Usuario();
         Session session = new Session();
-        obj = session.getSession(getBaseContext());
+        Usuario obj = Session.getSession(getBaseContext());
         if (obj != null){
             if (obj.getTipoUsuario().equals("Cliente")) {
                 Cliente cliente = new Cliente();

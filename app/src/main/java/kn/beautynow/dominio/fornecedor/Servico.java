@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 
 public class Servico {
     private String id;
+    private String idFornecedor;
     private String descricao;
     private Bitmap imagem;
     private String valor;
@@ -39,5 +40,13 @@ public class Servico {
 
     public void setValor(String valor) {
         this.valor = valor;
+    }
+
+    public String getIdFornecedor() {
+        return idFornecedor;
+    }
+
+    public void setIdFornecedor(String idFornecedor) {
+        this.idFornecedor = idFornecedor;
     }
 }

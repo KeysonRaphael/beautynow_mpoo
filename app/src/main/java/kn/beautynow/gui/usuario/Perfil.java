@@ -92,7 +92,8 @@ public class Perfil extends Fragment {
                 getActivity().setTitle("Editar Endereço");
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new EditarEndereco();
-                if(obj.getTipoUsuario() == "Cliente"){
+                Log.d("testeendereco", obj.getTipoUsuario());
+                if(obj.getTipoUsuario().equals("Cliente")){
                     t.replace(R.id.frame, mFrag);
                 }else{
                     t.replace(R.id.fornecedor_frame, mFrag);

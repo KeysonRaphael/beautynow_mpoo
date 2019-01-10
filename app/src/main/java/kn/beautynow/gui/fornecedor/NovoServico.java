@@ -18,6 +18,9 @@ import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,9 +35,13 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.ImagemNegocio;
 import kn.beautynow.negocio.fornecedor.ServicoNegocio;
@@ -42,8 +49,8 @@ import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 
 public class NovoServico extends Fragment {
     private OnFragmentInteractionListener mListener;
-    public static String descricao = "";
-    public static String valor = "";
+    public static String idfornecedor = "";
+    public static String idservico = "";
     public static Bitmap imagen;
 
     public NovoServico() {
@@ -68,13 +75,14 @@ public class NovoServico extends Fragment {
         final View inf = inflater.inflate(R.layout.fragment_novo_servico, container, false);
         final Usuario obj = Session.getSession(this.getActivity().getBaseContext());
         final ImageView inputImage = inf.findViewById(R.id.inputServicoImage);
-        final RelativeLayout load = inf.findViewById(R.id.loadingPanel);
-        if (!descricao.equals("")){
+        if (!idservico.equals("")){
+            ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
+            Servico servico = servicoNegocio.BuscarServicoFornecedor(idservico);
             EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
-            String servicoNome = NovoServico.descricao;
+            String servicoNome = servico.getDescricao();
             inputServicoNome.setText(servicoNome);
             EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
-            String servicoValor = NovoServico.valor;
+            String servicoValor = servico.getValor();
             inputServicoValor.setText(servicoValor);
             inputImage.setImageBitmap(NovoServico.imagen);
         }
@@ -104,13 +112,28 @@ public class NovoServico extends Fragment {
                         String servicoValor = inputServicoValor.getText().toString();
                         BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
                         Bitmap servicoImagem = servicoImage.getBitmap();
-                        servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem,50);
+                        if (NovoServico.imagen == null){
+                            servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
+                        }
                         Log.d("testecompressao3", String.valueOf(servicoImagem.getAllocationByteCount()));
                         ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
                         servicoNegocio.inserirServicoFornecedor(servicoNome,servicoValor,obj.getIdUser(),servicoImagem);
                     }
                 };
                 temp.start();
+                RelativeLayout inserido = inf.findViewById(R.id.concluido);
+                inserido.setVisibility(View.VISIBLE);
+            }
+        });
+        Button irservicos = inf.findViewById(R.id.irservicos);
+        irservicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().setTitle("Serviços");
+                FragmentTransaction t = getFragmentManager().beginTransaction();
+                Fragment mFrag = new ServicosFornecedor();
+                t.replace(R.id.fornecedor_frame, mFrag);
+                t.commit();
             }
         });
         return inf;

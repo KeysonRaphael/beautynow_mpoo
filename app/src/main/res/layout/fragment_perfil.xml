@@ -57,7 +57,7 @@
 
         <TextView
             android:id="@+id/enderecoUsuario"
-            android:layout_width="180dp"
+            android:layout_width="191dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
