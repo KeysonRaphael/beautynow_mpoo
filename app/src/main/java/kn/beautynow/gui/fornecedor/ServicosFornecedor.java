@@ -66,6 +66,11 @@ public class ServicosFornecedor extends Fragment
         }else{
             servicos = obj.getServicos().clone();
         }
+        RecyclerView.Adapter adapter = new AdapterServicos(servicos);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        reciclerview.setLayoutManager(llm);
+        reciclerview.setAdapter(adapter);
         buscaServico.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

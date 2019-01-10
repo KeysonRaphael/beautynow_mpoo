@@ -14,6 +14,7 @@ import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
@@ -55,6 +56,9 @@ public class NovoServico extends Fragment {
 
     public NovoServico() {
         // Required empty public constructor
+        NovoServico.idservico = "";
+        NovoServico.idfornecedor = "";
+        NovoServico.imagen = null;
     }
 
     public static NovoServico newInstance() {
@@ -85,6 +89,8 @@ public class NovoServico extends Fragment {
             String servicoValor = servico.getValor();
             inputServicoValor.setText(servicoValor);
             inputImage.setImageBitmap(NovoServico.imagen);
+            Button atualisar = inf.findViewById(R.id.salvarServico);
+            atualisar.setText("Atualisar");
         }
         Button incluirServicoImagem = inf.findViewById(R.id.inserirImagemServico);
         final boolean[] naomudouimagem = {true};
@@ -102,28 +108,46 @@ public class NovoServico extends Fragment {
         salvarServico.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Thread temp = new Thread(){
-                    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                    @Override
-                    public void run(){
-                        EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
-                        String servicoNome = inputServicoNome.getText().toString();
-                        EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
-                        String servicoValor = inputServicoValor.getText().toString();
-                        BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
-                        Bitmap servicoImagem = servicoImage.getBitmap();
-                        if (NovoServico.imagen == null){
-                            servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
+                boolean camposCorretos = NovoServico.validarcampos(inf);
+                if(camposCorretos) {
+                    Thread temp = new Thread() {
+                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+                        @Override
+                        public void run() {
+                            EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
+                            String servicoNome = inputServicoNome.getText().toString();
+                            EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
+                            String servicoValor = inputServicoValor.getText().toString();
+                            BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
+                            Bitmap servicoImagem = servicoImage.getBitmap();
+                            if (NovoServico.imagen == null) {
+                                servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
+                            }
+                            Log.d("testecompressao3", String.valueOf(servicoImagem.getAllocationByteCount()));
+                            ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
+                            if (!idservico.equals("")){
+                                servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico);
+                            }else {
+                                servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem);
+                            }
                         }
-                        Log.d("testecompressao3", String.valueOf(servicoImagem.getAllocationByteCount()));
-                        ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-                        servicoNegocio.inserirServicoFornecedor(servicoNome,servicoValor,obj.getIdUser(),servicoImagem);
-                    }
-                };
-                temp.start();
-                RelativeLayout inserido = inf.findViewById(R.id.concluido);
-                inserido.setVisibility(View.VISIBLE);
-            }
+                    };
+                    temp.start();
+                    new CountDownTimer(7000, 1000) {
+
+                        public void onTick(long millisUntilFinished) {
+                            RelativeLayout progress = inf.findViewById(R.id.progress_circular);
+                            progress.setVisibility(View.VISIBLE);
+                        }
+
+                        public void onFinish() {
+                            RelativeLayout progress = inf.findViewById(R.id.progress_circular);
+                            progress.setVisibility(View.INVISIBLE);
+                        }
+                    }.start();
+                    RelativeLayout inserido = inf.findViewById(R.id.concluido);
+                    inserido.setVisibility(View.VISIBLE);
+                }}
         });
         Button irservicos = inf.findViewById(R.id.irservicos);
         irservicos.setOnClickListener(new View.OnClickListener() {
@@ -158,6 +182,24 @@ public class NovoServico extends Fragment {
             Bitmap img = BitmapFactory.decodeFile(picturePath);
             inputImage.setImageBitmap(img);
         }
+    }
+
+    public static boolean validarcampos(View inf){
+        EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
+        EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
+        String nome = inputServicoNome.getText().toString();
+        String valor = inputServicoValor.getText().toString();
+        boolean resultado = false;
+        if (nome.equals("")){
+            inputServicoNome.setError("Digite um nome para seu servico!");
+            return resultado;
+        }
+        if (valor.equals("")){
+            inputServicoValor.setError("Digite o valor do servico!");
+            return resultado;
+        }
+        resultado = true;
+        return resultado;
     }
 
     public void onButtonPressed(Uri uri) {

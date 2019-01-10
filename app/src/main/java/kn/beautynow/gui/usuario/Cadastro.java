@@ -58,13 +58,13 @@ public class Cadastro extends AppCompatActivity {
         int check = this.validarCampos();
         if (check == 1) {
             UsuarioNegocio cadastro = new UsuarioNegocio(getBaseContext());
-            Boolean resultado = cadastro.cadastroUser(vnome,vcpf,vemail,vsenha,vtipo,vsexo);
+            boolean resultado = cadastro.cadastroUser(vnome,vcpf,vemail,vsenha,vtipo,vsexo);
             if (resultado) {
                 Toast.makeText(getApplicationContext(), "incluido", Toast.LENGTH_LONG).show();
                 Intent login = new Intent(Cadastro.this, Login.class);
                 startActivity(login);
                 finish();
-            }else if (!resultado){
+            }else{
                 cpf.setError("Cpf já cadastrado para este tipo de usuario!");
             }
         }

@@ -74,6 +74,8 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="40dp"
             android:background="@android:color/holo_blue_light"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="Editar endereço"
             android:textColor="@color/white" />
 
@@ -86,6 +88,8 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:background="@android:color/holo_blue_light"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="Editar foto"
             android:textColor="@color/white" />
     </GridLayout>

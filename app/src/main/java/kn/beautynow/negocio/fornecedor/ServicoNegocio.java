@@ -58,4 +58,18 @@ public class ServicoNegocio {
         servicos.setListaServicos(servicosDao.selectServicos());
         return servicos;
     }
+
+    public void updateServicoFornecedor(String servicoNome, String servicoValor, Bitmap servicoImagem, String idServico) {
+        ServicosDao servicosDao = new ServicosDao(contexto);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        servicoImagem.compress(Bitmap.CompressFormat.PNG, 10, out);
+        byte[] imagem = out.toByteArray();
+        servicosDao.updateServicoFornecedor(servicoNome,servicoValor,imagem,idServico);
+        Fornecedor fornecedorn = Session.getSessionFornecedor(contexto);
+        Servicos servicosn = new Servicos();
+        servicosn.setListaServicos(new FornecedorNegocio(contexto).carregarServicos(Session.getSession(contexto).getIdUser()));
+        fornecedorn.setServicos(servicosn);
+        Session session = new Session();
+        session.editSessaoFornecedor(fornecedorn,contexto);
+    }
 }

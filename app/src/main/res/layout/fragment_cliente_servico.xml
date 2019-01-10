@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/nomeFornecedor"
-            android:layout_width="wrap_content"
+            android:layout_width="238dp"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="1"
@@ -59,13 +59,26 @@
 
         <TextView
             android:id="@+id/enderecoFornecedor"
-            android:layout_width="wrap_content"
+            android:layout_width="238dp"
             android:layout_height="wrap_content"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_marginTop="60dp"
             android:paddingTop="0dp"
             android:text="TextView" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="20dp"
+            android:background="@android:color/holo_blue_light"
+            android:padding="10dp"
+            android:text="Marcar Atendimento"
+            android:textColor="@color/white" />
 
     </GridLayout>
 

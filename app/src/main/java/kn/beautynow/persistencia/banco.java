@@ -8,7 +8,7 @@ public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 12;
+        VERSAO = 13;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
@@ -56,6 +56,17 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_SERVICOS_FORNECEDOR_VALOR = "valor";
     public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM = "imagem";
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO = "id_servico";
+    //Tabela Agenda
+    public static final String TABLE_AGENDA = "agenda";
+    public static final String COLUMN_AGENDA_ID = "Id";
+    public static final String COLUMN_AGENDA_SERVICO = "servico";
+    public static final String COLUMN_AGENDA_FORNECEDOR = "fornecedor";
+    public static final String COLUMN_AGENDA_CLIENTE = "imagem";
+    public static final String COLUMN_AGENDA_VALOR = "valor";
+    public static final String COLUMN_AGENDA_DATA = "data";
+    public static final String COLUMN_AGENDA_ATIVO = "ativo";
+    public static final String COLUMN_AGENDA_FINALIZADO = "finalizado";
+
 
     public Banco(Context context){
         super(context, NOME_BANCO,null,VERSAO);
@@ -120,6 +131,17 @@ public class Banco extends SQLiteOpenHelper{
                 Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM + " BLOB," +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO + tipotexton + " )";
         db.execSQL(sqlServicosFornecedor);
+        //create table agenda
+        String sqlAgenda = create + Banco.TABLE_AGENDA + " (" +
+                Banco.COLUMN_AGENDA_ID + prim +
+                Banco.COLUMN_AGENDA_SERVICO + tipotexto +
+                Banco.COLUMN_AGENDA_VALOR + tipotexto +
+                Banco.COLUMN_AGENDA_DATA + tipotexto +
+                Banco.COLUMN_AGENDA_CLIENTE + tipotexto +
+                Banco.COLUMN_AGENDA_FORNECEDOR + tipotexto +
+                Banco.COLUMN_AGENDA_ATIVO + tipotexto +
+                Banco.COLUMN_AGENDA_FINALIZADO + tipotexton + " )";
+        db.execSQL(sqlAgenda);
     }
 
     @Override
@@ -131,6 +153,7 @@ public class Banco extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS galeria_perfil");
         db.execSQL("DROP TABLE IF EXISTS servicos");
         db.execSQL("DROP TABLE IF EXISTS servicos_fornecedor");
+        db.execSQL("DROP TABLE IF EXISTS agenda");
         onCreate(db);
     }
 

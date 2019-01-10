@@ -14,7 +14,11 @@ import android.widget.TextView;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.cliente.Cliente;
+import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.fornecedor.NovoServico;
+import kn.beautynow.negocio.fornecedor.ServicoNegocio;
+import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class ClienteServico extends Fragment {
     private OnFragmentInteractionListener mListener;
@@ -49,6 +53,16 @@ public class ClienteServico extends Fragment {
         inputServicoValor.setText(servicoValor);
         ImageView inputImage = inf.findViewById(R.id.imageServico);
         inputImage.setImageBitmap(ClienteServico.imagen);
+        Usuario user = new UsuarioNegocio(getContext()).buscarUsarioForncedor(idfornecedor);
+        String idUser = user.getId();
+        Bitmap fornecedorimagem = new ImagemPerfilNegocio(getContext()).getImgPerfil(idUser);
+        ImageView imageFornecedor = inf.findViewById(R.id.imageFornecedor);
+        imageFornecedor.setImageBitmap(fornecedorimagem);
+        TextView nomeFornecedor = inf.findViewById(R.id.nomeFornecedor);
+        nomeFornecedor.setText(user.getNome());
+        TextView enderecoFornecedor = inf.findViewById(R.id.enderecoFornecedor);
+        enderecoFornecedor.setText(user.getEndereco().printEndereco());
+
         return inf;
     }
 

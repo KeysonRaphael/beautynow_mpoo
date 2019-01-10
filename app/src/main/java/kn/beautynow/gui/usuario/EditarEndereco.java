@@ -14,11 +14,11 @@ import android.widget.EditText;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Endereco;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class EditarEndereco extends Fragment implements Perfil.OnFragmentInteractionListener{
-
     private OnFragmentInteractionListener mListener;
 
     public EditarEndereco() {
@@ -40,19 +40,38 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View inf = inflater.inflate(R.layout.fragment_editar_endereco, container, false);
-        final EditText cep = inf.findViewById(R.id.editCep);
+        EditText cep = inf.findViewById(R.id.editCep);
         cep.addTextChangedListener(MaskEditUtil.mask(cep,MaskEditUtil.FORMAT_CEP));
         final String id = Session.getSession(inf.getContext()).getId();
+        if (!Session.getSession(getContext()).getEndereco().getRua().equals("")){
+            Endereco enderecoAnt = new UsuarioNegocio(getContext()).buscarEndereco(Session.getSession(getContext()).getId());
+            EditText rua = inf.findViewById(R.id.editRua);
+            EditText numero = inf.findViewById(R.id.editNumero);
+            EditText complemento = inf.findViewById(R.id.editComplemento);
+            EditText bairro = inf.findViewById(R.id.editBairro);
+            EditText cidade = inf.findViewById(R.id.editCidade);
+            EditText estado = inf.findViewById(R.id.editEstado);
+            cep.setText(enderecoAnt.getCep());
+            rua.setText(enderecoAnt.getRua());
+            numero.setText(enderecoAnt.getNumero());
+            complemento.setText(enderecoAnt.getComplemento());
+            bairro.setText(enderecoAnt.getBairro());
+            cidade.setText(enderecoAnt.getCidade());
+            estado.setText(enderecoAnt.getEstado());
+        }
         Button cadastrarEndereco = inf.findViewById(R.id.cadastrarEndereco);
         cadastrarEndereco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean camposCorretos = EditarEndereco.validarcampos(inf);
+                if(camposCorretos){
                 EditText rua = inf.findViewById(R.id.editRua);
                 EditText numero = inf.findViewById(R.id.editNumero);
                 EditText complemento = inf.findViewById(R.id.editComplemento);
                 EditText bairro = inf.findViewById(R.id.editBairro);
                 EditText cidade = inf.findViewById(R.id.editCidade);
                 EditText estado = inf.findViewById(R.id.editEstado);
+                EditText cep = inf.findViewById(R.id.editCep);
                 String ruat = rua.getText().toString();
                 String numerot = numero.getText().toString();
                 String complementot = complemento.getText().toString();
@@ -71,7 +90,7 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
                 }else{
                     t.replace(R.id.fornecedor_frame, mFrag);
                 }
-                t.commit();
+                t.commit();}
             }
         });
         Button voltar = inf.findViewById(R.id.voltarPerfil);
@@ -92,6 +111,50 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
         });
 
         return inf;
+    }
+
+    public static boolean validarcampos(View inf){
+        EditText rua = inf.findViewById(R.id.editRua);
+        EditText numero = inf.findViewById(R.id.editNumero);
+        EditText complemento = inf.findViewById(R.id.editComplemento);
+        EditText bairro = inf.findViewById(R.id.editBairro);
+        EditText cidade = inf.findViewById(R.id.editCidade);
+        EditText estado = inf.findViewById(R.id.editEstado);
+        EditText cep = inf.findViewById(R.id.editCep);
+        String ruat = rua.getText().toString();
+        String numerot = numero.getText().toString();
+        String complementot = complemento.getText().toString();
+        String bairrot = bairro.getText().toString();
+        String cidadet = cidade.getText().toString();
+        String estadot = estado.getText().toString();
+        String cept = cep.getText().toString();
+        boolean resultado = false;
+        if (ruat.equals("")){
+            rua.setError("Digite a rua!");
+            return resultado;
+        }
+        if (numerot.equals("")){
+            numero.setError("Digite o numero!");
+            return resultado;
+        }
+        if (bairrot.equals("")){
+            bairro.setError("Digite o bairro!");
+            return resultado;
+        }
+        if (cidadet.equals("")){
+            cidade.setError("Digite a cidade!");
+            return resultado;
+        }
+        if (estadot.equals("")){
+            estado.setError("Digite o estado!");
+            return resultado;
+        }
+        if (cept.equals("")){
+            cep.setError("Digite o cep!");
+            return resultado;
+        }
+        resultado = true;
+        return resultado;
     }
 
     public void onButtonPressed(Uri uri) {

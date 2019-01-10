@@ -126,4 +126,13 @@ public class ServicosDao {
         }
         return retorno;
     }
+
+    public void updateServicoFornecedor(String servico, String valor, byte[] imagem, String idservico) {
+        db = banco.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO,servico);
+        cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR,valor);
+        cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM,imagem);
+        db.update(Banco.TABLE_SERVICOS_FORNECEDOR,cv,"Id=?",new String[]{idservico});
+    }
 }
