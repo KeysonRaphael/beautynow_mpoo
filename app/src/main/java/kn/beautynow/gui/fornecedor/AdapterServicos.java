@@ -52,12 +52,7 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
     public void onBindViewHolder(@NonNull ServicosViewHolder servicosViewHolder, int i) {
         Servico servico = servicos.getListaServicos().get(i);
         servicosViewHolder.descricao.setText(servico.getDescricao());
-        String valormon;
-        Locale meuLocal = new Locale( "pt", "BR" );
-        NumberFormat nfVal = NumberFormat.getCurrencyInstance( meuLocal );
-        double teste = (double) Double.parseDouble(servico.getValor());
-        valormon = (nfVal.format(teste));
-        servicosViewHolder.valor.setText(valormon);
+        servicosViewHolder.valor.setText(servico.getValor());
         servicosViewHolder.fornecedor = servico.getIdFornecedor();
         servicosViewHolder.servico = servico.getId();
         servicosViewHolder.imagem.setImageBitmap(servico.getImagem());

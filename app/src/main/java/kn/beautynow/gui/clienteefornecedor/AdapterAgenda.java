@@ -41,15 +41,10 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.AgendaView
     @Override
     public void onBindViewHolder(@NonNull AgendaViewHolder agendaViewHolder, int i) {
         Atividade atividade = agenda.getCalendario().get(i);
-        String valormon;
-        Locale meuLocal = new Locale( "pt", "BR" );
-        NumberFormat nfVal = NumberFormat.getCurrencyInstance( meuLocal );
-        double teste = Double.parseDouble(atividade.getServico().getValor());
-        valormon = (nfVal.format(teste));
         agendaViewHolder.descricao.setText(atividade.getServico().getDescricao());
         agendaViewHolder.data.setText(atividade.getData().toString());
         agendaViewHolder.imagem.setImageBitmap(atividade.getServico().getImagem());
-        agendaViewHolder.valor.setText(valormon);
+        agendaViewHolder.valor.setText(atividade.getServico().getValor());
         agendaViewHolder.fornecedor = atividade.getServico().getIdFornecedor();
         agendaViewHolder.cliente = atividade.getCliente().getUsuario().getNome();
     }

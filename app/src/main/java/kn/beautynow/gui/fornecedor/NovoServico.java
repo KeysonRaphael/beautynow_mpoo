@@ -40,6 +40,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.MascaraMonetaria;
 import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Servico;
@@ -79,6 +80,8 @@ public class NovoServico extends Fragment {
         final View inf = inflater.inflate(R.layout.fragment_novo_servico, container, false);
         final Usuario obj = Session.getSession(this.getActivity().getBaseContext());
         final ImageView inputImage = inf.findViewById(R.id.inputServicoImage);
+        final EditText valorMonetario = (EditText)inf.findViewById(R.id.inputServicoValor);
+        valorMonetario.addTextChangedListener(new MascaraMonetaria(valorMonetario));
         if (!idservico.equals("")){
             ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
             Servico servico = servicoNegocio.BuscarServicoFornecedor(idservico);
@@ -110,10 +113,6 @@ public class NovoServico extends Fragment {
             public void onClick(View v) {
                 boolean camposCorretos = NovoServico.validarcampos(inf);
                 if(camposCorretos) {
-                    Thread temp = new Thread() {
-                        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                        @Override
-                        public void run() {
                             EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
                             String servicoNome = inputServicoNome.getText().toString();
                             EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
@@ -123,16 +122,12 @@ public class NovoServico extends Fragment {
                             if (NovoServico.imagen == null) {
                                 servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
                             }
-                            Log.d("testecompressao3", String.valueOf(servicoImagem.getAllocationByteCount()));
                             ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
                             if (!idservico.equals("")){
                                 servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico);
                             }else {
                                 servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem);
                             }
-                        }
-                    };
-                    temp.start();
                     new CountDownTimer(7000, 1000) {
 
                         public void onTick(long millisUntilFinished) {
