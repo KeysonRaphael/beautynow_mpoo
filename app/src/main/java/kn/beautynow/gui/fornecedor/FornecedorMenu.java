@@ -3,11 +3,8 @@ package kn.beautynow.gui.fornecedor;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,6 +17,8 @@ import android.view.MenuItem;
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.clienteefornecedor.AgendaGui;
+import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
 import kn.beautynow.gui.usuario.EditarEndereco;
 import kn.beautynow.gui.usuario.Login;
 import kn.beautynow.gui.usuario.Perfil;
@@ -28,8 +27,9 @@ public class FornecedorMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         Perfil.OnFragmentInteractionListener,
         EditarEndereco.OnFragmentInteractionListener,
-        AgendaFornecedor.OnFragmentInteractionListener,
         ServicosFornecedor.OnFragmentInteractionListener,
+        AgendaGui.OnFragmentInteractionListener,
+        AtividadeGui.OnFragmentInteractionListener,
         NovoServico.OnFragmentInteractionListener{
 
     @Override
@@ -107,7 +107,7 @@ public class FornecedorMenu extends AppCompatActivity
             ft.commit();
         } else if (id == R.id.agenda_fornecedor) {
             setTitle("Agenda");
-            Fragment fragment = new AgendaFornecedor();
+            Fragment fragment = new AgendaGui();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fornecedor_frame, fragment);
             ft.commit();

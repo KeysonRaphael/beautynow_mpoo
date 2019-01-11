@@ -1,28 +1,29 @@
 package kn.beautynow.dominio.clienteefornecedor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Agenda {
     private int id;
-    private List<Atividade> calendario;
+    private ArrayList<Atividade> calendario =  new ArrayList<Atividade>();
 
-    private int getId() {
+    public int getId() {
         return id;
     }
 
-    private void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    private List<Atividade> getCalendario() {
+    public ArrayList<Atividade> getCalendario() {
         return calendario;
     }
 
-    private void setCalendario(List<Atividade> calendario) {
+    public void setCalendario(ArrayList<Atividade> calendario) {
         this.calendario = calendario;
     }
 
-    private void inserirAtividade(Atividade atividade){
+    public void inserirAtividade(Atividade atividade){
         this.calendario.add(atividade);
     }
 }

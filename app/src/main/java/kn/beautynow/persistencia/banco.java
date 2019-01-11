@@ -61,7 +61,7 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_AGENDA_ID = "Id";
     public static final String COLUMN_AGENDA_SERVICO = "servico";
     public static final String COLUMN_AGENDA_FORNECEDOR = "fornecedor";
-    public static final String COLUMN_AGENDA_CLIENTE = "imagem";
+    public static final String COLUMN_AGENDA_CLIENTE = "cliente";
     public static final String COLUMN_AGENDA_VALOR = "valor";
     public static final String COLUMN_AGENDA_DATA = "data";
     public static final String COLUMN_AGENDA_ATIVO = "ativo";

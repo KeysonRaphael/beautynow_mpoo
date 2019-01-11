@@ -6,39 +6,39 @@ import kn.beautynow.dominio.usuario.Usuario;
 
 public class Cliente {
     private String id;
-    private Usuario usuario;
-    private Agenda agenda;
-    private Avaliacao avaliacao;
+    private Usuario usuario = new Usuario();
+    private Agenda agenda =  new Agenda();
+    private Avaliacao avaliacao = new Avaliacao();
 
-    private String getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    private Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    private void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
-    private Agenda getAgenda() {
+    public Agenda getAgenda() {
         return agenda;
     }
 
-    private void setAgenda(Agenda agenda) {
+    public void setAgenda(Agenda agenda) {
         this.agenda = agenda;
     }
 
-    private Avaliacao getAvaliacao() {
+    public Avaliacao getAvaliacao() {
         return avaliacao;
     }
 
-    private void setAvaliacao(Avaliacao avaliacao) {
+    public void setAvaliacao(Avaliacao avaliacao) {
         this.avaliacao = avaliacao;
     }
 }

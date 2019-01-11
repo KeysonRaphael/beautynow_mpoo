@@ -15,51 +15,51 @@ public class Atividade {
     private Endereco endereco;
     private Servico servico;
 
-    private Date getData() {
+    public Date getData() {
         return data;
     }
 
-    private void setData(Date data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
-    private Cliente getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
-    private void setCliente(Cliente cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
-    private Fornecedor getFornecedor() {
+    public Fornecedor getFornecedor() {
         return fornecedor;
     }
 
-    private void setFornecedor(Fornecedor fornecedor) {
+    public void setFornecedor(Fornecedor fornecedor) {
         this.fornecedor = fornecedor;
     }
 
-    private Endereco getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    private void setEndereco(Endereco endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
-    private Servico getServico() {
+    public Servico getServico() {
         return servico;
     }
 
-    private void setServico(Servico servico) {
+    public void setServico(Servico servico) {
         this.servico = servico;
     }
 
-    private String getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

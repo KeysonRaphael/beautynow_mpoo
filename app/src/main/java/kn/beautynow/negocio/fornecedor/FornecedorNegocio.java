@@ -15,7 +15,7 @@ public class FornecedorNegocio {
         contexto = contextot;
     }
 
-    public ArrayList carregarServicos(String idfornecedor){
+    public ArrayList<Servico> carregarServicos(String idfornecedor){
         Servicos servicos = new Servicos();
         ServicosDao servicosDao = new ServicosDao(contexto);
         ArrayList result = servicosDao.selectServicos(idfornecedor);
@@ -23,6 +23,6 @@ public class FornecedorNegocio {
             Servico obj = (Servico) result.get(i);
             servicos.getListaServicos().add(i,obj);
         }
-        return result;
+        return servicos.getListaServicos();
     }
 }
