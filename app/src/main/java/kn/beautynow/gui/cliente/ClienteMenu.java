@@ -89,8 +89,7 @@ public class ClienteMenu extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Session sessao = new Session();
-            Usuario user = new Usuario();
-            sessao.editSessao(user, getApplicationContext());
+            sessao.clear(getApplicationContext());
             Intent login = new Intent(ClienteMenu.this, Login.class);
             startActivity(login);
             finish();

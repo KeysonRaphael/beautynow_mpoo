@@ -1,6 +1,7 @@
 package kn.beautynow.gui.clienteefornecedor;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +10,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
+import android.widget.TextView;
+
+import java.lang.reflect.Field;
+import java.util.Calendar;
+import java.util.Date;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.clienteefornecedor.Agenda;
+import kn.beautynow.dominio.clienteefornecedor.Atividade;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Fornecedor;
 import kn.beautynow.dominio.usuario.Usuario;
@@ -38,7 +46,6 @@ public class AgendaGui extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View INF = inflater.inflate(R.layout.fragment_agenda_gui, container, false);
-        final RecyclerView reciclerview = INF.findViewById(R.id.recyclerAgenda);
         Usuario usuario = Session.getSession(getContext());
         Agenda agenda;
         if(usuario.getTipoUsuario().equals("Cliente")){
@@ -46,11 +53,13 @@ public class AgendaGui extends Fragment {
         }else{
             agenda = Session.getSessionFornecedor(getContext()).getAgenda();
         }
-        RecyclerView.Adapter adapter = new AdapterAgenda(agenda);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        reciclerview.setLayoutManager(llm);
-        reciclerview.setAdapter(adapter);
+        CalendarView cv = (CalendarView) INF.findViewById(R.id.calendarView);
+        for (int i = 0; i < agenda.getCalendario().size(); i++) {
+            Atividade atividade = agenda.getCalendario().get(i);
+            long date = atividade.getData().getTime();
+            cv.setDate(date,true,true);
+        }
+
         return INF;
     }
 

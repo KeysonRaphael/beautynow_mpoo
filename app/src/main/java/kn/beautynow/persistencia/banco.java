@@ -1,14 +1,16 @@
 package kn.beautynow.persistencia;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 
 public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 13;
+        VERSAO = 19;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";

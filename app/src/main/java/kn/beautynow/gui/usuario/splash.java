@@ -19,12 +19,21 @@ import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
 import kn.beautynow.gui.fornecedor.FornecedorMenu;
 import kn.beautynow.negocio.fornecedor.FornecedorNegocio;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
+import kn.beautynow.persistencia.Banco;
 
 public class Splash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        try{
+            new UsuarioNegocio(getBaseContext()).cadastroUser("keyson","10838811400","cliente@gmail.com",
+                    "12345678","Cliente", "Masculino");
+            new UsuarioNegocio(getBaseContext()).cadastroUser("keyson","10838811400","fornecedor@gmail.com",
+                    "12345678","Fornecedor", "Masculino");
+        }catch(Exception e){}
         setContentView(R.layout.activity_splash);
+        Banco banco = new Banco(getBaseContext());
         Session session = new Session();
         Usuario obj = Session.getSession(getBaseContext());
         if (obj != null){

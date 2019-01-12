@@ -6,9 +6,18 @@
     tools:context=".gui.clienteefornecedor.AgendaGui"
     android:background="@color/white">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerAgenda"
+    <CalendarView
+        android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:dateTextAppearance="@style/CalenderViewDateCustomText"
+        android:maxDate="31/12/2019"
+        android:minDate="01/11/2019"
+        android:theme="@style/CalenderViewCustom"
+        android:unfocusedMonthDateColor="@style/CalenderViewWeekCustomText"
+        android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"
+        android:weekNumberColor="@style/CalenderViewWeekCustomText"
+        android:weekSeparatorLineColor="@style/CalenderViewWeekCustomText" />
 </FrameLayout>

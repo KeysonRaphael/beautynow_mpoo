@@ -25,6 +25,11 @@ public class Session {
         editor.putString("usuario", json);
         editor.commit();
     }
+    public void clear(Context context){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.clear();
+        editor.commit();
+    }
     public void editSessaoCliente(Cliente user, Context context){
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         Gson gson = new Gson();
