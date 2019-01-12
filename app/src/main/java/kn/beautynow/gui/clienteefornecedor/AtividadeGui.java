@@ -22,6 +22,10 @@ import kn.beautynow.dominio.controller.MaskEditUtil;
 
 public class AtividadeGui extends Fragment {
     private OnFragmentInteractionListener mListener;
+    public String servico = "";
+    public String valor = "";
+    public String fornecedor = "";
+
 
     public AtividadeGui() {
         // Required empty public constructor
@@ -46,8 +50,6 @@ public class AtividadeGui extends Fragment {
         final EditText hora = INF.findViewById(R.id.hora_atividade);
 //        hora.addTextChangedListener(MaskEditUtil.mask(hora,MaskEditUtil.FORMAT_HOUR));
         final Calendar myCalendar = Calendar.getInstance();
-        final int hour = myCalendar.get(Calendar.HOUR_OF_DAY);
-        final int minute = myCalendar.get(Calendar.MINUTE);
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
