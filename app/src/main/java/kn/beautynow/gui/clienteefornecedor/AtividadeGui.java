@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -45,11 +46,28 @@ public class AtividadeGui extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View INF = inflater.inflate(R.layout.fragment_atividade_gui, container, false);
+        final EditText servico = INF.findViewById(R.id.descricao_atividade);
+        servico.setText(this.servico);
+        final EditText valor = INF.findViewById(R.id.valor_atividade);
+        valor.setText(this.valor);
+        final EditText fornecedor = INF.findViewById(R.id.fornecedor_atividade);
+        fornecedor.setText(this.fornecedor);
         final EditText data = INF.findViewById(R.id.data_atividade);
-//        data.addTextChangedListener(MaskEditUtil.mask(data,MaskEditUtil.FORMAT_DATE));
         final EditText hora = INF.findViewById(R.id.hora_atividade);
-//        hora.addTextChangedListener(MaskEditUtil.mask(hora,MaskEditUtil.FORMAT_HOUR));
         final Calendar myCalendar = Calendar.getInstance();
+
+        Button marcarAtendimento = INF.findViewById(R.id.marcar_atividade);
+        marcarAtendimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String servicos = servico.getText().toString();
+                String fornecedors = fornecedor.getText().toString();
+                String valors = valor.getText().toString();
+                String datas = data.getText().toString();
+                String horas = hora.getText().toString();
+
+            }
+        });
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
