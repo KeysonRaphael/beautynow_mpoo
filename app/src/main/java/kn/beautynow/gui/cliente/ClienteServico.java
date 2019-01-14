@@ -50,10 +50,10 @@ public class ClienteServico extends Fragment {
                              Bundle savedInstanceState) {
         final View inf = inflater.inflate(R.layout.fragment_cliente_servico, container, false);
         TextView inputServicoNome = inf.findViewById(R.id.textoServico);
-        String servicoNome = ClienteServico.descricao;
+        final String servicoNome = ClienteServico.descricao;
         inputServicoNome.setText(servicoNome);
         TextView inputServicoValor = inf.findViewById(R.id.valorServico);
-        String servicoValor = ClienteServico.valor;
+        final String servicoValor = ClienteServico.valor;
         inputServicoValor.setText(servicoValor);
         ImageView inputImage = inf.findViewById(R.id.imageServico);
         inputImage.setImageBitmap(ClienteServico.imagen);
@@ -72,6 +72,9 @@ public class ClienteServico extends Fragment {
             public void onClick(View v) {
                 getActivity().setTitle("Marcar Atendimento");
                 Fragment fragment = new AtividadeGui();
+                AtividadeGui.servico = servicoNome;
+                AtividadeGui.valor = servicoValor;
+                AtividadeGui.fornecedor = idfornecedor;
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.frame, fragment);
                 ft.commit();

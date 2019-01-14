@@ -10,7 +10,7 @@ public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 19;
+        VERSAO = 20;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
@@ -66,6 +66,7 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_AGENDA_CLIENTE = "cliente";
     public static final String COLUMN_AGENDA_VALOR = "valor";
     public static final String COLUMN_AGENDA_DATA = "data";
+    public static final String COLUMN_AGENDA_HORA = "hora";
     public static final String COLUMN_AGENDA_ATIVO = "ativo";
     public static final String COLUMN_AGENDA_FINALIZADO = "finalizado";
 
@@ -139,6 +140,7 @@ public class Banco extends SQLiteOpenHelper{
                 Banco.COLUMN_AGENDA_SERVICO + tipotexto +
                 Banco.COLUMN_AGENDA_VALOR + tipotexto +
                 Banco.COLUMN_AGENDA_DATA + tipotexto +
+                Banco.COLUMN_AGENDA_HORA + tipotexto +
                 Banco.COLUMN_AGENDA_CLIENTE + tipotexto +
                 Banco.COLUMN_AGENDA_FORNECEDOR + tipotexto +
                 Banco.COLUMN_AGENDA_ATIVO + tipotexto +

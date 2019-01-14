@@ -6,26 +6,35 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.zip.Inflater;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.MaskEditUtil;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.fornecedor.ServicosFornecedor;
+import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class AtividadeGui extends Fragment {
     private OnFragmentInteractionListener mListener;
-    public String servico = "";
-    public String valor = "";
-    public String fornecedor = "";
+    public static String servico = "";
+    public static String valor = "";
+    public static String fornecedor = "";
 
 
     public AtividadeGui() {
@@ -46,26 +55,45 @@ public class AtividadeGui extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View INF = inflater.inflate(R.layout.fragment_atividade_gui, container, false);
-        final EditText servico = INF.findViewById(R.id.descricao_atividade);
+        final TextView servico = INF.findViewById(R.id.descricao_atividade);
         servico.setText(this.servico);
-        final EditText valor = INF.findViewById(R.id.valor_atividade);
+        final TextView valor = INF.findViewById(R.id.valor_atividade);
         valor.setText(this.valor);
-        final EditText fornecedor = INF.findViewById(R.id.fornecedor_atividade);
-        fornecedor.setText(this.fornecedor);
-        final EditText data = INF.findViewById(R.id.data_atividade);
-        final EditText hora = INF.findViewById(R.id.hora_atividade);
+        final TextView fornecedor = INF.findViewById(R.id.fornecedor_atividade);
+        String user = new UsuarioNegocio(getContext()).buscarUsarioForncedor(AtividadeGui.fornecedor).getNome();
+        fornecedor.setText(user);
+        final EditText data = INF.findViewById(R.id.data);
+        final EditText hora = INF.findViewById(R.id.hora);
         final Calendar myCalendar = Calendar.getInstance();
 
         Button marcarAtendimento = INF.findViewById(R.id.marcar_atividade);
         marcarAtendimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String servicos = servico.getText().toString();
-                String fornecedors = fornecedor.getText().toString();
-                String valors = valor.getText().toString();
-                String datas = data.getText().toString();
-                String horas = hora.getText().toString();
+                if (AtividadeGui.validar(INF)){
+                    ArrayList<String> valores = new ArrayList<String>();
+                    valores.add(0,servico.getText().toString());
+                    valores.add(1,valor.getText().toString());
+                    valores.add(2,data.getText().toString());
+                    valores.add(3,hora.getText().toString());
+                    valores.add(4,Session.getSession(getContext()).getIdUser());
+                    valores.add(5,AtividadeGui.fornecedor);
+                    new AtividadeNegocio(getContext()).MarcarAtividade(valores);
+                    INF.findViewById(R.id.marcarAtendimentoLayout).setVisibility(View.INVISIBLE);
+                    INF.findViewById(R.id.atendimento_solicitado).setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
+        Button servicos = INF.findViewById(R.id.goToServicos);
+        servicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().setTitle("Serviços");
+                FragmentTransaction t = getFragmentManager().beginTransaction();
+                Fragment mFrag = new ServicosFornecedor();
+                t.replace(R.id.frame, mFrag);
+                t.commit();
             }
         });
 
@@ -114,6 +142,20 @@ public class AtividadeGui extends Fragment {
         });
 
         return INF;
+    }
+
+    public static boolean validar(View INF){
+        EditText datav = INF.findViewById(R.id.data);
+        EditText horav = INF.findViewById(R.id.hora);
+        if (datav.getText().toString().equals("")){
+            datav.setError("Insira a data que deseja ser atendido!");
+            return false;
+        }
+        if (horav.getText().toString().equals("")){
+            horav.setError("Insira a hora que deseja ser atendido!");
+            return false;
+        }
+        return true;
     }
 
     public void onButtonPressed(Uri uri) {

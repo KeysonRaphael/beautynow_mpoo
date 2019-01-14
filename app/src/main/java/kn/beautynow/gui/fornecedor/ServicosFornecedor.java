@@ -23,10 +23,13 @@ import kn.beautynow.dominio.fornecedor.Fornecedor;
 import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteServico;
+import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
 import kn.beautynow.negocio.fornecedor.ServicoNegocio;
 
 public class ServicosFornecedor extends Fragment
-        implements NovoServico.OnFragmentInteractionListener,
+        implements
+        NovoServico.OnFragmentInteractionListener,
+        AtividadeGui.OnFragmentInteractionListener,
         ClienteServico.OnFragmentInteractionListener {
     private OnFragmentInteractionListener mListener;
 

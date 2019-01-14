@@ -10,8 +10,8 @@ import kn.beautynow.dominio.usuario.Endereco;
 public class Atividade {
     private String id;
     private Date data;
-    private Cliente cliente;
-    private Fornecedor fornecedor;
+    private String cliente;
+    private String fornecedor;
     private Endereco endereco;
     private Servico servico;
 
@@ -23,19 +23,19 @@ public class Atividade {
         this.data = data;
     }
 
-    public Cliente getCliente() {
+    public String getCliente() {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(String cliente) {
         this.cliente = cliente;
     }
 
-    public Fornecedor getFornecedor() {
+    public String getFornecedor() {
         return fornecedor;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
+    public void setFornecedor(String fornecedor) {
         this.fornecedor = fornecedor;
     }
 
