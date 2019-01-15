@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.clienteefornecedor.AtividadeInfoGUI"
+    android:background="@color/white">
+
+    <GridLayout
+        android:id="@+id/infoAtividade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="8"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/dataview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data: "
+            android:layout_gravity="end"
+            android:textSize="18sp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/horaview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora: "
+            android:textSize="18sp"
+            android:layout_gravity="end"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/fornecedorview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fornecedor: "
+            android:textSize="18sp"
+            android:layout_gravity="end"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/clienteview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cliente: "
+            android:layout_gravity="end"
+            android:textSize="18sp"
+            android:layout_column="0"
+            android:layout_row="3"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/servicoview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Servico: "
+            android:layout_gravity="end"
+            android:textSize="18sp"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/valorview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor: "
+            android:layout_gravity="end"
+            android:textSize="18sp"
+            android:layout_column="0"
+            android:layout_row="5"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/ativoview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ativo: "
+            android:layout_gravity="end"
+            android:textSize="18sp"
+            android:layout_column="0"
+            android:layout_row="6"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/finalizadoview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finalizado: "
+            android:layout_gravity="end"
+            android:textSize="18sp"
+            android:layout_column="0"
+            android:layout_row="7"
+            android:textColor="@android:color/holo_blue_light"
+            />
+
+        <TextView
+            android:id="@+id/inputdataview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="0"/>
+
+        <TextView
+            android:id="@+id/inputhoraview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="1"/>
+
+        <TextView
+            android:id="@+id/inputfornecedorview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="2"/>
+
+        <TextView
+            android:id="@+id/inputclienteview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="3"/>
+
+        <TextView
+            android:id="@+id/inputservicoview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="4"/>
+
+        <TextView
+            android:id="@+id/inputvalorview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="5"/>
+
+        <TextView
+            android:id="@+id/inputativoview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="6"/>
+
+        <TextView
+            android:id="@+id/inputfinalizadoview"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:layout_column="1"
+            android:layout_row="7"/>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnSpan="1"
+            android:layout_row="8"
+            android:text="Confirmar Atendimento"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@android:color/holo_blue_light"/>
+
+    </GridLayout>
+
+</FrameLayout>

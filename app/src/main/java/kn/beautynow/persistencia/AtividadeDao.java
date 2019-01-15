@@ -36,18 +36,61 @@ public class AtividadeDao {
 
     public Agenda carregarAgendaClienteDao(String cliente){
         Agenda agenda = new Agenda();
-        String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE email = '"+ vemail
-                + "' AND senha = '"+ vsenha +"' AND tipo = '"+ vtipo +"' limit 1";
+        String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE cliente = '"+ cliente + "'";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
-        if(cursor.getCount() >= 1){
+        if(cursor.getCount() >= 0){
+            ArrayList<Atividade> atividades= new ArrayList<Atividade>();
+            int count = 0;
+            cursor.moveToFirst();
+            while(cursor.getCount() > count+1){
+                Atividade atividade = new Atividade();
+                atividade.setId(cursor.getString(0));
+                atividade.setServico(cursor.getString(1));
+                atividade.setValor(cursor.getString(2));
+                atividade.setData(cursor.getString(3));
+                atividade.setHora(cursor.getString(4));
+                atividade.setCliente(cursor.getString(5));
+                atividade.setFornecedor(cursor.getString(6));
+                atividade.setAtivo(cursor.getString(7));
+                atividade.setFinalizado(cursor.getString(8));
+                atividades.add(count, atividade);
+                count += 1;
+                cursor.moveToNext();
+            }
+            agenda.setCalendario(atividades);
+            cursor.close();
+            db.close();
+            return agenda;
+        }
+        return agenda;
+    }
+
+    public Agenda carregarAgendaFornecedorDao(String idfornecedor) {
+        Agenda agenda = new Agenda();
+        String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE fornecedor = '"+ idfornecedor + "'";
+        db = banco.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectUser,new String[]{});
+        if(cursor.getCount() >= 0){
+            ArrayList<Atividade> atividades= new ArrayList<Atividade>();
+            int count = 0;
             while(cursor.moveToNext()){
-                ArrayList<Atividade> atividades= agenda.getCalendario();
                 Atividade atividade = new Atividade();
                 if(cursor.getCount() > 0){
-                    atividade.setCliente(cursor.getString(0));
-                    }
+                    atividade.setId(cursor.getString(0));
+                    atividade.setServico(cursor.getString(1));
+                    atividade.setValor(cursor.getString(2));
+                    atividade.setData(cursor.getString(3));
+                    atividade.setHora(cursor.getString(4));
+                    atividade.setCliente(cursor.getString(5));
+                    atividade.setFornecedor(cursor.getString(6));
+                    atividade.setAtivo(cursor.getString(7));
+                    atividade.setFinalizado(cursor.getString(8));
+                    atividades.add(count, atividade);
+                    count += 1;
+                }
             }
+            agenda.setCalendario(atividades);
             cursor.close();
             db.close();
             return agenda;

@@ -19,6 +19,7 @@ import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.clienteefornecedor.AgendaGui;
 import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
+import kn.beautynow.gui.clienteefornecedor.AtividadesDiaGui;
 import kn.beautynow.gui.usuario.EditarEndereco;
 import kn.beautynow.gui.usuario.Login;
 import kn.beautynow.gui.usuario.Perfil;
@@ -30,6 +31,7 @@ public class FornecedorMenu extends AppCompatActivity
         ServicosFornecedor.OnFragmentInteractionListener,
         AgendaGui.OnFragmentInteractionListener,
         AtividadeGui.OnFragmentInteractionListener,
+        AtividadesDiaGui.OnFragmentInteractionListener,
         NovoServico.OnFragmentInteractionListener{
 
     @Override

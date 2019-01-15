@@ -31,6 +31,7 @@ public class ServicosFornecedor extends Fragment
         NovoServico.OnFragmentInteractionListener,
         AtividadeGui.OnFragmentInteractionListener,
         ClienteServico.OnFragmentInteractionListener {
+
     private OnFragmentInteractionListener mListener;
 
     public ServicosFornecedor() {

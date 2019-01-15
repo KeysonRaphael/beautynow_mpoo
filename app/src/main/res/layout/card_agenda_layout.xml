@@ -9,36 +9,23 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/image_atividade"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginRight="16dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/descricao_atividade"
-            android:layout_toRightOf="@+id/image_atividade"
-            android:layout_alignParentTop="true"
-            android:textSize="30sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/valor_atividade"
-            android:layout_toRightOf="@+id/image_atividade"
-            android:layout_below="@+id/descricao_atividade" />
-
-        <TextView
-            android:id="@+id/data_atividade"
+            android:id="@+id/data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/image_atividade" />
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/servico"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/servico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black" />
 
     </RelativeLayout>
 

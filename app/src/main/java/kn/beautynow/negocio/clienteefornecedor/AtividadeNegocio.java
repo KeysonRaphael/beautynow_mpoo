@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.persistencia.AtividadeDao;
 
 public class AtividadeNegocio {
@@ -16,5 +17,14 @@ public class AtividadeNegocio {
     public void MarcarAtividade(ArrayList<String> valores){
         AtividadeDao atividadedao = new AtividadeDao(contexto);
         atividadedao.InserirAtividade(valores);
+    }
+    public Agenda carregarAgendaClienteNegocio(String idcliente){
+        AtividadeDao atividadedao = new AtividadeDao(contexto);
+        return atividadedao.carregarAgendaClienteDao(idcliente);
+    }
+
+    public Agenda carregarAgendaFornecedorNegocio(String idfornecedor) {
+        AtividadeDao atividadedao = new AtividadeDao(contexto);
+        return atividadedao.carregarAgendaFornecedorDao(idfornecedor);
     }
 }

@@ -12,6 +12,7 @@ android:padding="16dp">
 <ImageView
     android:layout_width="50dp"
     android:layout_height="50dp"
+    android:scaleType="fitXY"
     android:id="@+id/image_servico"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
