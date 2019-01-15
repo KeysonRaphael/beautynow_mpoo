@@ -96,10 +96,10 @@ public class UsuarioDao {
         }
         return retorno;
     }
-    public ArrayList<String> selectUsuarioFornecedor(String idfornecedor){
+    public ArrayList<String> selectUsuarioPorTipo(String idfornecedor, String Tipo){
         ArrayList<String> retorno = new ArrayList<>();
         String selectUser = "SELECT * FROM "+ Banco.TABLE_USUARIO +" WHERE id_user_tipo = '"+ idfornecedor
-                + "' AND tipo = 'Fornecedor' limit 1";
+                + "' AND tipo = '"+ Tipo +"' limit 1";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
         if(cursor.getCount() >= 1){

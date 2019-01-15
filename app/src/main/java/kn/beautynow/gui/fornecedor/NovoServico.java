@@ -92,8 +92,8 @@ public class NovoServico extends Fragment {
             String servicoValor = servico.getValor();
             inputServicoValor.setText(servicoValor);
             inputImage.setImageBitmap(NovoServico.imagen);
-            Button atualisar = inf.findViewById(R.id.salvarServico);
-            atualisar.setText("Atualisar");
+            Button atualizar = inf.findViewById(R.id.salvarServico);
+            atualizar.setText("Atualizar");
         }
         Button incluirServicoImagem = inf.findViewById(R.id.inserirImagemServico);
         final boolean[] naomudouimagem = {true};

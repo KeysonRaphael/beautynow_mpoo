@@ -42,8 +42,7 @@ public class AtividadeDao {
         if(cursor.getCount() >= 0){
             ArrayList<Atividade> atividades= new ArrayList<Atividade>();
             int count = 0;
-            cursor.moveToFirst();
-            while(cursor.getCount() > count+1){
+            while(cursor.moveToNext()){
                 Atividade atividade = new Atividade();
                 atividade.setId(cursor.getString(0));
                 atividade.setServico(cursor.getString(1));
@@ -56,7 +55,6 @@ public class AtividadeDao {
                 atividade.setFinalizado(cursor.getString(8));
                 atividades.add(count, atividade);
                 count += 1;
-                cursor.moveToNext();
             }
             agenda.setCalendario(atividades);
             cursor.close();

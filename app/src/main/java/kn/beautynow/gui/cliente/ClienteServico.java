@@ -57,7 +57,7 @@ public class ClienteServico extends Fragment {
         inputServicoValor.setText(servicoValor);
         ImageView inputImage = inf.findViewById(R.id.imageServico);
         inputImage.setImageBitmap(ClienteServico.imagen);
-        Usuario user = new UsuarioNegocio(getContext()).buscarUsarioForncedor(idfornecedor);
+        Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(idfornecedor, "Fornecedor");
         String idUser = user.getId();
         Bitmap fornecedorimagem = new ImagemPerfilNegocio(getContext()).getImgPerfil(idUser);
         ImageView imageFornecedor = inf.findViewById(R.id.imageFornecedor);

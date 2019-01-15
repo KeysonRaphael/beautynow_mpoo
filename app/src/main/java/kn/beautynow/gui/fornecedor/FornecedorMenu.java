@@ -19,6 +19,7 @@ import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.clienteefornecedor.AgendaGui;
 import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
+import kn.beautynow.gui.clienteefornecedor.AtividadeInfoGUI;
 import kn.beautynow.gui.clienteefornecedor.AtividadesDiaGui;
 import kn.beautynow.gui.usuario.EditarEndereco;
 import kn.beautynow.gui.usuario.Login;
@@ -31,6 +32,7 @@ public class FornecedorMenu extends AppCompatActivity
         ServicosFornecedor.OnFragmentInteractionListener,
         AgendaGui.OnFragmentInteractionListener,
         AtividadeGui.OnFragmentInteractionListener,
+        AtividadeInfoGUI.OnFragmentInteractionListener,
         AtividadesDiaGui.OnFragmentInteractionListener,
         NovoServico.OnFragmentInteractionListener{
 
@@ -85,8 +87,7 @@ public class FornecedorMenu extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Session sessao = new Session();
-            Usuario user = new Usuario();
-            sessao.editSessao(user, getApplicationContext());
+            sessao.clear(getApplicationContext());
             Intent login = new Intent(FornecedorMenu.this, Login.class);
             startActivity(login);
             finish();

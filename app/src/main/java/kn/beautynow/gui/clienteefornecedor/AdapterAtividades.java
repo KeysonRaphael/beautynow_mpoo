@@ -69,7 +69,7 @@ public class AdapterAtividades extends RecyclerView.Adapter<AdapterAtividades.At
                 @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                 @Override
                 public void onClick(View v) {
-                    ((Activity) contexto).setTitle("Informações do Atendimento");
+                    ((Activity) contexto).setTitle("Atendimento");
                     FragmentTransaction t = ((AppCompatActivity) contexto).getSupportFragmentManager().beginTransaction();
                     Fragment mFrag = new AtividadeInfoGUI();
                     AtividadeInfoGUI.atividade = atividade;

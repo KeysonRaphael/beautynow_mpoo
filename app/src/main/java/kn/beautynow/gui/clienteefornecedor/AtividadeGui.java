@@ -60,7 +60,7 @@ public class AtividadeGui extends Fragment {
         final TextView valor = INF.findViewById(R.id.valor_atividade);
         valor.setText(this.valor);
         final TextView fornecedor = INF.findViewById(R.id.fornecedor_atividade);
-        String user = new UsuarioNegocio(getContext()).buscarUsarioForncedor(AtividadeGui.fornecedor).getNome();
+        String user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(AtividadeGui.fornecedor, "Fornecedor").getNome();
         fornecedor.setText(user);
         final EditText data = INF.findViewById(R.id.data);
         final EditText hora = INF.findViewById(R.id.hora);

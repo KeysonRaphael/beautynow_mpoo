@@ -91,9 +91,9 @@ public class UsuarioNegocio {
         return enderecoold;
     }
 
-    public Usuario buscarUsarioForncedor(String idfornecedor) {
+    public Usuario buscarUsarioPorTipo(String idfornecedor, String tipo) {
         Usuario user = new Usuario();
-        ArrayList result = new UsuarioDao(contexto).selectUsuarioFornecedor(idfornecedor);
+        ArrayList result = new UsuarioDao(contexto).selectUsuarioPorTipo(idfornecedor,tipo);
         user.setId(result.get(0).toString());
         user.setNome(result.get(1).toString());
         user.setEmail(result.get(2).toString());
