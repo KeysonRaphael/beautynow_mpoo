@@ -30,6 +30,7 @@ public class AtividadeDao {
             valores.put(Banco.COLUMN_AGENDA_FORNECEDOR, valor.get(5));
             valores.put(Banco.COLUMN_AGENDA_ATIVO, "N");
             valores.put(Banco.COLUMN_AGENDA_FINALIZADO, "N");
+            valores.put(Banco.COLUMN_AGENDA_NOTA_ATRIBUIDA, "N");
             db.insert(Banco.TABLE_AGENDA, null, valores);
             db.close();
     }
@@ -39,6 +40,7 @@ public class AtividadeDao {
         String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE cliente = '"+ cliente + "'";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
+        db.close();
         if(cursor.getCount() >= 0){
             ArrayList<Atividade> atividades= new ArrayList<Atividade>();
             int count = 0;
@@ -53,14 +55,17 @@ public class AtividadeDao {
                 atividade.setFornecedor(cursor.getString(6));
                 atividade.setAtivo(cursor.getString(7));
                 atividade.setFinalizado(cursor.getString(8));
+                atividade.setNotaAtribuida(cursor.getString(9));
                 atividades.add(count, atividade);
                 count += 1;
             }
             agenda.setCalendario(atividades);
             cursor.close();
-            db.close();
+            
             return agenda;
         }
+        cursor.close();
+        
         return agenda;
     }
 
@@ -69,6 +74,7 @@ public class AtividadeDao {
         String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE fornecedor = '"+ idfornecedor + "'";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
+        db.close();
         if(cursor.getCount() >= 0){
             ArrayList<Atividade> atividades= new ArrayList<Atividade>();
             int count = 0;
@@ -84,15 +90,49 @@ public class AtividadeDao {
                     atividade.setFornecedor(cursor.getString(6));
                     atividade.setAtivo(cursor.getString(7));
                     atividade.setFinalizado(cursor.getString(8));
+                    atividade.setNotaAtribuida(cursor.getString(9));
                     atividades.add(count, atividade);
                     count += 1;
                 }
             }
             agenda.setCalendario(atividades);
             cursor.close();
-            db.close();
+            
             return agenda;
         }
+        cursor.close();
+        
         return agenda;
+    }
+
+    public void confirmarAtividadeDao(String idatividade) {
+        db = banco.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Banco.COLUMN_AGENDA_ATIVO,"S");
+        db.update(Banco.TABLE_AGENDA,cv,"Id=?",new String[]{idatividade});
+        db.close();
+    }
+
+    public void recusarAtividadeDao(String idatividade) {
+        db = banco.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Banco.COLUMN_AGENDA_ATIVO,"F");
+        db.update(Banco.TABLE_AGENDA,cv,"Id=?",new String[]{idatividade});
+        db.close();
+    }
+
+    public void finalizarAtividadeDao(String idatividade) {
+        db = banco.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Banco.COLUMN_AGENDA_FINALIZADO,"S");
+        db.update(Banco.TABLE_AGENDA,cv,"Id=?",new String[]{idatividade});
+        db.close();
+    }
+    public void notainseridaAtividadeDao(String idatividade) {
+        db = banco.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(Banco.COLUMN_AGENDA_NOTA_ATRIBUIDA,"S");
+        db.update(Banco.TABLE_AGENDA,cv,"Id=?",new String[]{idatividade});
+        db.close();
     }
 }

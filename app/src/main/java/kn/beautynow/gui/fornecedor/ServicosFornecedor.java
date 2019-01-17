@@ -33,6 +33,7 @@ public class ServicosFornecedor extends Fragment
         ClienteServico.OnFragmentInteractionListener {
 
     private OnFragmentInteractionListener mListener;
+    public static String predict = "";
 
     public ServicosFornecedor() {
         // Required empty public constructor
@@ -65,7 +66,9 @@ public class ServicosFornecedor extends Fragment
         final RecyclerView reciclerview = inf.findViewById(R.id.recycler);
         final EditText buscaServico = inf.findViewById(R.id.findServico);
         final Servicos servicos;
-        if(user.getTipoUsuario().equals("Cliente")){
+        if (!ServicosFornecedor.predict.equals("")) {
+            servicos = new ServicoNegocio(getContext()).listarServicosFornecedor(predict);
+        }else if(user.getTipoUsuario().equals("Cliente")){
             servicos = new ServicoNegocio(getContext()).listarServicos();
         }else{
             servicos = obj.getServicos().clone();

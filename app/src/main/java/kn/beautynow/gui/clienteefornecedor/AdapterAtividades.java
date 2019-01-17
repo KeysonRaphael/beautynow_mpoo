@@ -39,6 +39,7 @@ public class AdapterAtividades extends RecyclerView.Adapter<AdapterAtividades.At
     public void onBindViewHolder(@NonNull AtividadeViewHolder atividadeViewHolder, int i) {
         Atividade atividade = agenda.getCalendario().get(i);
         atividadeViewHolder.data.setText(atividade.getData());
+        atividadeViewHolder.hora.setText(atividade.getHora());
         atividadeViewHolder.servico.setText(atividade.getServico());
         atividadeViewHolder.atividade = atividade;
     }
@@ -55,6 +56,7 @@ public class AdapterAtividades extends RecyclerView.Adapter<AdapterAtividades.At
 
     public static class AtividadeViewHolder extends RecyclerView.ViewHolder {
         protected TextView data;
+        protected TextView hora;
         protected TextView servico;
         protected Atividade atividade;
 
@@ -62,6 +64,7 @@ public class AdapterAtividades extends RecyclerView.Adapter<AdapterAtividades.At
         public AtividadeViewHolder(View v) {
             super(v);
             data = v.findViewById(R.id.data);
+            hora = v.findViewById(R.id.hora);
             servico = v.findViewById(R.id.servico);
             atividade = new Atividade();
             final Context contexto = v.getContext();

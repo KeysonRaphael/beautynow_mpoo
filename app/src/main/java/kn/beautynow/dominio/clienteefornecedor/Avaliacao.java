@@ -2,48 +2,39 @@ package kn.beautynow.dominio.clienteefornecedor;
 
 public class Avaliacao {
     private String id;
-    private int preco;
-    private int qds;
-    private int qda;
-    private int pontualidade;
+    private String cliente;
+    private String fornecedor;
+    private double nota;
 
-    private int getPreco() {
-        return preco;
-    }
-
-    private void setPreco(int preco) {
-        this.preco = preco;
-    }
-
-    private int getQds() {
-        return qds;
-    }
-
-    private void setQds(int qds) {
-        this.qds = qds;
-    }
-
-    private int getQda() {
-        return qda;
-    }
-
-    private void setQda(int qda) {
-        this.qda = qda;
-    }
-
-    private int getPontualidade() {
-        return pontualidade;
-    }
-
-    private void setPontualidade(int pontualidade) {
-        this.pontualidade = pontualidade;
-    }
-
-    private String getId() {
+    public String getId() {
         return id;
     }
 
-    private void setId(String id) {
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public double getNota() {
+        return nota;
+    }
+
+    public void setNota(double nota) {
+        this.nota = nota;
     }
 }

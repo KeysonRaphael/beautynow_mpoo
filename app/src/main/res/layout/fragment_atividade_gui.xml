@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,18 +17,13 @@
         android:rowCount="2"
         android:visibility="invisible">
 
-
-        <TextView
-            android:id="@+id/textView5"
+        <ImageView
+            android:id="@+id/imageView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="0"
-            android:layout_marginTop="70dp"
-            android:gravity="center"
-            android:text="Pedido realizado com sucesso! Aguarde a confirmação do fornecedor."
-            android:textAllCaps="false"
-            android:textSize="36sp" />
+            android:src="@drawable/realizar" />
 
         <Button
             android:id="@+id/goToServicos"
@@ -42,6 +38,7 @@
             android:text="Ir para Servicos"
             android:textAlignment="center"
             android:textColor="@color/white" />
+
     </GridLayout>
 
     <GridLayout

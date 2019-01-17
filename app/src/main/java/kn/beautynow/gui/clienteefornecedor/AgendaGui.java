@@ -56,8 +56,7 @@ public class AgendaGui extends Fragment {
         final Usuario usuario = Session.getSession(getContext());
         final Agenda agenda;
         if(usuario.getTipoUsuario().equals("Cliente")){
-                agenda = new AtividadeNegocio(getContext()).carregarAgendaClienteNegocio(Session.getSession(getContext()).getIdUser());
-
+            agenda = new AtividadeNegocio(getContext()).carregarAgendaClienteNegocio(Session.getSession(getContext()).getIdUser());
         }else{
             agenda = new AtividadeNegocio(getContext()).carregarAgendaFornecedorNegocio(Session.getSession(getContext()).getIdUser());
         }

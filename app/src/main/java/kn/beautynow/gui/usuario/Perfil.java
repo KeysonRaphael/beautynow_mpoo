@@ -1,9 +1,11 @@
 package kn.beautynow.gui.usuario;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -14,6 +16,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -57,6 +60,14 @@ public class Perfil extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View inf = inflater.inflate(R.layout.fragment_perfil, container, false);
+        final int PICK_FROM_GALLERY = 1;
+        try {
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         TextView tv = (TextView) inf.findViewById(R.id.nomeUsuario);
         Session session = new Session();
         final Usuario obj = session.getSession(this.getActivity().getBaseContext());
@@ -66,6 +77,12 @@ public class Perfil extends Fragment {
             //get endereco
             TextView enderecot = inf.findViewById(R.id.enderecoUsuario);
             enderecot.setText(obj.getEndereco().printEndereco());
+        }else if (obj.getEndereco().getRua().equals("") && obj.getTipoUsuario().equals("Fornecedor")){
+            FragmentTransaction t = getFragmentManager().beginTransaction();
+            Fragment mFrag = new EditarEndereco();
+            getActivity().setTitle("Endereço Estabelecimento");
+            t.replace(R.id.fornecedor_frame, mFrag);
+            t.commit();
         }
         Bitmap img = imagem.getImgPerfil(obj.getId());
         if (img != null) {
@@ -92,7 +109,6 @@ public class Perfil extends Fragment {
                 getActivity().setTitle("Editar Endereço");
                 FragmentTransaction t = getFragmentManager().beginTransaction();
                 Fragment mFrag = new EditarEndereco();
-                Log.d("testeendereco", obj.getTipoUsuario());
                 if(obj.getTipoUsuario().equals("Cliente")){
                     t.replace(R.id.frame, mFrag);
                 }else{

@@ -18,6 +18,7 @@ public class Atividade {
     private String valor;
     private String ativo;
     private String finalizado;
+    private String notaAtribuida;
 
     public String getData() {
         return data;
@@ -98,5 +99,13 @@ public class Atividade {
 
     public void setFinalizado(String finalizado) {
         this.finalizado = finalizado;
+    }
+
+    public String getNotaAtribuida() {
+        return notaAtribuida;
+    }
+
+    public void setNotaAtribuida(String notaAtribuida) {
+        this.notaAtribuida = notaAtribuida;
     }
 }

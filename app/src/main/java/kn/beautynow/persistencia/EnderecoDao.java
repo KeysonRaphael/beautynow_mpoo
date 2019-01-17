@@ -30,7 +30,6 @@ public class EnderecoDao {
         valores.put(Banco.COLUMN_ENDERECO_CIDADE, cidade);
         valores.put(Banco.COLUMN_ENDERECO_ESTADO, estado);
         db.insert(Banco.TABLE_ENDERECO, null, valores);
-        db.close();
     }
 
     public void updateEndereco(String iduser,String rua, String numero, String complemento, String bairro, String cidade, String estado, String cep){
@@ -44,13 +43,14 @@ public class EnderecoDao {
         cv.put(Banco.COLUMN_ENDERECO_ESTADO,estado);
         cv.put(Banco.COLUMN_ENDERECO_CEP,cep);
         db.update(Banco.TABLE_ENDERECO,cv,"id_user=?",new String[]{iduser});
+        db.close();
     }
 
     public boolean existeEndereco(String iduser){
         String querySql = "SELECT * FROM endereco WHERE id_user = ?";
-        SQLiteDatabase db;
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySql, new String[] {iduser});
+        db.close();
         if(cursor.getCount()>0){
             cursor.close();
             return true;
@@ -65,6 +65,7 @@ public class EnderecoDao {
                 + "' limit 1";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectEndereco,new String[]{});
+        db.close();
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             Log.d("testecursor", cursor.getString(0));
@@ -77,8 +78,11 @@ public class EnderecoDao {
             retorno.add(6, cursor.getString(6));
             retorno.add(7, cursor.getString(7));
             cursor.close();
+            
             return retorno;
         }else{
+            cursor.close();
+            
             return retorno;
         }
     }

@@ -72,4 +72,11 @@ public class ServicoNegocio {
         Session session = new Session();
         session.editSessaoFornecedor(fornecedorn,contexto);
     }
+
+    public Servicos listarServicosFornecedor(String predict) {
+        ServicosDao servicosDao = new ServicosDao(contexto);
+        Servicos servicos = new Servicos();
+        servicos.setListaServicos(servicosDao.selectServicosFornecedorDao(predict));
+        return servicos;
+    }
 }

@@ -9,7 +9,7 @@ public class FixCursorWindow {
         try {
             Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
             field.setAccessible(true);
-            field.set(null, 102400 * 1024); //the 102400 is the new size added
+            field.set(null, 204800 * 2048); //the 102400 is the new size added
         } catch (Exception e) {
             e.printStackTrace();
         }

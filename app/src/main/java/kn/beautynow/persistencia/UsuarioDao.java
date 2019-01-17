@@ -22,8 +22,6 @@ public class UsuarioDao {
     public void insereDado(String nome, String cpf, String email, String senha, String tipo, String sexo){
         ContentValues valores;
         String resultado;
-
-
         db = banco.getWritableDatabase();
         valores = new ContentValues();
         valores.put(Banco.COLUMN_USUARIO_NOME, nome);
@@ -32,10 +30,9 @@ public class UsuarioDao {
         valores.put(Banco.COLUMN_USUARIO_SENHA, senha);
         valores.put(Banco.COLUMN_USUARIO_TIPO, tipo);
         valores.put(Banco.COLUMN_USUARIO_SEXO, sexo);
-
         resultado = String.valueOf(db.insert(Banco.TABLE_USUARIO, null, valores));
-        String idTipo;
         db.close();
+        String idTipo;
         if (tipo.equals("Cliente")){
             ClienteDao cliente = new ClienteDao(contexto);
             idTipo = cliente.insereCliente(resultado);
@@ -57,6 +54,7 @@ public class UsuarioDao {
                 + "' AND senha = '"+ vsenha +"' AND tipo = '"+ vtipo +"' limit 1";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
+        db.close();
         if(cursor.getCount() >= 1){
             while(cursor.moveToNext()){
                 if(cursor.getCount() > 0){
@@ -71,8 +69,10 @@ public class UsuarioDao {
                     retorno.add(8, cursor.getString(8));
                     String selectEndereco = "SELECT * FROM "+ Banco.TABLE_ENDERECO +
                             " WHERE id_user = '"+ cursor.getString(0) + "' limit 1";
+                    cursor.close();
                     db = banco.getReadableDatabase();
                     Cursor cursorend = db.rawQuery(selectEndereco,new String[]{});
+                    db.close();
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
@@ -88,12 +88,14 @@ public class UsuarioDao {
                             }
                         }
                     }
-                    cursor.close();
-                    db.close();
+                    cursorend.close();
+                    
                     return retorno;
                 }
             }
         }
+        cursor.close();
+        
         return retorno;
     }
     public ArrayList<String> selectUsuarioPorTipo(String idfornecedor, String Tipo){
@@ -102,6 +104,7 @@ public class UsuarioDao {
                 + "' AND tipo = '"+ Tipo +"' limit 1";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
+        db.close();
         if(cursor.getCount() >= 1){
             while(cursor.moveToNext()){
                 if(cursor.getCount() > 0){
@@ -116,8 +119,10 @@ public class UsuarioDao {
                     retorno.add(8, cursor.getString(8));
                     String selectEndereco = "SELECT * FROM "+ Banco.TABLE_ENDERECO +
                             " WHERE id_user = '"+ cursor.getString(0) + "' limit 1";
+                    cursor.close();
                     db = banco.getReadableDatabase();
                     Cursor cursorend = db.rawQuery(selectEndereco,new String[]{});
+                    db.close();
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
@@ -133,12 +138,12 @@ public class UsuarioDao {
                             }
                         }
                     }
-                    cursor.close();
-                    db.close();
+                    cursorend.close();
                     return retorno;
                 }
             }
         }
+        cursor.close();
         return retorno;
     }
 
@@ -146,6 +151,7 @@ public class UsuarioDao {
         String querySql = "SELECT cpf FROM usuario WHERE cpf = ? AND tipo = ?";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySql, new String[] {cpfv, tipov});
+        db.close();
         if(cursor.getCount()>0){
             cursor.close();
             return true;
@@ -153,5 +159,4 @@ public class UsuarioDao {
         cursor.close();
         return false;
     }
-
 }

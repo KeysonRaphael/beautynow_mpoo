@@ -84,48 +84,38 @@
             android:text="Adicionar" />
     </GridLayout>
 
-    <RelativeLayout
+    <GridLayout
         android:id="@+id/concluido"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:gravity="center"
+        android:columnCount="1"
+        android:rowCount="2"
         android:visibility="invisible">
 
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="132dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="210dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="225dp"
-            android:text="Serviço inserido com sucesso!"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="370dp"
+            android:layout_height="346dp"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:layout_gravity="center"
+            android:src="@drawable/inserir" />
 
         <Button
             android:id="@+id/irservicos"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="131dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_row="1"
             android:background="@android:color/holo_blue_light"
             android:text="Ir para Serviços"
+            android:layout_gravity="center"
             android:textColor="@color/white" />
 
-    </RelativeLayout>
+    </GridLayout>
     <RelativeLayout
         android:id="@+id/progress_circular"
         android:layout_width="match_parent"

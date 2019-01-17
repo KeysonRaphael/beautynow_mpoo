@@ -17,6 +17,10 @@
             android:id="@+id/fornecedores"
             android:icon="@drawable/ic_list_black_24dp"
             android:title="Fornecedores" />
+        <item
+            android:id="@+id/recomendacao"
+            android:icon="@drawable/ic_star_black_24dp"
+            android:title="Recomendação" />
 
     </group>
 

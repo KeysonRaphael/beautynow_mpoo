@@ -10,7 +10,7 @@ public class Banco extends SQLiteOpenHelper{
     private static final String NOME_BANCO = "Banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 20;
+        VERSAO = 23;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
@@ -69,6 +69,13 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_AGENDA_HORA = "hora";
     public static final String COLUMN_AGENDA_ATIVO = "ativo";
     public static final String COLUMN_AGENDA_FINALIZADO = "finalizado";
+    public static final String COLUMN_AGENDA_NOTA_ATRIBUIDA = "notaatribuida";
+    //Tabela Nota
+    public static final String TABLE_NOTA = "nota";
+    public static final String COLUMN_NOTA_ID = "Id";
+    public static final String COLUMN_NOTA_FORNECEDOR = "fornecedor";
+    public static final String COLUMN_NOTA_CLIENTE = "cliente";
+    public static final String COLUMN_NOTA_NOTA_FORNECEDOR = "notafornecedor";
 
 
     public Banco(Context context){
@@ -81,6 +88,7 @@ public class Banco extends SQLiteOpenHelper{
         String prim = " INTEGER PRIMARY KEY,";
         String tipotexto = " TEXT,";
         String tipotexton = " TEXT";
+        String tiporealn = " REAL";
         //create table usuario
         String sqlUser = create + Banco.TABLE_USUARIO + " (" +
                 Banco.COLUMN_USUARIO_ID + prim +
@@ -144,8 +152,16 @@ public class Banco extends SQLiteOpenHelper{
                 Banco.COLUMN_AGENDA_CLIENTE + tipotexto +
                 Banco.COLUMN_AGENDA_FORNECEDOR + tipotexto +
                 Banco.COLUMN_AGENDA_ATIVO + tipotexto +
-                Banco.COLUMN_AGENDA_FINALIZADO + tipotexton + " )";
+                Banco.COLUMN_AGENDA_FINALIZADO + tipotexto +
+                Banco.COLUMN_AGENDA_NOTA_ATRIBUIDA + tipotexton + " )";
         db.execSQL(sqlAgenda);
+        //create table nota
+        String sqlNota = create + Banco.TABLE_NOTA + " (" +
+                Banco.COLUMN_NOTA_ID + prim +
+                Banco.COLUMN_NOTA_CLIENTE + tipotexto +
+                Banco.COLUMN_NOTA_FORNECEDOR + tipotexto +
+                Banco.COLUMN_NOTA_NOTA_FORNECEDOR + tiporealn + " )";
+        db.execSQL(sqlNota);
     }
 
     @Override
@@ -158,6 +174,7 @@ public class Banco extends SQLiteOpenHelper{
         db.execSQL("DROP TABLE IF EXISTS servicos");
         db.execSQL("DROP TABLE IF EXISTS servicos_fornecedor");
         db.execSQL("DROP TABLE IF EXISTS agenda");
+        db.execSQL("DROP TABLE IF EXISTS nota");
         onCreate(db);
     }
 

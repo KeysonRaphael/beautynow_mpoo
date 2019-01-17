@@ -1,10 +1,12 @@
 package kn.beautynow.gui.fornecedor;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,6 +20,7 @@ import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
@@ -28,6 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -97,6 +101,14 @@ public class NovoServico extends Fragment {
         }
         Button incluirServicoImagem = inf.findViewById(R.id.inserirImagemServico);
         final boolean[] naomudouimagem = {true};
+        final int PICK_FROM_GALLERY = 1;
+        try {
+            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         incluirServicoImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,7 +152,7 @@ public class NovoServico extends Fragment {
                             progress.setVisibility(View.INVISIBLE);
                         }
                     }.start();
-                    RelativeLayout inserido = inf.findViewById(R.id.concluido);
+                    GridLayout inserido = inf.findViewById(R.id.concluido);
                     inserido.setVisibility(View.VISIBLE);
                 }}
         });

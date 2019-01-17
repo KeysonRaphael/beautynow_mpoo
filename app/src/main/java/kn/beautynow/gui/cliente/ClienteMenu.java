@@ -37,6 +37,7 @@ public class ClienteMenu extends AppCompatActivity
                     ClienteServico.OnFragmentInteractionListener,
                     AgendaGui.OnFragmentInteractionListener,
                     AtividadeInfoGUI.OnFragmentInteractionListener,
+                    RecomendacaoGUI.OnFragmentInteractionListener,
                     AtividadesDiaGui.OnFragmentInteractionListener,
                     EditarEndereco.OnFragmentInteractionListener {
 
@@ -123,6 +124,12 @@ public class ClienteMenu extends AppCompatActivity
         } else if (id == R.id.fornecedores) {
             setTitle("Fornecedores");
             Fragment fragment = new ServicosFornecedor();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frame, fragment);
+            ft.commit();
+        }else if (id == R.id.recomendacao) {
+            setTitle("Recomendação");
+            Fragment fragment = new RecomendacaoGUI();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, fragment);
             ft.commit();

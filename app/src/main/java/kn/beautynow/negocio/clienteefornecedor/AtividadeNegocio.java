@@ -18,6 +18,23 @@ public class AtividadeNegocio {
         AtividadeDao atividadedao = new AtividadeDao(contexto);
         atividadedao.InserirAtividade(valores);
     }
+    public void confirmarAtividade(String idatividade){
+        AtividadeDao atividadedao = new AtividadeDao(contexto);
+        atividadedao.confirmarAtividadeDao(idatividade);
+    }
+    public void notainseridaAtividade(String idatividade){
+        AtividadeDao atividadedao = new AtividadeDao(contexto);
+        atividadedao.notainseridaAtividadeDao(idatividade);
+    }
+    public void recusarAtividade(String idatividade){
+        AtividadeDao atividadedao = new AtividadeDao(contexto);
+        atividadedao.recusarAtividadeDao(idatividade);
+    }
+    public void finalizarAtividade(String idatividade) {
+        AtividadeDao atividadedao = new AtividadeDao(contexto);
+        atividadedao.finalizarAtividadeDao(idatividade);
+    }
+
     public Agenda carregarAgendaClienteNegocio(String idcliente){
         AtividadeDao atividadedao = new AtividadeDao(contexto);
         return atividadedao.carregarAgendaClienteDao(idcliente);

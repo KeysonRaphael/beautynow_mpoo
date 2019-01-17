@@ -14,18 +14,33 @@
             android:id="@+id/data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="150dp"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@+id/servico"
+            android:layout_marginRight="100dp"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/hora"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="100dp"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/servico"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="50dp"
+            android:background="@color/black" />
 
     </RelativeLayout>
 

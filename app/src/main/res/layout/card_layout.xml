@@ -33,6 +33,12 @@ android:padding="16dp">
     android:layout_toRightOf="@+id/image_servico"
     android:layout_below="@+id/servico_name" />
 
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1px"
+    android:layout_marginTop="60dp"
+    android:background="@color/black" />
+
 </RelativeLayout>
     
 </android.support.v7.widget.CardView>
