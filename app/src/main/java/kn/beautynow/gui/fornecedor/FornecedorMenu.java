@@ -34,7 +34,7 @@ public class FornecedorMenu extends AppCompatActivity
         AtividadeGui.OnFragmentInteractionListener,
         AtividadeInfoGUI.OnFragmentInteractionListener,
         AtividadesDiaGui.OnFragmentInteractionListener,
-        NovoServico.OnFragmentInteractionListener{
+        NovoServico.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,16 +42,13 @@ public class FornecedorMenu extends AppCompatActivity
         setContentView(R.layout.activity_fornecedor_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
         setTitle("Perfil");
         navigationView.setCheckedItem(R.id.perfil_fornecedor);
         Fragment fragment = new Perfil();
@@ -83,7 +80,6 @@ public class FornecedorMenu extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Session sessao = new Session();
@@ -92,7 +88,6 @@ public class FornecedorMenu extends AppCompatActivity
             startActivity(login);
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -101,7 +96,6 @@ public class FornecedorMenu extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.perfil_fornecedor) {
             setTitle("Perfil");
             Fragment fragment = new Perfil();
@@ -120,14 +114,13 @@ public class FornecedorMenu extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fornecedor_frame, fragment);
             ft.commit();
-        }else if (id == R.id.novo_servicos) {
+        } else if (id == R.id.novo_servicos) {
             setTitle("Adicionar Serviço");
             Fragment fragment = new NovoServico();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.fornecedor_frame, fragment);
             ft.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -135,6 +128,5 @@ public class FornecedorMenu extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 }

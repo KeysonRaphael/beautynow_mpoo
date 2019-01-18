@@ -1,1 +1,0 @@
-ÆGapp/src/main/java/kn/beautynow/negocio/usuario/ImagemPerfilNegocio.java 2javaX-hrGapp/src/main/java/kn/beautynow/negocio/usuario/ImagemPerfilNegocio.java

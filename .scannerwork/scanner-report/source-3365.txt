@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".gui.usuario.EditarEndereco"
+    android:background="@color/white">
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1"
+        android:rowCount="9">
+
+
+        <EditText
+            android:id="@+id/editRua"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Digite a rua"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+        <EditText
+            android:id="@+id/editNumero"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Digite o numero"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+
+        <EditText
+            android:id="@+id/editComplemento"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_row="2"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Digite o complemento"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+        <EditText
+            android:id="@+id/editCep"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_row="3"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="Digite o Cep"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+        <EditText
+            android:id="@+id/editCidade"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_row="5"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Digite a cidade"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+        <EditText
+            android:id="@+id/editBairro"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_row="4"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Digite o bairro"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+        <EditText
+            android:id="@+id/editEstado"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_row="6"
+            android:layout_column="0"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Digite o estado"
+            android:textColorHint="@color/black"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/black"/>
+
+        <Button
+            android:id="@+id/voltarPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="7"
+            android:layout_column="0"
+            android:layout_gravity="start"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/holo_blue_light"
+            android:textColor="@color/white"
+            android:text="Voltar" />
+
+        <Button
+            android:id="@+id/cadastrarEndereco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="7"
+            android:layout_column="0"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="70dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="Salvar"
+            android:textColor="@color/white" />
+
+    </GridLayout>
+
+</FrameLayout>

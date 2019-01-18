@@ -1,1 +1,1 @@
-/rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable :.rrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable
+/gapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader :.rgapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader

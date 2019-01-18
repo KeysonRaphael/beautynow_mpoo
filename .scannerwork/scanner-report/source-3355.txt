@@ -1,0 +1,44 @@
+<android.support.v7.widget.CardView android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:padding="16dp">
+
+<ImageView
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:scaleType="fitXY"
+    android:id="@+id/image_servico"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_marginRight="16dp" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/servico_name"
+    android:layout_toRightOf="@+id/image_servico"
+    android:layout_alignParentTop="true"
+    android:textSize="30sp" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/servico_valor"
+    android:layout_toRightOf="@+id/image_servico"
+    android:layout_below="@+id/servico_name" />
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1px"
+    android:layout_marginTop="60dp"
+    android:background="@color/black" />
+
+</RelativeLayout>
+    
+</android.support.v7.widget.CardView>

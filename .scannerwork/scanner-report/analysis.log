@@ -1,7 +1,6 @@
 Environment variables:
   - =::=::\
   - =C:=C:\Users\keyso\Documents\GitHub\beautynow_mpoo
-  - =ExitCode=00000000
   - ALLUSERSPROFILE=C:\ProgramData
   - APPDATA=C:\Users\keyso\AppData\Roaming
   - COMPUTERNAME=LAPTOP-P5CCI2FK
@@ -11,8 +10,6 @@ Environment variables:
   - CommonProgramW6432=C:\Program Files\Common Files
   - DriverData=C:\Windows\System32\Drivers\DriverData
   - ERROR_CODE=0
-  - FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
-  - FPS_BROWSER_USER_PROFILE_STRING=Default
   - HOMEDRIVE=C:
   - HOMEPATH=\Users\keyso
   - JAVA_EXEC="C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..\jre\bin\java.exe"
@@ -22,6 +19,7 @@ Environment variables:
   - NUMBER_OF_PROCESSORS=4
   - OS=Windows_NT
   - OneDrive=C:\Users\keyso\OneDrive
+  - OneDriveConsumer=C:\Users\keyso\OneDrive
   - PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
   - PROCESSOR_ARCHITECTURE=AMD64
   - PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
@@ -31,7 +29,7 @@ Environment variables:
   - PROMPT=$P$G
   - PSModulePath=C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
   - PUBLIC=C:\Users\Public
-  - Path=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\xampp\php;C:\composer;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Local\atom\bin;C:\Users\keyso\AppData\Local\GitHubDesktop\bin;C:\Users\keyso\AppData\Roaming\Composer\vendor\bin;C:\Users\keyso\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;
+  - Path=C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\xampp\php;C:\composer;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Local\atom\bin;C:\Users\keyso\AppData\Local\GitHubDesktop\bin;C:\Users\keyso\AppData\Roaming\Composer\vendor\bin;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Roaming\npm
   - ProgramData=C:\ProgramData
   - ProgramFiles=C:\Program Files
   - ProgramFiles(x86)=C:\Program Files (x86)
@@ -66,7 +64,7 @@ System properties:
   - java.ext.dirs=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
   - java.home=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre
   - java.io.tmpdir=C:\Users\keyso\AppData\Local\Temp\
-  - java.library.path=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\xampp\php;C:\composer;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Local\atom\bin;C:\Users\keyso\AppData\Local\GitHubDesktop\bin;C:\Users\keyso\AppData\Roaming\Composer\vendor\bin;C:\Users\keyso\AppData\Roaming\npm;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps;;.
+  - java.library.path=C:\Windows\sonar-scanner-3.2.0.1227-windows\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\xampp\php;C:\composer;C:\Program Files\nodejs;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\Brackets\command;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\keyso\AppData\Local\Programs\Python\Python37-32\;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Local\atom\bin;C:\Users\keyso\AppData\Local\GitHubDesktop\bin;C:\Users\keyso\AppData\Roaming\Composer\vendor\bin;C:\Users\keyso\AppData\Local\Microsoft\WindowsApps;C:\Users\keyso\AppData\Roaming\npm;.
   - java.runtime.name=Java(TM) SE Runtime Environment
   - java.runtime.version=1.8.0_121-b13
   - java.specification.name=Java Platform API Specification
@@ -133,7 +131,7 @@ SonarQube plugins:
   - SonarVB 7.7.0.7192 (vbnet)
 Global properties:
   - sonar.core.id=BF41A1F2-AWeula0Hg8M-_1s_7zgf
-  - sonar.core.startTime=2018-12-14T18:18:22-0300
+  - sonar.core.startTime=2019-01-17T22:41:23-0300
 Settings for module: beautynow_mpoo
   - sonar.host.url=http://localhost:9000
   - sonar.java.binaries=app

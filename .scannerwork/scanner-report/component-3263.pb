@@ -1,0 +1,1 @@
+¿>app/src/main/java/kn/beautynow/dominio/fornecedor/Galeria.java 2javaX	hr>app/src/main/java/kn/beautynow/dominio/fornecedor/Galeria.java

@@ -1,0 +1,1 @@
+\Qapp/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml 2xmlX«hrQapp/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml

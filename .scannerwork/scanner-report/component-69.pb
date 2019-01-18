@@ -1,1 +1,1 @@
-Emapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/androidx/versionedparcelable :Drmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/androidx/versionedparcelable
+Epapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/recyclerview :Drpapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/recyclerview

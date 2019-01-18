@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.clienteefornecedor.AtividadeGui"
+    android:background="@color/white">
+
+    <GridLayout
+        android:id="@+id/atendimento_solicitado"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:columnCount="1"
+        android:rowCount="2"
+        android:visibility="invisible">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:src="@drawable/realizar" />
+
+        <Button
+            android:id="@+id/goToServicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:background="@android:color/holo_blue_light"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Ir para Servicos"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:id="@+id/marcarAtendimentoLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:rowCount="6"
+        android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnWeight="5"
+        android:layout_gravity="end"
+        android:text="Servico: "
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="1"
+        android:layout_column="0"
+        android:layout_columnWeight="5"
+        android:layout_gravity="end"
+        android:text="Valor: "
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="2"
+        android:layout_column="0"
+        android:layout_columnWeight="5"
+        android:layout_gravity="end"
+        android:text="Fornecedor: "
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="3"
+        android:layout_column="0"
+        android:layout_columnWeight="5"
+        android:layout_gravity="end"
+        android:text="Data: "
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_columnWeight="5"
+        android:layout_gravity="end"
+        android:text="Hora: "
+        android:textAllCaps="true"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/descricao_atividade"
+            android:layout_width="138dp"
+            android:layout_height="40dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_columnWeight="5"
+            android:layout_gravity="start"
+            android:text="TextView"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/valor_atividade"
+            android:layout_width="142dp"
+            android:layout_height="40dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_columnWeight="5"
+            android:layout_gravity="start"
+            android:text="TextView"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/fornecedor_atividade"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_row="2"
+            android:layout_column="1"
+            android:layout_columnWeight="5"
+            android:layout_gravity="start"
+            android:text="TextView"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/data"
+            android:layout_width="141dp"
+            android:layout_height="40dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_columnWeight="5"
+            android:layout_gravity="start"
+            android:ems="10"
+            android:hint="Informe a data"
+            android:inputType="date"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        <EditText
+            android:id="@+id/hora"
+            android:layout_width="143dp"
+            android:layout_height="40dp"
+            android:layout_row="4"
+            android:layout_column="1"
+            android:layout_columnWeight="5"
+            android:layout_gravity="start"
+            android:ems="10"
+            android:hint="Informe a hora"
+            android:inputType="time"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        <Button
+            android:id="@+id/marcar_atividade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="5"
+            android:layout_columnSpan="2"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/holo_blue_light"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Solicitar Atendimento"
+            android:textColor="@color/white" />
+
+</GridLayout>
+</FrameLayout>

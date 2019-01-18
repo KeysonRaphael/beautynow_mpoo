@@ -1,0 +1,1 @@
+áJapp/src/main/java/kn/beautynow/negocio/clienteefornecedor/NotaNegocio.java 2javaXhrJapp/src/main/java/kn/beautynow/negocio/clienteefornecedor/NotaNegocio.java

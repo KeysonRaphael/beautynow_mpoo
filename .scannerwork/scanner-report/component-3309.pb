@@ -1,0 +1,1 @@
+í=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java 2javaXŠhr=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java

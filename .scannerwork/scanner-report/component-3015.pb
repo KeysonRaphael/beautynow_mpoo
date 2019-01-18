@@ -1,1 +1,0 @@
-Ç6app/src/main/java/kn/beautynow/persistencia/Banco.java 2javaXnhr6app/src/main/java/kn/beautynow/persistencia/Banco.java

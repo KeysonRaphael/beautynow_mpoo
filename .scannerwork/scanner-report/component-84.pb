@@ -1,0 +1,2 @@
+Tmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/sun/bob/mcalendarview/R.java 2javaXñ
+hrmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/sun/bob/mcalendarview/R.java

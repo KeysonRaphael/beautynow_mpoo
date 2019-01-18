@@ -1,1 +1,0 @@
-¦Papp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN :¥rPapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rCN

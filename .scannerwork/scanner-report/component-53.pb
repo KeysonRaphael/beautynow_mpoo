@@ -1,1 +1,1 @@
-5rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout :4rrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout
+5fapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print :4rfapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print

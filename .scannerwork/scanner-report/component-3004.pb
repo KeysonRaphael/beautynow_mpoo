@@ -1,1 +1,0 @@
-¼Capp/src/main/java/kn/beautynow/gui/fornecedor/PerfilFornecedor.java 2javaXŽhrCapp/src/main/java/kn/beautynow/gui/fornecedor/PerfilFornecedor.java

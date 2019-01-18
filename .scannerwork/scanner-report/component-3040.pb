@@ -1,1 +1,0 @@
-à1app/src/main/res/layout/activity_cliente_menu.xml 2xmlXhr1app/src/main/res/layout/activity_cliente_menu.xml

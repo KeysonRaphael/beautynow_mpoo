@@ -1,1 +1,1 @@
-<japp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v4/R.java 2javaXïhrjapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v4/R.java
+<japp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v4/R.java 2javaXïhrjapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v4/R.java

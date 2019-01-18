@@ -1,0 +1,1 @@
+…*app/src/main/res/drawable/side_nav_bar.xml 2xmlX	hr*app/src/main/res/drawable/side_nav_bar.xml

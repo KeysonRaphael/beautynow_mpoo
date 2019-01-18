@@ -1,1 +1,0 @@
-Ö0app/src/main/res/drawable-v21/ic_menu_manage.xml 2xmlX	hr0app/src/main/res/drawable-v21/ic_menu_manage.xml

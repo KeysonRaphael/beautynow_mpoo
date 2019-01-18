@@ -1,1 +1,1 @@
-napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java 2javaXÔhrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java
+yapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java 2javaXÔhryapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java

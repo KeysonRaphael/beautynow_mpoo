@@ -1,1 +1,0 @@
-»Qapp/build/intermediates/incremental/ir_dep/debug/dependencies/AndroidManifest.xml 2xmlXhrQapp/build/intermediates/incremental/ir_dep/debug/dependencies/AndroidManifest.xml

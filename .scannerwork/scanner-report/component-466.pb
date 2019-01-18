@@ -1,1 +1,1 @@
-ÒLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nb :ÑrLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nb
+Òfapp/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml 2xmlXDhrfapp/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest/AndroidManifest.xml

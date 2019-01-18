@@ -1,1 +1,0 @@
-®Lapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zu :­rLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zu

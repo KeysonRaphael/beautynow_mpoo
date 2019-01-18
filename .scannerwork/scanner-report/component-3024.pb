@@ -1,1 +1,0 @@
-Ð4app/src/main/res/drawable/ic_launcher_background.xml 2xmlX«hr4app/src/main/res/drawable/ic_launcher_background.xml

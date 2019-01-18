@@ -84,9 +84,9 @@ public class NovoServico extends Fragment {
         final View inf = inflater.inflate(R.layout.fragment_novo_servico, container, false);
         final Usuario obj = Session.getSession(this.getActivity().getBaseContext());
         final ImageView inputImage = inf.findViewById(R.id.inputServicoImage);
-        final EditText valorMonetario = (EditText)inf.findViewById(R.id.inputServicoValor);
+        final EditText valorMonetario = (EditText) inf.findViewById(R.id.inputServicoValor);
         valorMonetario.addTextChangedListener(new MascaraMonetaria(valorMonetario));
-        if (!idservico.equals("")){
+        if (!idservico.equals("")) {
             ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
             Servico servico = servicoNegocio.BuscarServicoFornecedor(idservico);
             EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
@@ -124,22 +124,22 @@ public class NovoServico extends Fragment {
             @Override
             public void onClick(View v) {
                 boolean camposCorretos = NovoServico.validarcampos(inf);
-                if(camposCorretos) {
-                            EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
-                            String servicoNome = inputServicoNome.getText().toString();
-                            EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
-                            String servicoValor = inputServicoValor.getText().toString();
-                            BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
-                            Bitmap servicoImagem = servicoImage.getBitmap();
-                            if (NovoServico.imagen == null) {
-                                servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
-                            }
-                            ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-                            if (!idservico.equals("")){
-                                servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico);
-                            }else {
-                                servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem);
-                            }
+                if (camposCorretos) {
+                    EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
+                    String servicoNome = inputServicoNome.getText().toString();
+                    EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
+                    String servicoValor = inputServicoValor.getText().toString();
+                    BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
+                    Bitmap servicoImagem = servicoImage.getBitmap();
+                    if (NovoServico.imagen == null) {
+                        servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
+                    }
+                    ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
+                    if (!idservico.equals("")) {
+                        servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico);
+                    } else {
+                        servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem);
+                    }
                     new CountDownTimer(7000, 1000) {
 
                         public void onTick(long millisUntilFinished) {
@@ -154,7 +154,8 @@ public class NovoServico extends Fragment {
                             inserido.setVisibility(View.VISIBLE);
                         }
                     }.start();
-                }}
+                }
+            }
         });
         Button irservicos = inf.findViewById(R.id.irservicos);
         irservicos.setOnClickListener(new View.OnClickListener() {
@@ -172,36 +173,32 @@ public class NovoServico extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if (requestCode == 1000  && resultCode == Activity.RESULT_OK) {
+        if (requestCode == 1000 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
             Cursor cursor = getActivity().getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
             cursor.moveToFirst();
-
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
-
             ImageView inputImage = getView().findViewById(R.id.inputServicoImage);
             Bitmap img = BitmapFactory.decodeFile(picturePath);
             inputImage.setImageBitmap(img);
         }
     }
 
-    public static boolean validarcampos(View inf){
+    public static boolean validarcampos(View inf) {
         EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
         EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
         String nome = inputServicoNome.getText().toString();
         String valor = inputServicoValor.getText().toString();
         boolean resultado = false;
-        if (nome.equals("")){
+        if (nome.equals("")) {
             inputServicoNome.setError("Digite um nome para seu servico!");
             return resultado;
         }
-        if (valor.equals("")){
+        if (valor.equals("")) {
             inputServicoValor.setError("Digite o valor do servico!");
             return resultado;
         }

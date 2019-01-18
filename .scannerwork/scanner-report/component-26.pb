@@ -1,1 +1,1 @@
-qapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java 2javaX¸hrqapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java
+qapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java 2javaX¸hrqapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils/R.java

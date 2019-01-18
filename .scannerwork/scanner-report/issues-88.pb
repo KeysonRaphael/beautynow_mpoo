@@ -1,2 +1,4 @@
-V
-squidS1118:Add a private constructor to hide the implicit public one. 2 
+^
+squidS2094BRemove this empty class, write its code or make it an "interface". 2
+
+ 

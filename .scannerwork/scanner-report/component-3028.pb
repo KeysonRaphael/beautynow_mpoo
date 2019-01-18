@@ -1,1 +1,0 @@
-Ôapp/src/main/res/drawable-v21 :ÓÖ×ØÙÛrapp/src/main/res/drawable-v21

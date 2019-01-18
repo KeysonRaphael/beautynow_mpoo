@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.clienteefornecedor.AgendaGui"
+    android:background="@color/white">
+
+    <sun.bob.mcalendarview.MCalendarView
+        android:id="@+id/mcalendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        tools:context=".MainActivity"
+        />
+
+    <!--<CalendarView-->
+        <!--android:id="@+id/calendarView"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:background="@color/white"-->
+        <!--android:dateTextAppearance="@style/CalenderViewDateCustomText"-->
+        <!--android:maxDate="31/12/2019"-->
+        <!--android:minDate="01/11/2019"-->
+        <!--android:theme="@style/CalenderViewCustom"-->
+        <!--android:unfocusedMonthDateColor="@style/CalenderViewWeekCustomText"-->
+        <!--android:weekDayTextAppearance="@style/CalenderViewWeekCustomText"-->
+        <!--android:weekNumberColor="@style/CalenderViewWeekCustomText"-->
+        <!--android:weekSeparatorLineColor="@style/CalenderViewWeekCustomText" />-->
+
+</FrameLayout>

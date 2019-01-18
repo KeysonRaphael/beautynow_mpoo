@@ -1,1 +1,0 @@
-ÈBapp/src/main/java/kn/beautynow/negocio/usuario/ValidarUsuario.java 2javaX-hrBapp/src/main/java/kn/beautynow/negocio/usuario/ValidarUsuario.java

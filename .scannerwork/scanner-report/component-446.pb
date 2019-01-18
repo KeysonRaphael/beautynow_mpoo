@@ -1,1 +1,0 @@
-¾Sapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21 :½rSapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21

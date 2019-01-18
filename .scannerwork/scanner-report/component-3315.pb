@@ -1,0 +1,1 @@
+óAapp/src/main/java/kn/beautynow/persistencia/GaleriaPerfilDao.java 2javaX;hrAapp/src/main/java/kn/beautynow/persistencia/GaleriaPerfilDao.java

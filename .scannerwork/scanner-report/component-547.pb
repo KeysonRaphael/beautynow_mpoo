@@ -1,1 +1,0 @@
-£Sapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v21 :¡rSapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-watch-v21

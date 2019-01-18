@@ -1,1 +1,0 @@
-²Lapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ka :±rLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ka

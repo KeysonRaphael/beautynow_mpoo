@@ -1,0 +1,1 @@
+¢\app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest :£r\app/build/intermediates/instant_app_manifest/debug/processDebugManifest/instant-app-manifest

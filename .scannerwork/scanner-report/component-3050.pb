@@ -1,1 +1,0 @@
-ê2app/src/main/res/layout/fragment_agenda_clinte.xml 2xmlXhr2app/src/main/res/layout/fragment_agenda_clinte.xml

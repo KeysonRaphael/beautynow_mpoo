@@ -1,0 +1,1 @@
+V‚app/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/android/support/test/R.java 2javaXhr‚app/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/android/support/test/R.java

@@ -1,0 +1,1 @@
+¬8app/src/main/res/layout/fragment_servicos_fornecedor.xml 2xmlXhr8app/src/main/res/layout/fragment_servicos_fornecedor.xml

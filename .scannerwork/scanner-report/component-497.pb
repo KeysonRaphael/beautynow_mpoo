@@ -1,1 +1,0 @@
-ñZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml 2xmlX hrZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sq/values-sq.xml

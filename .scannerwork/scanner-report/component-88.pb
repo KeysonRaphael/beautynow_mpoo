@@ -1,1 +1,1 @@
-XJapp/build/generated/source/buildConfig/debug/kn/beautynow/BuildConfig.java 2javaXhrJapp/build/generated/source/buildConfig/debug/kn/beautynow/BuildConfig.java
+Xapp/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/kn/beautynow/test/R.java 2javaXhrapp/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/kn/beautynow/test/R.java

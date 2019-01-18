@@ -1,1 +1,0 @@
-Á6app/src/main/java/kn/beautynow/gui/usuario/Splash.java 2javaX1hr6app/src/main/java/kn/beautynow/gui/usuario/Splash.java

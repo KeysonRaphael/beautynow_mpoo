@@ -1,1 +1,0 @@
-¥Happ/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java 2javaX2hrHapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java

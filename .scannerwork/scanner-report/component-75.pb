@@ -1,1 +1,1 @@
-K]app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/kn/beautynow :Jr]app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/kn/beautynow
+Knapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/google/android/gms/common :Jrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/google/android/gms/common

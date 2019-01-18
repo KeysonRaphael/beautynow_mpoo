@@ -1,1 +1,0 @@
-ëLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bg :érLapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bg

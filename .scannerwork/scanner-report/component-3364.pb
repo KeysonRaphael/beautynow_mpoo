@@ -1,0 +1,1 @@
+¤7app/src/main/res/layout/fragment_atividade_info_gui.xml 2xmlX¹hr7app/src/main/res/layout/fragment_atividade_info_gui.xml

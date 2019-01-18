@@ -1,1 +1,0 @@
-ëZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si.xml 2xmlX hrZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-si/values-si.xml

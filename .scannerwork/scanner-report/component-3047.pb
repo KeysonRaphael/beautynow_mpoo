@@ -1,1 +1,0 @@
-ç0app/src/main/res/layout/content_cliente_menu.xml 2xmlXhr0app/src/main/res/layout/content_cliente_menu.xml

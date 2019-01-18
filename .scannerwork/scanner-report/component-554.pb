@@ -1,1 +1,0 @@
-ªPapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW :©rPapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh-rTW

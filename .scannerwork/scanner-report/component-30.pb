@@ -1,1 +1,1 @@
-uapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/cursoradapter/R.java 2javaXhruapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/cursoradapter/R.java
+napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java 2javaXÔhrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java

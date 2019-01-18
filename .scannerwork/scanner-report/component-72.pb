@@ -1,1 +1,1 @@
-HQapp/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml 2xmlX«hrQapp/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml
+Hsapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/google/android/gms/base/R.java 2javaXmhrsapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/google/android/gms/base/R.java

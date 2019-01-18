@@ -1,1 +1,1 @@
--mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/interpolator :,rmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/interpolator
+-mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/interpolator :*rmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/interpolator

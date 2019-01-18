@@ -30,16 +30,16 @@ import kn.beautynow.gui.usuario.Perfil;
 
 public class ClienteMenu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
-                    Perfil.OnFragmentInteractionListener,
-                    ServicosFornecedor.OnFragmentInteractionListener,
-                    AtividadeGui.OnFragmentInteractionListener,
-                    NovoServico.OnFragmentInteractionListener,
-                    ClienteServico.OnFragmentInteractionListener,
-                    AgendaGui.OnFragmentInteractionListener,
-                    AtividadeInfoGUI.OnFragmentInteractionListener,
-                    RecomendacaoGUI.OnFragmentInteractionListener,
-                    AtividadesDiaGui.OnFragmentInteractionListener,
-                    EditarEndereco.OnFragmentInteractionListener {
+        Perfil.OnFragmentInteractionListener,
+        ServicosFornecedor.OnFragmentInteractionListener,
+        AtividadeGui.OnFragmentInteractionListener,
+        NovoServico.OnFragmentInteractionListener,
+        ClienteServico.OnFragmentInteractionListener,
+        AgendaGui.OnFragmentInteractionListener,
+        AtividadeInfoGUI.OnFragmentInteractionListener,
+        RecomendacaoGUI.OnFragmentInteractionListener,
+        AtividadesDiaGui.OnFragmentInteractionListener,
+        EditarEndereco.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +47,13 @@ public class ClienteMenu extends AppCompatActivity
         setContentView(R.layout.activity_cliente_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
         setTitle("Perfil");
         navigationView.setCheckedItem(R.id.perfil);
         Fragment fragment = new Perfil();
@@ -90,7 +85,6 @@ public class ClienteMenu extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             Session sessao = new Session();
@@ -99,7 +93,6 @@ public class ClienteMenu extends AppCompatActivity
             startActivity(login);
             finish();
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -108,7 +101,6 @@ public class ClienteMenu extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.perfil) {
             setTitle("Perfil");
             Fragment fragment = new Perfil();
@@ -127,14 +119,13 @@ public class ClienteMenu extends AppCompatActivity
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, fragment);
             ft.commit();
-        }else if (id == R.id.recomendacao) {
+        } else if (id == R.id.recomendacao) {
             setTitle("Recomendação");
             Fragment fragment = new RecomendacaoGUI();
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.frame, fragment);
             ft.commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -142,6 +133,5 @@ public class ClienteMenu extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 }

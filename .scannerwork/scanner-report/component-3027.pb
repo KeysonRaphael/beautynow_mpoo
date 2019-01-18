@@ -1,1 +1,0 @@
-Ó0app/src/main/res/drawable-v21/ic_menu_camera.xml 2xmlXhr0app/src/main/res/drawable-v21/ic_menu_camera.xml

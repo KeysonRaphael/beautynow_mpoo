@@ -1,1 +1,1 @@
-'iapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment :&riapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment
+'gapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/design :&rgapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/design

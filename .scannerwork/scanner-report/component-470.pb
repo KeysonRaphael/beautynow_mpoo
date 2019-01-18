@@ -1,1 +1,0 @@
-ÖRapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8 :ÕrRapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8

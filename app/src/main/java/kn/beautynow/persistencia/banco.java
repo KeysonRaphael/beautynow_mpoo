@@ -1,4 +1,5 @@
 package kn.beautynow.persistencia;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,12 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-public class Banco extends SQLiteOpenHelper{
+public class Banco extends SQLiteOpenHelper {
     private static final String NOME_BANCO = "banco.db";
     private static final int VERSAO;
+
     static {
         VERSAO = 24;
     }
+
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";
     public static final String COLUMN_USUARIO_ID = "Id";
@@ -78,8 +81,8 @@ public class Banco extends SQLiteOpenHelper{
     public static final String COLUMN_NOTA_NOTA_FORNECEDOR = "notafornecedor";
 
 
-    public Banco(Context context){
-        super(context, NOME_BANCO,null,VERSAO);
+    public Banco(Context context) {
+        super(context, NOME_BANCO, null, VERSAO);
     }
 
     @Override

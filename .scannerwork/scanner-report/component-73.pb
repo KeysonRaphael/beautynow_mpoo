@@ -1,1 +1,1 @@
-I6app/build/generated/res/pngs/debug/drawable-anydpi-v21 :Hr6app/build/generated/res/pngs/debug/drawable-anydpi-v21
+Ilapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/google/android/gms/base :Hrlapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/com/google/android/gms/base

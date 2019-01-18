@@ -1,1 +1,1 @@
-#kapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview :"rkapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview
+#mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/documentfile :"rmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/documentfile

@@ -1,1 +1,0 @@
-¹fapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml 2xmlXhrfapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-large-v4/values-large-v4.xml

@@ -1,1 +1,1 @@
-gapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui :rgapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui
+rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout :rrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout

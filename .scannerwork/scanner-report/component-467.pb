@@ -1,1 +1,1 @@
-ÓZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml 2xmlX hrZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ne/values-ne.xml
+ÓRapp/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest :ÒrRapp/build/intermediates/bundle_manifest/debug/processDebugManifest/bundle-manifest

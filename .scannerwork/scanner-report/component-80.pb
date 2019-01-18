@@ -1,0 +1,1 @@
+Pdapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/kn/beautynow/R.java 2javaXù£hrdapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/kn/beautynow/R.java

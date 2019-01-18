@@ -1,1 +1,0 @@
-‘Zapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gl/values-gl.xml 2xmlX hrZapp/build/intermediates/incremental/mergeDebugResources/merged.dir/values-gl/values-gl.xml
