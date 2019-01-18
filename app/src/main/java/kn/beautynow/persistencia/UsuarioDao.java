@@ -30,9 +30,10 @@ public class UsuarioDao {
         valores.put(Banco.COLUMN_USUARIO_SENHA, senha);
         valores.put(Banco.COLUMN_USUARIO_TIPO, tipo);
         valores.put(Banco.COLUMN_USUARIO_SEXO, sexo);
+
         resultado = String.valueOf(db.insert(Banco.TABLE_USUARIO, null, valores));
-        db.close();
         String idTipo;
+        db.close();
         if (tipo.equals("Cliente")){
             ClienteDao cliente = new ClienteDao(contexto);
             idTipo = cliente.insereCliente(resultado);
@@ -54,7 +55,6 @@ public class UsuarioDao {
                 + "' AND senha = '"+ vsenha +"' AND tipo = '"+ vtipo +"' limit 1";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
-        db.close();
         if(cursor.getCount() >= 1){
             while(cursor.moveToNext()){
                 if(cursor.getCount() > 0){
@@ -72,7 +72,6 @@ public class UsuarioDao {
                     cursor.close();
                     db = banco.getReadableDatabase();
                     Cursor cursorend = db.rawQuery(selectEndereco,new String[]{});
-                    db.close();
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
@@ -84,18 +83,19 @@ public class UsuarioDao {
                                 retorno.add(14,cursorend.getString(6));
                                 retorno.add(15,cursorend.getString(7));
                                 cursorend.close();
+                                db.close();
                                 return retorno;
                             }
                         }
                     }
                     cursorend.close();
-                    
+                    db.close();
                     return retorno;
                 }
             }
         }
         cursor.close();
-        
+        db.close();
         return retorno;
     }
     public ArrayList<String> selectUsuarioPorTipo(String idfornecedor, String Tipo){
@@ -104,7 +104,6 @@ public class UsuarioDao {
                 + "' AND tipo = '"+ Tipo +"' limit 1";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
-        db.close();
         if(cursor.getCount() >= 1){
             while(cursor.moveToNext()){
                 if(cursor.getCount() > 0){
@@ -120,9 +119,9 @@ public class UsuarioDao {
                     String selectEndereco = "SELECT * FROM "+ Banco.TABLE_ENDERECO +
                             " WHERE id_user = '"+ cursor.getString(0) + "' limit 1";
                     cursor.close();
+                    db.close();
                     db = banco.getReadableDatabase();
                     Cursor cursorend = db.rawQuery(selectEndereco,new String[]{});
-                    db.close();
                     if(cursorend.getCount() >= 1) {
                         while (cursorend.moveToNext()) {
                             if (cursorend.getCount() > 0) {
@@ -134,16 +133,19 @@ public class UsuarioDao {
                                 retorno.add(14,cursorend.getString(6));
                                 retorno.add(15,cursorend.getString(7));
                                 cursorend.close();
+                                db.close();
                                 return retorno;
                             }
                         }
                     }
                     cursorend.close();
+                    db.close();
                     return retorno;
                 }
             }
         }
         cursor.close();
+        db.close();
         return retorno;
     }
 
@@ -151,12 +153,14 @@ public class UsuarioDao {
         String querySql = "SELECT cpf FROM usuario WHERE cpf = ? AND tipo = ?";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySql, new String[] {cpfv, tipov});
-        db.close();
         if(cursor.getCount()>0){
             cursor.close();
+            db.close();
             return true;
         }
         cursor.close();
+        db.close();
         return false;
     }
+
 }

@@ -150,10 +150,10 @@ public class NovoServico extends Fragment {
                         public void onFinish() {
                             RelativeLayout progress = inf.findViewById(R.id.progress_circular);
                             progress.setVisibility(View.INVISIBLE);
+                            GridLayout inserido = inf.findViewById(R.id.concluido);
+                            inserido.setVisibility(View.VISIBLE);
                         }
                     }.start();
-                    GridLayout inserido = inf.findViewById(R.id.concluido);
-                    inserido.setVisibility(View.VISIBLE);
                 }}
         });
         Button irservicos = inf.findViewById(R.id.irservicos);

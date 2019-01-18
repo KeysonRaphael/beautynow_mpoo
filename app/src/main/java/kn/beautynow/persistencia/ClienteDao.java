@@ -14,9 +14,11 @@ public class ClienteDao {
     }
     public String insereCliente(String iduser){
         ContentValues valores;
+
         db = banco.getWritableDatabase();
         valores = new ContentValues();
         valores.put(Banco.COLUMN_CLIENTE_ID_USUARIO, iduser);
+
         String resultado = String.valueOf(db.insert(Banco.TABLE_CLIENTE, null, valores));
         db.close();
         return resultado;

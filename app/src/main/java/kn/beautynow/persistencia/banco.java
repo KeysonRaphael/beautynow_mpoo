@@ -7,10 +7,10 @@ import android.util.Log;
 
 
 public class Banco extends SQLiteOpenHelper{
-    private static final String NOME_BANCO = "Banco.db";
+    private static final String NOME_BANCO = "banco.db";
     private static final int VERSAO;
     static {
-        VERSAO = 23;
+        VERSAO = 24;
     }
     //Tabela Usuario
     public static final String TABLE_USUARIO = "usuario";

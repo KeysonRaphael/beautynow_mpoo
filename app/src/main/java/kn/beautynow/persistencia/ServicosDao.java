@@ -26,7 +26,6 @@ public class ServicosDao {
                 + "' ";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectServicos,new String[]{});
-        db.close();
         if (cursor.getCount()>0){
             int index = 0;
             cursor.moveToFirst();
@@ -43,9 +42,11 @@ public class ServicosDao {
                 cursor.moveToNext();
             }
             cursor.close();
+            db.close();
             return retorno;
         }
         cursor.close();
+        db.close();
         return retorno;
     }
     public ArrayList selectServicos() {
@@ -53,7 +54,6 @@ public class ServicosDao {
         String selectServicos = "SELECT * FROM "+ Banco.TABLE_SERVICOS_FORNECEDOR +" ";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectServicos,new String[]{});
-        db.close();
         if (cursor.getCount()>0){
             int index = 0;
             cursor.moveToFirst();
@@ -71,11 +71,11 @@ public class ServicosDao {
                 cursor.moveToNext();
             }
             cursor.close();
-            
+            db.close();
             return retorno;
         }
         cursor.close();
-        
+        db.close();
         return retorno;
     }
 
@@ -105,12 +105,13 @@ public class ServicosDao {
         db = banco.getReadableDatabase();
         String resultado = "0";
         Cursor cursor = db.rawQuery(querySql, new String[] {descricao});
-        db.close();
         if(cursor.getCount()>0){
             cursor.close();
+            db.close();
             return descricao;
         }
         cursor.close();
+        db.close();
         return resultado;
     }
 
@@ -119,7 +120,6 @@ public class ServicosDao {
         String selectServicos = "SELECT * FROM "+ Banco.TABLE_SERVICOS_FORNECEDOR +" "+ "WHERE " + Banco.COLUMN_SERVICOS_FORNECEDOR_ID + " = '"+ id +"' ";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectServicos,new String[]{});
-        db.close();
         if (cursor.getCount()>0){
             cursor.moveToFirst();
             retorno.setId(cursor.getString(0));
@@ -130,9 +130,11 @@ public class ServicosDao {
             Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
             retorno.setImagem(bitmap);
             cursor.close();
+            db.close();
             return retorno;
         }
         cursor.close();
+        db.close();
         return retorno;
     }
 
@@ -151,7 +153,6 @@ public class ServicosDao {
         String selectServicos = "SELECT * FROM "+ Banco.TABLE_SERVICOS_FORNECEDOR +" WHERE "+ Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR + " = " + id;
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectServicos,new String[]{});
-        db.close();
         if (cursor.getCount()>0){
             int index = 0;
             cursor.moveToFirst();
@@ -169,9 +170,11 @@ public class ServicosDao {
                 cursor.moveToNext();
             }
             cursor.close();
+            db.close();
             return retorno;
         }
         cursor.close();
+        db.close();
         return retorno;
     }
 }

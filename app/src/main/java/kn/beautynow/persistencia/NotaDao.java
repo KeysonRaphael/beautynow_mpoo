@@ -33,7 +33,6 @@ public class NotaDao {
         String selectNotas = "SELECT * FROM "+ Banco.TABLE_NOTA;
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectNotas,new String[]{});
-        db.close();
         if (cursor.getCount()>0){
             while (cursor.moveToNext()){
                 Avaliacao avaliacao = new Avaliacao();
@@ -45,6 +44,8 @@ public class NotaDao {
             }
         }
         cursor.close();
+        db.close();
         return resultado;
     }
+
 }

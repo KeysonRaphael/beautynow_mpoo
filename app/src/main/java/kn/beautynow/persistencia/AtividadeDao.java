@@ -40,7 +40,6 @@ public class AtividadeDao {
         String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE cliente = '"+ cliente + "'";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
-        db.close();
         if(cursor.getCount() >= 0){
             ArrayList<Atividade> atividades= new ArrayList<Atividade>();
             int count = 0;
@@ -61,11 +60,11 @@ public class AtividadeDao {
             }
             agenda.setCalendario(atividades);
             cursor.close();
-            
+            db.close();
             return agenda;
         }
         cursor.close();
-        
+        db.close();
         return agenda;
     }
 
@@ -74,7 +73,6 @@ public class AtividadeDao {
         String selectUser = "SELECT * FROM "+ Banco.TABLE_AGENDA +" WHERE fornecedor = '"+ idfornecedor + "'";
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectUser,new String[]{});
-        db.close();
         if(cursor.getCount() >= 0){
             ArrayList<Atividade> atividades= new ArrayList<Atividade>();
             int count = 0;
@@ -97,11 +95,11 @@ public class AtividadeDao {
             }
             agenda.setCalendario(atividades);
             cursor.close();
-            
+            db.close();
             return agenda;
         }
         cursor.close();
-        
+        db.close();
         return agenda;
     }
 
