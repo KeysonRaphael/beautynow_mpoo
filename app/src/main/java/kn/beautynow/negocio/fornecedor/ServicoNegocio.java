@@ -40,13 +40,16 @@ public class ServicoNegocio {
         return descricao;
     }
 
-    public void inserirServicoFornecedor(String descricao, String valor, String idfornecedor, Bitmap image) {
+    public void inserirServicoFornecedor(String descricao, String valor, String idfornecedor, Bitmap image, Bitmap imagemg) {
         ServicosDao servicos = new ServicosDao(contexto);
         String idservico = this.inserirServico(descricao);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.PNG, 10, out);
         byte[] imagem = out.toByteArray();
-        servicos.inserirServicoForncedorDao(idfornecedor, idservico, valor, imagem);
+        ByteArrayOutputStream outd = new ByteArrayOutputStream();
+        imagemg.compress(Bitmap.CompressFormat.PNG, 10, outd);
+        byte[] imageg = outd.toByteArray();
+        servicos.inserirServicoForncedorDao(idfornecedor, idservico, valor, imagem, imageg);
         Fornecedor fornecedorn = Session.getSessionFornecedor(contexto);
         Servicos servicosn = new Servicos();
         servicosn.setListaServicos(new FornecedorNegocio(contexto).carregarServicos(Session.getSession(contexto).getIdUser()));
@@ -62,12 +65,15 @@ public class ServicoNegocio {
         return servicos;
     }
 
-    public void updateServicoFornecedor(String servicoNome, String servicoValor, Bitmap servicoImagem, String idServico) {
+    public void updateServicoFornecedor(String servicoNome, String servicoValor, Bitmap servicoImagem, String idServico, Bitmap imagemgaleria) {
         ServicosDao servicosDao = new ServicosDao(contexto);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         servicoImagem.compress(Bitmap.CompressFormat.PNG, 10, out);
         byte[] imagem = out.toByteArray();
-        servicosDao.updateServicoFornecedor(servicoNome, servicoValor, imagem, idServico);
+        ByteArrayOutputStream outd = new ByteArrayOutputStream();
+        imagemgaleria.compress(Bitmap.CompressFormat.PNG, 10, outd);
+        byte[] imagemgaleri = outd.toByteArray();
+        servicosDao.updateServicoFornecedor(servicoNome, servicoValor, imagem, idServico, imagemgaleri);
         Fornecedor fornecedorn = Session.getSessionFornecedor(contexto);
         Servicos servicosn = new Servicos();
         servicosn.setListaServicos(new FornecedorNegocio(contexto).carregarServicos(Session.getSession(contexto).getIdUser()));

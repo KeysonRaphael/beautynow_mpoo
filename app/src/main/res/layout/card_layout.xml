@@ -16,7 +16,8 @@ android:padding="16dp">
     android:id="@+id/image_servico"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
-    android:layout_marginRight="16dp" />
+    android:layout_marginRight="16dp"
+    />
 
 <TextView
     android:layout_width="wrap_content"

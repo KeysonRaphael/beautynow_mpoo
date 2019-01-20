@@ -1,6 +1,7 @@
 package kn.beautynow.gui.fornecedor;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -74,6 +75,10 @@ public class ServicosFornecedor extends Fragment
             } else {
                 servicos = obj.getServicos().clone();
             }
+//            for (int i = 0;i<servicos.getListaServicos().size();i++){
+//                Bitmap imagemn = Bitmap.createScaledBitmap(servicos.getListaServicos().get(i).getImagem(),75, 75, true);
+//                servicos.getListaServicos().get(i).setImagem(imagemn);
+//            }
             RecyclerView.Adapter adapter = new AdapterServicos(servicos);
             LinearLayoutManager llm = new LinearLayoutManager(getActivity());
             llm.setOrientation(LinearLayoutManager.VERTICAL);

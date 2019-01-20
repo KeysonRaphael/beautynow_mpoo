@@ -95,7 +95,7 @@ public class NovoServico extends Fragment {
             EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
             String servicoValor = servico.getValor();
             inputServicoValor.setText(servicoValor);
-            inputImage.setImageBitmap(NovoServico.imagen);
+            inputImage.setImageBitmap(servico.getImagem());
             Button atualizar = inf.findViewById(R.id.salvarServico);
             atualizar.setText("Atualizar");
         }
@@ -131,16 +131,21 @@ public class NovoServico extends Fragment {
                     String servicoValor = inputServicoValor.getText().toString();
                     BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
                     Bitmap servicoImagem = servicoImage.getBitmap();
+                    Bitmap imagemgaleria = servicoImage.getBitmap();
                     if (NovoServico.imagen == null) {
-                        servicoImagem = ImagemNegocio.getResizedBitmap(servicoImagem, 100);
+                        servicoImagem = Bitmap.createScaledBitmap(servicoImagem,300, 300, false);
+                        imagemgaleria = Bitmap.createScaledBitmap(servicoImagem,75, 75, false);
                     }
                     ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
                     if (!idservico.equals("")) {
-                        servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico);
+                        if (!naomudouimagem[0]){
+                            imagemgaleria = Bitmap.createScaledBitmap(servicoImagem,75, 75, false);
+                        }
+                        servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico, imagemgaleria);
                     } else {
-                        servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem);
+                        servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem, imagemgaleria);
                     }
-                    new CountDownTimer(7000, 1000) {
+                    new CountDownTimer(4000, 1000) {
 
                         public void onTick(long millisUntilFinished) {
                             RelativeLayout progress = inf.findViewById(R.id.progress_circular);

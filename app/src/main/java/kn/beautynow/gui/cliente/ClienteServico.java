@@ -1,6 +1,7 @@
 package kn.beautynow.gui.cliente;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.cliente.Cliente;
+import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
 import kn.beautynow.gui.fornecedor.NovoServico;
@@ -27,9 +29,7 @@ import kn.beautynow.negocio.usuario.UsuarioNegocio;
 public class ClienteServico extends Fragment {
     private OnFragmentInteractionListener mListener;
     public static String idfornecedor = "";
-    public static String descricao = "";
-    public static String valor = "";
-    public static Bitmap imagen;
+    public static String idservico = "";
 
     public ClienteServico() {
         // Required empty public constructor
@@ -49,15 +49,17 @@ public class ClienteServico extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         final View inf = inflater.inflate(R.layout.fragment_cliente_servico, container, false);
+        ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
+        Servico servico = servicoNegocio.BuscarServicoFornecedor(idservico);
         TextView inputServicoNome = inf.findViewById(R.id.textoServico);
-        final String servicoNome = ClienteServico.descricao;
+        final String servicoNome = servico.getDescricao();
         inputServicoNome.setText(servicoNome);
         TextView inputServicoValor = inf.findViewById(R.id.valorServico);
-        final String servicoValor = ClienteServico.valor;
+        final String servicoValor = servico.getValor();
         inputServicoValor.setText(servicoValor);
         ImageView inputImage = inf.findViewById(R.id.imageServico);
-        inputImage.setImageBitmap(ClienteServico.imagen);
-        Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(idfornecedor, "Fornecedor");
+        inputImage.setImageBitmap(servico.getImagem());
+        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(idfornecedor, "Fornecedor");
         String idUser = user.getId();
         Bitmap fornecedorimagem = new ImagemPerfilNegocio(getContext()).getImgPerfil(idUser);
         ImageView imageFornecedor = inf.findViewById(R.id.imageFornecedor);
@@ -78,6 +80,15 @@ public class ClienteServico extends Fragment {
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 ft.replace(R.id.frame, fragment);
                 ft.commit();
+            }
+        });
+        Button abrirMaps = inf.findViewById(R.id.maps);
+        abrirMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("google.navigation:q="+user.getEndereco().getCep()));
+                startActivity(intent);
             }
         });
         return inf;

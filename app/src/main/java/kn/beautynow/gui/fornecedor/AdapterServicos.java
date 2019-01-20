@@ -55,7 +55,7 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
         servicosViewHolder.valor.setText(servico.getValor());
         servicosViewHolder.fornecedor = servico.getIdFornecedor();
         servicosViewHolder.servico = servico.getId();
-        servicosViewHolder.imagem.setImageBitmap(servico.getImagem());
+        servicosViewHolder.imagem.setImageBitmap(servico.getImagemGaleria());
     }
 
     @Override
@@ -70,6 +70,7 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
 
     public static class ServicosViewHolder extends RecyclerView.ViewHolder {
         protected ImageView imagem;
+        protected Bitmap imagemr;
         protected TextView descricao;
         protected TextView valor;
         protected String fornecedor;
@@ -92,7 +93,6 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
                         ((Activity) contexto).setTitle("Editar Serviço");
                         FragmentTransaction t = ((AppCompatActivity) contexto).getSupportFragmentManager().beginTransaction();
                         Fragment mFrag = new NovoServico();
-                        NovoServico.imagen = ((BitmapDrawable) imagem.getDrawable()).getBitmap();
                         NovoServico.idfornecedor = fornecedor;
                         NovoServico.idservico = servico;
                         t.replace(R.id.fornecedor_frame, mFrag);
@@ -101,10 +101,8 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
                         ((Activity) contexto).setTitle("Serviço");
                         FragmentTransaction t = ((AppCompatActivity) contexto).getSupportFragmentManager().beginTransaction();
                         Fragment mFrag = new ClienteServico();
-                        ClienteServico.valor = (valor.getText().toString());
-                        ClienteServico.descricao = (descricao.getText().toString());
-                        ClienteServico.imagen = ((BitmapDrawable) imagem.getDrawable()).getBitmap();
                         ClienteServico.idfornecedor = fornecedor;
+                        ClienteServico.idservico = servico;
                         t.replace(R.id.frame, mFrag);
                         t.commit();
                     }

@@ -12,7 +12,7 @@ public class Banco extends SQLiteOpenHelper {
     private static final int VERSAO;
 
     static {
-        VERSAO = 24;
+        VERSAO = 25;
     }
 
     //Tabela Usuario
@@ -60,6 +60,7 @@ public class Banco extends SQLiteOpenHelper {
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR = "id_fornecedor";
     public static final String COLUMN_SERVICOS_FORNECEDOR_VALOR = "valor";
     public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM = "imagem";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM_Galeria = "imagem_galeria";
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO = "id_servico";
     //Tabela Agenda
     public static final String TABLE_AGENDA = "agenda";
@@ -143,6 +144,7 @@ public class Banco extends SQLiteOpenHelper {
                 Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR + tipotexto +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR + tipotexto +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM + " BLOB," +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM_Galeria + " BLOB," +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO + tipotexton + " )";
         db.execSQL(sqlServicosFornecedor);
         //create table agenda

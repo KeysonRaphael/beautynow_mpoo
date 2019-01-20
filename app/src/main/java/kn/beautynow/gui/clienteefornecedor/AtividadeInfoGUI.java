@@ -1,6 +1,7 @@
 package kn.beautynow.gui.clienteefornecedor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,8 @@ import kn.beautynow.R;
 import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.clienteefornecedor.Atividade;
 import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Endereco;
+import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
 import kn.beautynow.negocio.clienteefornecedor.NotaNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
@@ -56,6 +59,18 @@ public class AtividadeInfoGUI extends Fragment {
         final TextView ativo = INF.findViewById(R.id.inputativoview);
         final TextView finalizado = INF.findViewById(R.id.inputfinalizadoview);
         final GridLayout grid = INF.findViewById(R.id.darnota);
+        final Button maps = INF.findViewById(R.id.mapsi);
+        TextView inputendereco = INF.findViewById(R.id.inputenderecoview);
+        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor");
+        inputendereco.setText(user.getEndereco().printEndereco());
+        maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("google.navigation:q="+ user.getEndereco().getCep()));
+                startActivity(intent);
+            }
+        });
         darNotaFornecedor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,9 +132,8 @@ public class AtividadeInfoGUI extends Fragment {
             fornecedor.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor").getNome());
             TextView enderecotexto = INF.findViewById(R.id.enderecoview);
             enderecotexto.setVisibility(View.VISIBLE);
-            TextView inputendereco = INF.findViewById(R.id.inputenderecoview);
-            inputendereco.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor").getEndereco().printEndereco());
             inputendereco.setVisibility(View.VISIBLE);
+            maps.setVisibility(View.VISIBLE);
         } else {
             fornecedor.setVisibility(View.INVISIBLE);
             TextView fornecedortexto = INF.findViewById(R.id.fornecedorview);

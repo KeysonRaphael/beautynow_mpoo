@@ -32,11 +32,14 @@ public class ServicosDao {
             while (cursor.getCount() >= (index + 1)) {
                 Servico servico = new Servico();
                 servico.setId(cursor.getString(0));
-                servico.setDescricao(cursor.getString(4));
+                servico.setDescricao(cursor.getString(5));
                 servico.setValor(cursor.getString(2));
                 byte[] imagem = cursor.getBlob(3);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
                 servico.setImagem(bitmap);
+                byte[] imagemg = cursor.getBlob(4);
+                Bitmap bitmapg = BitmapFactory.decodeByteArray(imagemg, 0, imagemg.length);
+                servico.setImagemGaleria(bitmapg);
                 retorno.add(index, servico);
                 index += 1;
                 cursor.moveToNext();
@@ -62,11 +65,14 @@ public class ServicosDao {
                 Servico servico = new Servico();
                 servico.setId(cursor.getString(0));
                 servico.setIdFornecedor(cursor.getString(1));
-                servico.setDescricao(cursor.getString(4));
+                servico.setDescricao(cursor.getString(5));
                 servico.setValor(cursor.getString(2));
                 byte[] imagem = cursor.getBlob(3);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
                 servico.setImagem(bitmap);
+                byte[] imagemg = cursor.getBlob(4);
+                Bitmap bitmapg = BitmapFactory.decodeByteArray(imagemg, 0, imagemg.length);
+                servico.setImagemGaleria(bitmapg);
                 retorno.add(index, servico);
                 index += 1;
                 cursor.moveToNext();
@@ -82,7 +88,6 @@ public class ServicosDao {
 
     public void inserirServico(String descricao) {
         ContentValues valores;
-        String resultado;
         db = banco.getWritableDatabase();
         valores = new ContentValues();
         valores.put(Banco.COLUMN_SERVICOS_DESCRICAO, descricao);
@@ -90,15 +95,15 @@ public class ServicosDao {
         db.close();
     }
 
-    public void inserirServicoForncedorDao(String idforncedor, String idservico, String valor, byte[] imagem) {
+    public void inserirServicoForncedorDao(String idforncedor, String idservico, String valor, byte[] imagem, byte[] imagemg) {
         ContentValues valores;
-        String resultado;
         db = banco.getWritableDatabase();
         valores = new ContentValues();
         valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR, idforncedor);
         valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO, idservico);
         valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR, valor);
         valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM, imagem);
+        valores.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM_Galeria, imagemg);
         db.insert(Banco.TABLE_SERVICOS_FORNECEDOR, null, valores);
         db.close();
     }
@@ -127,11 +132,14 @@ public class ServicosDao {
             cursor.moveToFirst();
             retorno.setId(cursor.getString(0));
             retorno.setIdFornecedor(cursor.getString(1));
-            retorno.setDescricao(cursor.getString(4));
+            retorno.setDescricao(cursor.getString(5));
             retorno.setValor(cursor.getString(2));
             byte[] imagem = cursor.getBlob(3);
             Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
             retorno.setImagem(bitmap);
+            byte[] imagemg = cursor.getBlob(4);
+            Bitmap bitmapg = BitmapFactory.decodeByteArray(imagemg, 0, imagemg.length);
+            retorno.setImagemGaleria(bitmapg);
             cursor.close();
             db.close();
             return retorno;
@@ -141,12 +149,13 @@ public class ServicosDao {
         return retorno;
     }
 
-    public void updateServicoFornecedor(String servico, String valor, byte[] imagem, String idservico) {
+    public void updateServicoFornecedor(String servico, String valor, byte[] imagem, String idservico, byte[] imagemgaleri) {
         db = banco.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO, servico);
         cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR, valor);
         cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM, imagem);
+        cv.put(Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM_Galeria, imagemgaleri);
         db.update(Banco.TABLE_SERVICOS_FORNECEDOR, cv, "Id=?", new String[]{idservico});
         db.close();
     }
@@ -163,11 +172,14 @@ public class ServicosDao {
                 Servico servico = new Servico();
                 servico.setId(cursor.getString(0));
                 servico.setIdFornecedor(cursor.getString(1));
-                servico.setDescricao(cursor.getString(4));
+                servico.setDescricao(cursor.getString(5));
                 servico.setValor(cursor.getString(2));
                 byte[] imagem = cursor.getBlob(3);
                 Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
                 servico.setImagem(bitmap);
+                byte[] imagemg = cursor.getBlob(4);
+                Bitmap bitmapg = BitmapFactory.decodeByteArray(imagemg, 0, imagemg.length);
+                servico.setImagemGaleria(bitmapg);
                 retorno.add(index, servico);
                 index += 1;
                 cursor.moveToNext();

@@ -8,6 +8,7 @@ public class Servico {
     private String idFornecedor;
     private String descricao;
     private Bitmap imagem;
+    private Bitmap imagemGaleria;
     private String valor;
 
     public String getId() {
@@ -48,5 +49,13 @@ public class Servico {
 
     public void setIdFornecedor(String idFornecedor) {
         this.idFornecedor = idFornecedor;
+    }
+
+    public void setImagemGaleria(Bitmap bitmap) {
+        this.imagemGaleria = bitmap;
+    }
+
+    public Bitmap getImagemGaleria() {
+        return imagemGaleria;
     }
 }
