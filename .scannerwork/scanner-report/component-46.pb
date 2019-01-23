@@ -1,1 +1,1 @@
-.napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java 2javaX¸hrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader/R.java
+.Japp/src/main/java/kn/beautynow/negocio/clienteefornecedor/NotaNegocio.java 2javaXhrJapp/src/main/java/kn/beautynow/negocio/clienteefornecedor/NotaNegocio.java

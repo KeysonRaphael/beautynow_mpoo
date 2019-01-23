@@ -1,1 +1,0 @@
-Alapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/cardview :@rlapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/cardview

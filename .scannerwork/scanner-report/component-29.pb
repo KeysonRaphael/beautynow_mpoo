@@ -1,1 +1,1 @@
-kapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview :rkapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/customview
+>app/src/main/java/kn/beautynow/gui/cliente/ClienteServico.java 2javaXhr>app/src/main/java/kn/beautynow/gui/cliente/ClienteServico.java

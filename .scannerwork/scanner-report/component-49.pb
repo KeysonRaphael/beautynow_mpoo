@@ -1,1 +1,1 @@
-1vapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/localbroadcastmanager :0rvapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/localbroadcastmanager
+13app/src/main/java/kn/beautynow/negocio/recomendacao :0r3app/src/main/java/kn/beautynow/negocio/recomendacao

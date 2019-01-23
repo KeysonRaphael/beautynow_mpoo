@@ -14,10 +14,9 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import kn.beautynow.R;
-import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.clienteefornecedor.Atividade;
+import kn.beautynow.dominio.controller.ExceptionCases;
 import kn.beautynow.dominio.controller.Session;
-import kn.beautynow.dominio.usuario.Endereco;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
 import kn.beautynow.negocio.clienteefornecedor.NotaNegocio;
@@ -25,15 +24,14 @@ import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class AtividadeInfoGUI extends Fragment {
     private OnFragmentInteractionListener mListener;
-    public static Atividade atividade;
+    private Atividade atividade;
 
     public AtividadeInfoGUI() {
         // Required empty public constructor
     }
 
-    public static AtividadeInfoGUI newInstance(String param1, String param2) {
-        AtividadeInfoGUI fragment = new AtividadeInfoGUI();
-        return fragment;
+    public static AtividadeInfoGUI newInstance() {
+        return new AtividadeInfoGUI();
     }
 
     @Override
@@ -44,23 +42,29 @@ public class AtividadeInfoGUI extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View INF = inflater.inflate(R.layout.fragment_atividade_info_gui, container, false);
-        TextView data = INF.findViewById(R.id.inputdataview);
+        final View inf = inflater.inflate(R.layout.fragment_atividade_info_gui, container, false);
+        String clientec = "Cliente";
+        TextView data = inf.findViewById(R.id.inputdataview);
         data.setText(atividade.getData());
-        TextView hora = INF.findViewById(R.id.inputhoraview);
+        TextView hora = inf.findViewById(R.id.inputhoraview);
         hora.setText(atividade.getHora());
-        final TextView cliente = INF.findViewById(R.id.inputclienteview);
-        TextView fornecedor = INF.findViewById(R.id.inputfornecedorview);
+        TextView servico = inf.findViewById(R.id.inputservicoview);
+        servico.setText(atividade.getServico());
+        TextView valor = inf.findViewById(R.id.inputvalorview);
+        valor.setText(atividade.getValor());
+        final TextView cliente = inf.findViewById(R.id.inputclienteview);
+        TextView fornecedor = inf.findViewById(R.id.inputfornecedorview);
         fornecedor.setText(atividade.getFornecedor());
-        final Button confirmarAtendimento = INF.findViewById(R.id.confirmarAtendimento);
-        final Button rejeitarAtendimento = INF.findViewById(R.id.rejeitarAtendimento);
-        final Button finalizarAtendimento = INF.findViewById(R.id.finalizarAtendimento);
-        final Button darNotaFornecedor = INF.findViewById(R.id.darNotaFornecedor);
-        final TextView ativo = INF.findViewById(R.id.inputativoview);
-        final TextView finalizado = INF.findViewById(R.id.inputfinalizadoview);
-        final GridLayout grid = INF.findViewById(R.id.darnota);
-        final Button maps = INF.findViewById(R.id.mapsi);
-        TextView inputendereco = INF.findViewById(R.id.inputenderecoview);
+        final Button confirmarAtendimento = inf.findViewById(R.id.confirmarAtendimento);
+        final Button rejeitarAtendimento = inf.findViewById(R.id.rejeitarAtendimento);
+        final Button finalizarAtendimento = inf.findViewById(R.id.finalizarAtendimento);
+        final Button darNotaFornecedor = inf.findViewById(R.id.darNotaFornecedor);
+        final TextView ativo = inf.findViewById(R.id.inputativoview);
+        final TextView finalizado = inf.findViewById(R.id.inputfinalizadoview);
+        final GridLayout grid = inf.findViewById(R.id.darnota);
+        final Button maps = inf.findViewById(R.id.mapsi);
+        TextView inputendereco = inf.findViewById(R.id.inputenderecoview);
+        Usuario userAtivo = Session.getSession(getContext());
         final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor");
         inputendereco.setText(user.getEndereco().printEndereco());
         maps.setOnClickListener(new View.OnClickListener() {
@@ -77,11 +81,11 @@ public class AtividadeInfoGUI extends Fragment {
                 grid.setVisibility(View.VISIBLE);
             }
         });
-        Button enviarNota = INF.findViewById(R.id.enviarNota);
+        Button enviarNota = inf.findViewById(R.id.enviarNota);
         enviarNota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText nota = INF.findViewById(R.id.inputNota);
+                EditText nota = inf.findViewById(R.id.inputNota);
                 new NotaNegocio(getContext()).inserirNotaNegocio(nota.getText().toString(), atividade.getCliente(), atividade.getFornecedor());
                 new AtividadeNegocio(getContext()).notainseridaAtividade(atividade.getId());
                 darNotaFornecedor.setVisibility(View.INVISIBLE);
@@ -106,7 +110,7 @@ public class AtividadeInfoGUI extends Fragment {
                 new AtividadeNegocio(getContext()).confirmarAtividade(atividade.getId());
                 ativo.setText("Sim");
                 finalizado.setVisibility(View.VISIBLE);
-                TextView finalizadotext = INF.findViewById(R.id.finalizadoview);
+                TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
                 finalizadotext.setVisibility(View.VISIBLE);
                 confirmarAtendimento.setVisibility(View.GONE);
                 rejeitarAtendimento.setVisibility(View.INVISIBLE);
@@ -122,46 +126,46 @@ public class AtividadeInfoGUI extends Fragment {
                 confirmarAtendimento.setVisibility(View.GONE);
             }
         });
-        if (Session.getSession(getContext()).getTipoUsuario().equals("Cliente")) {
+        if (userAtivo.getTipoUsuario().equals(clientec)) {
             cliente.setVisibility(View.INVISIBLE);
-            TextView clientetexto = INF.findViewById(R.id.clienteview);
+            TextView clientetexto = inf.findViewById(R.id.clienteview);
             clientetexto.setVisibility(View.INVISIBLE);
             confirmarAtendimento.setVisibility(View.INVISIBLE);
             rejeitarAtendimento.setVisibility(View.INVISIBLE);
             finalizarAtendimento.setVisibility(View.INVISIBLE);
             fornecedor.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor").getNome());
-            TextView enderecotexto = INF.findViewById(R.id.enderecoview);
+            TextView enderecotexto = inf.findViewById(R.id.enderecoview);
             enderecotexto.setVisibility(View.VISIBLE);
             inputendereco.setVisibility(View.VISIBLE);
             maps.setVisibility(View.VISIBLE);
         } else {
             fornecedor.setVisibility(View.INVISIBLE);
-            TextView fornecedortexto = INF.findViewById(R.id.fornecedorview);
+            TextView fornecedortexto = inf.findViewById(R.id.fornecedorview);
             fornecedortexto.setVisibility(View.INVISIBLE);
-            cliente.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getCliente(), "Cliente").getNome());
+            cliente.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getCliente(), clientec).getNome());
         }
-        TextView servico = INF.findViewById(R.id.inputservicoview);
-        servico.setText(atividade.getServico());
-        TextView valor = INF.findViewById(R.id.inputvalorview);
-        valor.setText(atividade.getValor());
-        if (atividade.getAtivo().equals("N")) {
-            if (Session.getSession(getContext()).getTipoUsuario().equals("Cliente")) {
-                ativo.setText("Aguardando Fornecedor");
-            } else {
-                ativo.setText("Confirme ou Rejeite!");
-            }
-            finalizado.setVisibility(View.INVISIBLE);
-            TextView finalizadotext = INF.findViewById(R.id.finalizadoview);
-            finalizadotext.setVisibility(View.INVISIBLE);
-        } else if (atividade.getAtivo().equals("S")) {
-            ativo.setText("Sim");
-            rejeitarAtendimento.setVisibility(View.INVISIBLE);
-            confirmarAtendimento.setVisibility(View.INVISIBLE);
-            finalizarAtendimento.setVisibility(View.VISIBLE);
-        } else {
-            ativo.setText("Não, Atendimento Rejeitado");
-            rejeitarAtendimento.setVisibility(View.INVISIBLE);
-            confirmarAtendimento.setVisibility(View.INVISIBLE);
+        switch (atividade.getAtivo()) {
+            case "N":
+                if (Session.getSession(getContext()).getTipoUsuario().equals(clientec)) {
+                    ativo.setText("Aguardando Fornecedor");
+                } else {
+                    ativo.setText("Confirme ou Rejeite!");
+                }
+                finalizado.setVisibility(View.INVISIBLE);
+                TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
+                finalizadotext.setVisibility(View.INVISIBLE);
+                break;
+            case "S":
+                ativo.setText("Sim");
+                rejeitarAtendimento.setVisibility(View.INVISIBLE);
+                confirmarAtendimento.setVisibility(View.INVISIBLE);
+                finalizarAtendimento.setVisibility(View.VISIBLE);
+                break;
+            default:
+                ativo.setText("Não, Atendimento Rejeitado");
+                rejeitarAtendimento.setVisibility(View.INVISIBLE);
+                confirmarAtendimento.setVisibility(View.INVISIBLE);
+                break;
         }
         if (atividade.getFinalizado().equals("N")) {
             finalizado.setText("Não");
@@ -170,13 +174,11 @@ public class AtividadeInfoGUI extends Fragment {
             rejeitarAtendimento.setVisibility(View.INVISIBLE);
             confirmarAtendimento.setVisibility(View.INVISIBLE);
             finalizarAtendimento.setVisibility(View.INVISIBLE);
-            if (Session.getSession(getContext()).getTipoUsuario().equals("Cliente")) {
-                if (atividade.getNotaAtribuida().equals("N")) {
-                    darNotaFornecedor.setVisibility(View.VISIBLE);
-                }
+            if (userAtivo.getTipoUsuario().equals(clientec)&& atividade.getNotaAtribuida().equals("N")){
+                darNotaFornecedor.setVisibility(View.VISIBLE);
             }
         }
-        return INF;
+        return inf;
     }
 
     public void onButtonPressed(Uri uri) {
@@ -191,8 +193,7 @@ public class AtividadeInfoGUI extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
 
@@ -200,6 +201,10 @@ public class AtividadeInfoGUI extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
     }
 
     public interface OnFragmentInteractionListener {

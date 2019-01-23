@@ -1,1 +1,1 @@
-napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java 2javaXÔhrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui/R.java
+Aapp/src/main/java/kn/beautynow/gui/fornecedor/FornecedorMenu.java 2javaX„hrAapp/src/main/java/kn/beautynow/gui/fornecedor/FornecedorMenu.java

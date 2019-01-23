@@ -1,1 +1,1 @@
-yapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java 2javaXÔhryapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout/R.java
+5app/src/main/java/kn/beautynow/gui/clienteefornecedor :"r5app/src/main/java/kn/beautynow/gui/clienteefornecedor

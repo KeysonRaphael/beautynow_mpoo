@@ -1,1 +1,0 @@
-ÓKapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadeInfoGUI.java 2javaXÃhrKapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadeInfoGUI.java

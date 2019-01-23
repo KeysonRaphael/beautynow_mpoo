@@ -1,1 +1,0 @@
-Yxapp/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/kn/beautynow/test :Xrxapp/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/kn/beautynow/test

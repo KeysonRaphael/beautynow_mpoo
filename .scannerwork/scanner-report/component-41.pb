@@ -1,1 +1,1 @@
-)iapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment :(riapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment
+)6app/src/main/java/kn/beautynow/gui/usuario/Perfil.java 2javaX¶hr6app/src/main/java/kn/beautynow/gui/usuario/Perfil.java

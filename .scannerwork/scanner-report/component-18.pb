@@ -1,1 +1,1 @@
-{app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java 2javaX¸hr{app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater/R.java
+.app/src/main/java/kn/beautynow/dominio/usuario :r.app/src/main/java/kn/beautynow/dominio/usuario

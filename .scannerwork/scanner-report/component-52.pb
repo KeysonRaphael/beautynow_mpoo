@@ -1,1 +1,1 @@
-4mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print/R.java 2javaXhrmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print/R.java
+4.app/src/main/java/kn/beautynow/negocio/usuario :23r.app/src/main/java/kn/beautynow/negocio/usuario

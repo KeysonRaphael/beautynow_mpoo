@@ -1,1 +1,1 @@
-napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java 2javaX¸hrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/compat/R.java
+*app/src/main/java/kn/beautynow/gui/cliente :r*app/src/main/java/kn/beautynow/gui/cliente

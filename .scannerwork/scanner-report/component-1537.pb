@@ -1,1 +1,0 @@
-.app/build/intermediates/merged_manifests/debug :€r.app/build/intermediates/merged_manifests/debug

@@ -1,1 +1,1 @@
-(papp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java 2javaXÔhrpapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/fragment/R.java
+(6app/src/main/java/kn/beautynow/gui/usuario/Splash.java 2javaXBhr6app/src/main/java/kn/beautynow/gui/usuario/Splash.java

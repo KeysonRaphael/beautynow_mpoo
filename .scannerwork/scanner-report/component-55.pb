@@ -1,1 +1,1 @@
-7rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout :6rrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout
+7=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java 2javaXohr=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java

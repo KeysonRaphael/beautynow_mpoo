@@ -1,1 +1,0 @@
-9app/build/generated/source/buildConfig/debug/kn/beautynow :r9app/build/generated/source/buildConfig/debug/kn/beautynow

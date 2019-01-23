@@ -3,12 +3,7 @@ package kn.beautynow.dominio.controller;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
 import com.google.gson.Gson;
-
-import java.util.Map;
-import java.util.Set;
-
 import kn.beautynow.dominio.cliente.Cliente;
 import kn.beautynow.dominio.fornecedor.Fornecedor;
 import kn.beautynow.dominio.usuario.Usuario;
@@ -52,22 +47,19 @@ public class Session {
     public static Usuario getSession(Context context) {
         Gson gson = new Gson();
         String json = getSharedPreferences(context).getString("usuario", "");
-        Usuario object = gson.fromJson(json, Usuario.class);
-        return object;
+        return gson.fromJson(json, Usuario.class);
     }
 
     public static Cliente getSessionCliente(Context context) {
         Gson gson = new Gson();
         String json = getSharedPreferences(context).getString("Cliente", "");
-        Cliente object = gson.fromJson(json, Cliente.class);
-        return object;
+        return gson.fromJson(json, Cliente.class);
     }
 
     public static Fornecedor getSessionFornecedor(Context context) {
         Gson gson = new Gson();
         String json = getSharedPreferences(context).getString("Fornecedor", "");
-        Fornecedor object = gson.fromJson(json, Fornecedor.class);
-        return object;
+        return gson.fromJson(json, Fornecedor.class);
     }
 
 }

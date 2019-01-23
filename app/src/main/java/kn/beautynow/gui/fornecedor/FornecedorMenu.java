@@ -13,10 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
-import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.clienteefornecedor.AgendaGui;
 import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
 import kn.beautynow.gui.clienteefornecedor.AtividadeInfoGUI;
@@ -128,5 +126,6 @@ public class FornecedorMenu extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+        //empty
     }
 }

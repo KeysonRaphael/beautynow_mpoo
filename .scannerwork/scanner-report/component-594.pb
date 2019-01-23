@@ -1,1 +1,0 @@
-ÒBapp/build/intermediates/incremental/mergeDebugAndroidTestResources :ÓrBapp/build/intermediates/incremental/mergeDebugAndroidTestResources

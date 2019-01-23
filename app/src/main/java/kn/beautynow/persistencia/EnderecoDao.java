@@ -17,38 +17,37 @@ public class EnderecoDao {
         banco = new Banco(context);
     }
 
-    public void inserirEndereco(String iduser, String rua, String numero, String complemento, String bairro, String cidade, String estado, String cep) {
+    public void inserirEndereco(ArrayList<String> array) {
         ContentValues valores;
         db = banco.getWritableDatabase();
         valores = new ContentValues();
-        valores.put(Banco.COLUMN_ENDERECO_ID_USER, iduser);
-        valores.put(Banco.COLUMN_ENDERECO_CEP, cep);
-        valores.put(Banco.COLUMN_ENDERECO_RUA, rua);
-        valores.put(Banco.COLUMN_ENDERECO_NUMERO, numero);
-        valores.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, complemento);
-        valores.put(Banco.COLUMN_ENDERECO_BAIRRO, bairro);
-        valores.put(Banco.COLUMN_ENDERECO_CIDADE, cidade);
-        valores.put(Banco.COLUMN_ENDERECO_ESTADO, estado);
+        valores.put(Banco.COLUMN_ENDERECO_ID_USER, array.get(0));
+        valores.put(Banco.COLUMN_ENDERECO_CEP, array.get(7));
+        valores.put(Banco.COLUMN_ENDERECO_RUA, array.get(1));
+        valores.put(Banco.COLUMN_ENDERECO_NUMERO, array.get(2));
+        valores.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, array.get(3));
+        valores.put(Banco.COLUMN_ENDERECO_BAIRRO, array.get(4));
+        valores.put(Banco.COLUMN_ENDERECO_CIDADE, array.get(5));
+        valores.put(Banco.COLUMN_ENDERECO_ESTADO, array.get(6));
         db.insert(Banco.TABLE_ENDERECO, null, valores);
         db.close();
     }
 
-    public void updateEndereco(String iduser, String rua, String numero, String complemento, String bairro, String cidade, String estado, String cep) {
+    public void updateEndereco(ArrayList<String> array) {
         db = banco.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Banco.COLUMN_ENDERECO_RUA, rua);
-        cv.put(Banco.COLUMN_ENDERECO_NUMERO, numero);
-        cv.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, complemento);
-        cv.put(Banco.COLUMN_ENDERECO_BAIRRO, bairro);
-        cv.put(Banco.COLUMN_ENDERECO_CIDADE, cidade);
-        cv.put(Banco.COLUMN_ENDERECO_ESTADO, estado);
-        cv.put(Banco.COLUMN_ENDERECO_CEP, cep);
-        db.update(Banco.TABLE_ENDERECO, cv, "id_user=?", new String[]{iduser});
+        cv.put(Banco.COLUMN_ENDERECO_RUA, array.get(1));
+        cv.put(Banco.COLUMN_ENDERECO_NUMERO, array.get(2));
+        cv.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, array.get(4));
+        cv.put(Banco.COLUMN_ENDERECO_BAIRRO, array.get(4));
+        cv.put(Banco.COLUMN_ENDERECO_CIDADE, array.get(5));
+        cv.put(Banco.COLUMN_ENDERECO_ESTADO, array.get(6));
+        cv.put(Banco.COLUMN_ENDERECO_CEP, array.get(7));
+        db.update(Banco.TABLE_ENDERECO, cv, "id_user=?", new String[]{array.get(0)});
     }
 
     public boolean existeEndereco(String iduser) {
         String querySql = "SELECT * FROM endereco WHERE id_user = ?";
-        SQLiteDatabase db;
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(querySql, new String[]{iduser});
         if (cursor.getCount() > 0) {

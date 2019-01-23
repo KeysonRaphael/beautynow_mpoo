@@ -1,1 +1,1 @@
-9sapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout :8rsapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout
+9;app/src/main/java/kn/beautynow/persistencia/ClienteDao.java 2javaXhr;app/src/main/java/kn/beautynow/persistencia/ClienteDao.java

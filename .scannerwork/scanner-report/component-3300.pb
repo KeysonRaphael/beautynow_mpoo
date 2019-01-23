@@ -1,1 +1,0 @@
-äEapp/src/main/java/kn/beautynow/negocio/fornecedor/ServicoNegocio.java 2javaXVhrEapp/src/main/java/kn/beautynow/negocio/fornecedor/ServicoNegocio.java

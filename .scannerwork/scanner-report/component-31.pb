@@ -1,1 +1,1 @@
-gapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui :rgapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreui
+-app/src/main/java/kn/beautynow/gui/fornecedor : !%r-app/src/main/java/kn/beautynow/gui/fornecedor

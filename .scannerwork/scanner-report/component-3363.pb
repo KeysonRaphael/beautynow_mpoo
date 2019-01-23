@@ -1,1 +1,0 @@
-£2app/src/main/res/layout/fragment_atividade_gui.xml 2xmlXÁhr2app/src/main/res/layout/fragment_atividade_gui.xml

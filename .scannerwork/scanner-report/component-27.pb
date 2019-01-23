@@ -1,1 +1,1 @@
-japp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils :rjapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coreutils
+Dapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AgendaGui.java 2javaXrhrDapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AgendaGui.java

@@ -1,1 +1,1 @@
-3lapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/mediacompat :2rlapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/mediacompat
+3Gapp/src/main/java/kn/beautynow/negocio/usuario/ImagemPerfilNegocio.java 2javaX1hrGapp/src/main/java/kn/beautynow/negocio/usuario/ImagemPerfilNegocio.java

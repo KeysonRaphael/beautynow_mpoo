@@ -1,1 +1,1 @@
-rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout :rrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/coordinatorlayout
+?app/src/main/java/kn/beautynow/gui/cliente/RecomendacaoGUI.java 2javaXfhr?app/src/main/java/kn/beautynow/gui/cliente/RecomendacaoGUI.java

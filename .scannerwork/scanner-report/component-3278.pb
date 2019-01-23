@@ -1,1 +1,0 @@
-ÎLapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java 2javaX[hrLapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java

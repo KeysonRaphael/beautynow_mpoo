@@ -1,1 +1,0 @@
-ù1app/src/main/res/drawable/bottom_border_input.xml 2xmlXhr1app/src/main/res/drawable/bottom_border_input.xml

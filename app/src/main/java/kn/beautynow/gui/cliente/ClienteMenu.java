@@ -16,7 +16,6 @@ import android.view.MenuItem;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
-import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
 import kn.beautynow.gui.clienteefornecedor.AtividadeInfoGUI;
 import kn.beautynow.gui.clienteefornecedor.AtividadesDiaGui;
@@ -133,5 +132,6 @@ public class ClienteMenu extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+        // nada há realizar
     }
 }

@@ -1,1 +1,1 @@
-#mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/documentfile :"rmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/documentfile
+#8app/src/main/java/kn/beautynow/gui/usuario/Cadastro.java 2javaX~hr8app/src/main/java/kn/beautynow/gui/usuario/Cadastro.java

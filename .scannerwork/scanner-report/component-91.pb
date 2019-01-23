@@ -1,1 +1,0 @@
-[6app/build/generated/res/pngs/debug/drawable-anydpi-v21 :Z\^]_br6app/build/generated/res/pngs/debug/drawable-anydpi-v21

@@ -1,2 +1,1 @@
-bapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/core :
-rbapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/core
+Capp/src/main/java/kn/beautynow/dominio/controller/MaskEditUtil.java 2javaX@hrCapp/src/main/java/kn/beautynow/dominio/controller/MaskEditUtil.java

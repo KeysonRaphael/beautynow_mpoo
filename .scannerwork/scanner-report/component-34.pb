@@ -1,1 +1,1 @@
-"tapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/documentfile/R.java 2javaXhrtapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/documentfile/R.java
+"Kapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadesDiaGui.java 2javaXMhrKapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadesDiaGui.java

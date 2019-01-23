@@ -1,1 +1,1 @@
-napp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/R.java 2javaXhrnapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/R.java
+Aapp/src/main/java/kn/beautynow/dominio/fornecedor/Fornecedor.java 2javaX3hrAapp/src/main/java/kn/beautynow/dominio/fornecedor/Fornecedor.java

@@ -20,30 +20,27 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
-import java.util.zip.Inflater;
 
 import kn.beautynow.R;
-import kn.beautynow.dominio.controller.MaskEditUtil;
+import kn.beautynow.dominio.controller.ExceptionCases;
 import kn.beautynow.dominio.controller.Session;
-import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.fornecedor.ServicosFornecedor;
 import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class AtividadeGui extends Fragment {
     private OnFragmentInteractionListener mListener;
-    public static String servico = "";
-    public static String valor = "";
-    public static String fornecedor = "";
+    private String servico;
+    private String valor;
+    private String fornecedor;
 
 
     public AtividadeGui() {
         // Required empty public constructor
     }
 
-    public static AtividadeGui newInstance(String param1, String param2) {
-        AtividadeGui fragment = new AtividadeGui();
-        return fragment;
+    public static AtividadeGui newInstance() {
+        return new AtividadeGui();
     }
 
     @Override
@@ -54,36 +51,36 @@ public class AtividadeGui extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View INF = inflater.inflate(R.layout.fragment_atividade_gui, container, false);
-        final TextView servico = INF.findViewById(R.id.descricao_atividade);
-        servico.setText(this.servico);
-        final TextView valor = INF.findViewById(R.id.valor_atividade);
-        valor.setText(this.valor);
-        final TextView fornecedor = INF.findViewById(R.id.fornecedor_atividade);
-        String user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(AtividadeGui.fornecedor, "Fornecedor").getNome();
-        fornecedor.setText(user);
-        final EditText data = INF.findViewById(R.id.data);
-        final EditText hora = INF.findViewById(R.id.hora);
+        final View inf = inflater.inflate(R.layout.fragment_atividade_gui, container, false);
+        final TextView servicotext = inf.findViewById(R.id.descricao_atividade);
+        servicotext.setText(servico);
+        final TextView valortext = inf.findViewById(R.id.valor_atividade);
+        valortext.setText(valor);
+        final TextView fornecedortext = inf.findViewById(R.id.fornecedor_atividade);
+        String user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(fornecedor, "Fornecedor").getNome();
+        fornecedortext.setText(user);
+        final EditText data = inf.findViewById(R.id.data);
+        final EditText hora = inf.findViewById(R.id.hora);
         final Calendar myCalendar = Calendar.getInstance();
-        Button marcarAtendimento = INF.findViewById(R.id.marcar_atividade);
+        Button marcarAtendimento = inf.findViewById(R.id.marcar_atividade);
         marcarAtendimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (AtividadeGui.validar(INF)) {
-                    ArrayList<String> valores = new ArrayList<String>();
-                    valores.add(0, servico.getText().toString());
-                    valores.add(1, valor.getText().toString());
+                if (AtividadeGui.validar(inf)) {
+                    ArrayList<String> valores = new ArrayList<>();
+                    valores.add(0, servicotext.getText().toString());
+                    valores.add(1, valortext.getText().toString());
                     valores.add(2, data.getText().toString());
                     valores.add(3, hora.getText().toString());
                     valores.add(4, Session.getSession(getContext()).getIdUser());
-                    valores.add(5, AtividadeGui.fornecedor);
-                    new AtividadeNegocio(getContext()).MarcarAtividade(valores);
-                    INF.findViewById(R.id.marcarAtendimentoLayout).setVisibility(View.INVISIBLE);
-                    INF.findViewById(R.id.atendimento_solicitado).setVisibility(View.VISIBLE);
+                    valores.add(5, fornecedor);
+                    new AtividadeNegocio(getContext()).marcarAtividade(valores);
+                    inf.findViewById(R.id.marcarAtendimentoLayout).setVisibility(View.INVISIBLE);
+                    inf.findViewById(R.id.atendimento_solicitado).setVisibility(View.VISIBLE);
                 }
             }
         });
-        Button servicos = INF.findViewById(R.id.goToServicos);
+        Button servicos = inf.findViewById(R.id.goToServicos);
         servicos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,12 +133,12 @@ public class AtividadeGui extends Fragment {
                 }
             }
         });
-        return INF;
+        return inf;
     }
 
-    public static boolean validar(View INF) {
-        EditText datav = INF.findViewById(R.id.data);
-        EditText horav = INF.findViewById(R.id.hora);
+    public static boolean validar(View inf) {
+        EditText datav = inf.findViewById(R.id.data);
+        EditText horav = inf.findViewById(R.id.hora);
         if (datav.getText().toString().equals("")) {
             datav.setError("Insira a data que deseja ser atendido!");
             return false;
@@ -165,8 +162,7 @@ public class AtividadeGui extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
 
@@ -174,6 +170,18 @@ public class AtividadeGui extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
     public interface OnFragmentInteractionListener {

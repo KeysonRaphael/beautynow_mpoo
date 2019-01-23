@@ -1,11 +1,10 @@
 package kn.beautynow.dominio.fornecedor;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class Servicos implements Cloneable {
+public class Servicos{
     private String id;
-    private ArrayList<Servico> listaServicos = new ArrayList<Servico>();
+    private ArrayList<Servico> listaServicos = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -21,15 +20,5 @@ public class Servicos implements Cloneable {
 
     public void setListaServicos(ArrayList<Servico> servicos) {
         this.listaServicos = servicos;
-    }
-
-    public Servicos clone() {
-        Servicos clone = null;
-        try {
-            clone = (Servicos) super.clone();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
-        return clone;
     }
 }

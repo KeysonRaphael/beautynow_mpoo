@@ -1,1 +1,1 @@
-;kapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/transition ::rkapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/transition
+;>app/src/main/java/kn/beautynow/persistencia/FornecedorDao.java 2javaX+hr>app/src/main/java/kn/beautynow/persistencia/FornecedorDao.java

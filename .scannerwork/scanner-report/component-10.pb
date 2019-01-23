@@ -1,2 +1,2 @@
 
-iapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/core/R.java 2javaXhriapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/core/R.java
+Gapp/src/main/java/kn/beautynow/dominio/controller/MascaraMonetaria.java 2javaX=hrGapp/src/main/java/kn/beautynow/dominio/controller/MascaraMonetaria.java

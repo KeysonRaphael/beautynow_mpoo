@@ -10,6 +10,8 @@ Environment variables:
   - CommonProgramW6432=C:\Program Files\Common Files
   - DriverData=C:\Windows\System32\Drivers\DriverData
   - ERROR_CODE=0
+  - FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+  - FPS_BROWSER_USER_PROFILE_STRING=Default
   - HOMEDRIVE=C:
   - HOMEPATH=\Users\keyso
   - JAVA_EXEC="C:\Windows\sonar-scanner-3.2.0.1227-windows\bin\..\jre\bin\java.exe"
@@ -131,7 +133,7 @@ SonarQube plugins:
   - SonarVB 7.7.0.7192 (vbnet)
 Global properties:
   - sonar.core.id=BF41A1F2-AWeula0Hg8M-_1s_7zgf
-  - sonar.core.startTime=2019-01-17T22:41:23-0300
+  - sonar.core.startTime=2019-01-22T18:49:36-0300
 Settings for module: beautynow_mpoo
   - sonar.host.url=http://localhost:9000
   - sonar.java.binaries=app
@@ -142,6 +144,6 @@ Settings for module: beautynow_mpoo
   - sonar.scanner.app=ScannerCli
   - sonar.scanner.appVersion=3.2.0.1227
   - sonar.sourceEncoding=windows-1252
-  - sonar.sources=./
+  - sonar.sources=./app./src./main./java
   - sonar.verbose=true
   - sonar.working.directory=C:\Users\keyso\Documents\GitHub\beautynow_mpoo\.scannerwork

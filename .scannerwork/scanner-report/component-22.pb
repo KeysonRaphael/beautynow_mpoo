@@ -1,1 +1,1 @@
-rapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java 2javaXóhrrapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint/R.java
+;app/src/main/java/kn/beautynow/dominio/usuario/Usuario.java 2javaXihr;app/src/main/java/kn/beautynow/dominio/usuario/Usuario.java

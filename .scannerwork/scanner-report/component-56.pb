@@ -1,1 +1,1 @@
-8zapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java 2javaX¸hrzapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/swiperefreshlayout/R.java
+8+app/src/main/java/kn/beautynow/persistencia :	79:<;=>?@r+app/src/main/java/kn/beautynow/persistencia

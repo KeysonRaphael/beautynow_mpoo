@@ -1,1 +1,0 @@
-Q]app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/kn/beautynow :Pr]app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/kn/beautynow

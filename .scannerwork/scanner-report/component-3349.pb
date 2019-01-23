@@ -1,1 +1,0 @@
-•*app/src/main/res/layout/activity_login.xml 2xmlX—hr*app/src/main/res/layout/activity_login.xml

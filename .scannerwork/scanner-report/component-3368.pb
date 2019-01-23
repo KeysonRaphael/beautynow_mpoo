@@ -1,1 +1,0 @@
-¨+app/src/main/res/layout/fragment_perfil.xml 2xmlXdhr+app/src/main/res/layout/fragment_perfil.xml

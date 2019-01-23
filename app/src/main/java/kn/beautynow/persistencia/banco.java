@@ -1,10 +1,8 @@
 package kn.beautynow.persistencia;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 
 public class Banco extends SQLiteOpenHelper {
@@ -60,7 +58,7 @@ public class Banco extends SQLiteOpenHelper {
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR = "id_fornecedor";
     public static final String COLUMN_SERVICOS_FORNECEDOR_VALOR = "valor";
     public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM = "imagem";
-    public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM_Galeria = "imagem_galeria";
+    public static final String COLUMN_SERVICOS_FORNECEDOR_IMAGEM_GALERIA = "imagem_galeria";
     public static final String COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO = "id_servico";
     //Tabela Agenda
     public static final String TABLE_AGENDA = "agenda";
@@ -144,7 +142,7 @@ public class Banco extends SQLiteOpenHelper {
                 Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR + tipotexto +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_VALOR + tipotexto +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM + " BLOB," +
-                Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM_Galeria + " BLOB," +
+                Banco.COLUMN_SERVICOS_FORNECEDOR_IMAGEM_GALERIA + " BLOB," +
                 Banco.COLUMN_SERVICOS_FORNECEDOR_ID_SERVICO + tipotexton + " )";
         db.execSQL(sqlServicosFornecedor);
         //create table agenda

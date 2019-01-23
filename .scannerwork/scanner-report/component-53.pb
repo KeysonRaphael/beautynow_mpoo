@@ -1,1 +1,1 @@
-5fapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print :4rfapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/print
+55app/src/main/java/kn/beautynow/negocio/ValidaCpf.java 2javaXHhr5app/src/main/java/kn/beautynow/negocio/ValidaCpf.java

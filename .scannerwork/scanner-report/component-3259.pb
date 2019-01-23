@@ -1,1 +1,0 @@
-»Fapp/src/main/java/kn/beautynow/dominio/controller/FixCursorWindow.java 2javaXhrFapp/src/main/java/kn/beautynow/dominio/controller/FixCursorWindow.java

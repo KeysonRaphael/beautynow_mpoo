@@ -1,1 +1,0 @@
-app/src/main/res/drawable-v24 :rapp/src/main/res/drawable-v24

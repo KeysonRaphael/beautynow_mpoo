@@ -1,1 +1,1 @@
-6yapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java 2javaX¸hryapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/slidingpanelayout/R.java
+6&app/src/main/java/kn/beautynow/negocio :5r&app/src/main/java/kn/beautynow/negocio

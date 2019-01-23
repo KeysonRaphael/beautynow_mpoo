@@ -1,1 +1,1 @@
-2sapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/mediacompat/R.java 2javaXÓhrsapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/mediacompat/R.java
+2Bapp/src/main/java/kn/beautynow/negocio/usuario/UsuarioNegocio.java 2javaXfhrBapp/src/main/java/kn/beautynow/negocio/usuario/UsuarioNegocio.java

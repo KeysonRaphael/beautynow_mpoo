@@ -1,1 +1,1 @@
-/gapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader :.rgapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/loader
+/Eapp/src/main/java/kn/beautynow/negocio/fornecedor/ServicoNegocio.java 2javaXYhrEapp/src/main/java/kn/beautynow/negocio/fornecedor/ServicoNegocio.java

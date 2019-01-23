@@ -30,41 +30,19 @@ public class UsuarioNegocio {
     public Usuario existeBanco(String email, String senha, String tipo) {
         UsuarioDao usuariodao = new UsuarioDao(this.contexto);
         ArrayList result = usuariodao.selectUsuario(email, senha, tipo);
-        Usuario user = new Usuario();
-        if (result.isEmpty()) {
-            return user;
-        }
-        user.setId(result.get(0).toString());
-        user.setNome(result.get(1).toString());
-        user.setEmail(result.get(2).toString());
-        user.setCpf(result.get(3).toString());
-        user.setTipoUsuario(result.get(5).toString());
-        user.setSexo((String) result.get(7));
-        user.setIdUser((String) result.get(8));
-        if (9 >= result.size()) {
-            return user;
-        }
-        Endereco endereco = new Endereco();
-        endereco.setCep(result.get(9).toString());
-        endereco.setRua(result.get(10).toString());
-        endereco.setNumero(result.get(11).toString());
-        endereco.setComplemento(result.get(12).toString());
-        endereco.setBairro(result.get(13).toString());
-        endereco.setCidade(result.get(14).toString());
-        endereco.setEstado(result.get(15).toString());
-        user.setEndereco(endereco);
-        return user;
+        carregarUsuario(result);
+        return carregarUsuario(result);
     }
 
-    public void cadastrarEndereco(String iduser, String rua, String numero, String complemento, String bairro, String cidade, String estado, String cep) {
+    public void cadastrarEndereco(ArrayList<String> array) {
         EnderecoDao enderecodao = new EnderecoDao(contexto);
-        boolean resultado = enderecodao.existeEndereco(iduser);
+        boolean resultado = enderecodao.existeEndereco(array.get(0));
         if (resultado) {
-            enderecodao.updateEndereco(iduser, rua, numero, complemento, bairro, cidade, estado, cep);
+            enderecodao.updateEndereco(array);
         } else {
-            enderecodao.inserirEndereco(iduser, rua, numero, complemento, bairro, cidade, estado, cep);
+            enderecodao.inserirEndereco(array);
         }
-        ArrayList endereco = enderecodao.buscarEndereco(iduser);
+        ArrayList endereco = enderecodao.buscarEndereco(array.get(0));
         Usuario sessaold = Session.getSession(contexto);
         sessaold.getEndereco().setCep(endereco.get(1).toString());
         sessaold.getEndereco().setRua(endereco.get(2).toString());
@@ -92,8 +70,13 @@ public class UsuarioNegocio {
     }
 
     public Usuario buscarUsarioPorTipo(String idfornecedor, String tipo) {
-        Usuario user = new Usuario();
         ArrayList result = new UsuarioDao(contexto).selectUsuarioPorTipo(idfornecedor, tipo);
+        carregarUsuario(result);
+        return carregarUsuario(result);
+    }
+
+    private Usuario carregarUsuario(ArrayList result){
+        Usuario user = new Usuario();
         user.setId(result.get(0).toString());
         user.setNome(result.get(1).toString());
         user.setEmail(result.get(2).toString());

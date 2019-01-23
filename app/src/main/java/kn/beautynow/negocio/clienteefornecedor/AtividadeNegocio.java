@@ -14,7 +14,7 @@ public class AtividadeNegocio {
         this.contexto = context;
     }
 
-    public void MarcarAtividade(ArrayList<String> valores) {
+    public void marcarAtividade(ArrayList<String> valores) {
         AtividadeDao atividadedao = new AtividadeDao(contexto);
         atividadedao.InserirAtividade(valores);
     }
@@ -41,11 +41,11 @@ public class AtividadeNegocio {
 
     public Agenda carregarAgendaClienteNegocio(String idcliente) {
         AtividadeDao atividadedao = new AtividadeDao(contexto);
-        return atividadedao.carregarAgendaClienteDao(idcliente);
+        return atividadedao.carregarAgendaTipoDao(idcliente, "Cliente");
     }
 
     public Agenda carregarAgendaFornecedorNegocio(String idfornecedor) {
         AtividadeDao atividadedao = new AtividadeDao(contexto);
-        return atividadedao.carregarAgendaFornecedorDao(idfornecedor);
+        return atividadedao.carregarAgendaTipoDao(idfornecedor,"Fornecedor");
     }
 }

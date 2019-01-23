@@ -1,1 +1,1 @@
-+yapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java 2javaXÔhryapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/graphics/drawable/R.java
++9app/src/main/java/kn/beautynow/negocio/clienteefornecedor :*.r9app/src/main/java/kn/beautynow/negocio/clienteefornecedor

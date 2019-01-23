@@ -1,1 +1,1 @@
-?mapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat :>rmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/v7/appcompat
+?;app/src/main/java/kn/beautynow/persistencia/UsuarioDao.java 2javaXwhr;app/src/main/java/kn/beautynow/persistencia/UsuarioDao.java

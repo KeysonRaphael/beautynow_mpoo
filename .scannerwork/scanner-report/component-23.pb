@@ -1,1 +1,1 @@
-kapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint :rkapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/constraint
+Lapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java 2javaXYhrLapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java

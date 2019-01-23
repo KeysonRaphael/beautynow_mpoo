@@ -1,1 +1,0 @@
-©5app/src/main/res/layout/fragment_recomendacao_gui.xml 2xmlXihr5app/src/main/res/layout/fragment_recomendacao_gui.xml

@@ -1,1 +1,2 @@
-|app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/livedata/core/R.java 2javaXhr|app/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/livedata/core/R.java
+1app/src/main/java/kn/beautynow/dominio/controller :
+r1app/src/main/java/kn/beautynow/dominio/controller

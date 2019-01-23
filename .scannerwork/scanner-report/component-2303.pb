@@ -1,1 +1,0 @@
-ÿ1app/build/intermediates/split-apk/debug/resources :şr1app/build/intermediates/split-apk/debug/resources

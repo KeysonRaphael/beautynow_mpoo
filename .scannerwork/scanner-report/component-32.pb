@@ -1,1 +1,1 @@
- uapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/cursoradapter/R.java 2javaXhruapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/cursoradapter/R.java
+ Bapp/src/main/java/kn/beautynow/gui/fornecedor/AdapterServicos.java 2javaXehrBapp/src/main/java/kn/beautynow/gui/fornecedor/AdapterServicos.java

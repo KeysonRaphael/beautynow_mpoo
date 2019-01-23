@@ -1,1 +1,0 @@
-þEapp/build/intermediates/split-apk/debug/resources/AndroidManifest.xml 2xmlX	hrEapp/build/intermediates/split-apk/debug/resources/AndroidManifest.xml

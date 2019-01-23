@@ -3,10 +3,6 @@ package kn.beautynow.gui.fornecedor;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -14,19 +10,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.ByteArrayOutputStream;
-import java.text.NumberFormat;
-import java.util.List;
-import java.util.Locale;
-
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Servico;
@@ -93,16 +81,15 @@ public class AdapterServicos extends RecyclerView.Adapter<AdapterServicos.Servic
                         ((Activity) contexto).setTitle("Editar Serviço");
                         FragmentTransaction t = ((AppCompatActivity) contexto).getSupportFragmentManager().beginTransaction();
                         Fragment mFrag = new NovoServico();
-                        NovoServico.idfornecedor = fornecedor;
-                        NovoServico.idservico = servico;
+                        new NovoServico().setIdservico(servico);
                         t.replace(R.id.fornecedor_frame, mFrag);
                         t.commit();
                     } else {
                         ((Activity) contexto).setTitle("Serviço");
                         FragmentTransaction t = ((AppCompatActivity) contexto).getSupportFragmentManager().beginTransaction();
                         Fragment mFrag = new ClienteServico();
-                        ClienteServico.idfornecedor = fornecedor;
-                        ClienteServico.idservico = servico;
+                        new ClienteServico().setIdfornecedor(fornecedor);
+                        new ClienteServico().setIdservico(servico);
                         t.replace(R.id.frame, mFrag);
                         t.commit();
                     }

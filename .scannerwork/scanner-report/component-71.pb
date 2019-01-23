@@ -1,1 +1,0 @@
-Gmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/androidx/versionedparcelable :Frmapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/androidx/versionedparcelable

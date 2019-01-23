@@ -1,1 +1,0 @@
-Ð#app/src/main/res/values/strings.xml 2xmlX6hr#app/src/main/res/values/strings.xml

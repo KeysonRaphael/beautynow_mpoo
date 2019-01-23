@@ -1,6 +1,9 @@
 package kn.beautynow.gui.usuario;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,11 +15,9 @@ import android.widget.Toast;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.cliente.Cliente;
-import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.controller.Session;
 
 import kn.beautynow.dominio.fornecedor.Fornecedor;
-import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.gui.cliente.ClienteMenu;
@@ -36,6 +37,14 @@ public class Login extends AppCompatActivity {
                 R.array.tipos_usuario, R.layout.spinner_item);
         adaptert.setDropDownViewResource(R.layout.spinner_dropdown_item);
         tipo.setAdapter(adaptert);
+        final int PICK_FROM_GALLERY = 1;
+        try {
+            if (ActivityCompat.checkSelfPermission(getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
+            }
+        } catch (Exception e) {
+            Log.d(e.toString(),"context");
+        }
     }
 
     public void Logar(View view) {
@@ -49,7 +58,6 @@ public class Login extends AppCompatActivity {
         Usuario user = validar.existeBanco(semail, ssenha, stipo);
         if (user.getNome().equals("")) {
             Toast.makeText(getBaseContext(), "E-mail ou senha incorretos!", Toast.LENGTH_LONG).show();
-            return;
         } else {
             Session session = new Session();
             session.editSessao(user, getBaseContext());

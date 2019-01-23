@@ -1,1 +1,0 @@
-€Bapp/build/intermediates/merged_manifests/debug/AndroidManifest.xml 2xmlXDhrBapp/build/intermediates/merged_manifests/debug/AndroidManifest.xml

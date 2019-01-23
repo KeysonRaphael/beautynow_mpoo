@@ -1,1 +1,0 @@
-øapp/src/main/res/drawable :ùûüýþÿ€…rapp/src/main/res/drawable

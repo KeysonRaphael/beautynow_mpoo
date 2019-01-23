@@ -1,1 +1,1 @@
-papp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/livedata :rpapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/livedata
+Eapp/src/main/java/kn/beautynow/dominio/controller/ExceptionCases.java 2javaXhrEapp/src/main/java/kn/beautynow/dominio/controller/ExceptionCases.java

@@ -1,1 +1,1 @@
-tapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater :rtapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/support/asynclayoutinflater
+;app/src/main/java/kn/beautynow/gui/cliente/ClienteMenu.java 2javaXŠhr;app/src/main/java/kn/beautynow/gui/cliente/ClienteMenu.java

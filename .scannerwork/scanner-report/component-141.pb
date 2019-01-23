@@ -1,1 +1,0 @@
-çJapp/build/generated/source/buildConfig/debug/kn/beautynow/BuildConfig.java 2javaXhrJapp/build/generated/source/buildConfig/debug/kn/beautynow/BuildConfig.java

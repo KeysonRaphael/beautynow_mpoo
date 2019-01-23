@@ -1,1 +1,0 @@
-¢7app/src/main/res/layout/fragment_atividades_dia_gui.xml 2xmlXhr7app/src/main/res/layout/fragment_atividades_dia_gui.xml

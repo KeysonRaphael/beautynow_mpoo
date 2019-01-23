@@ -1,15 +1,10 @@
 package kn.beautynow.gui.usuario;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
-import com.google.gson.Gson;
-
 import kn.beautynow.R;
 import kn.beautynow.dominio.cliente.Cliente;
 import kn.beautynow.dominio.controller.Session;
@@ -32,9 +27,9 @@ public class Splash extends AppCompatActivity {
             new UsuarioNegocio(getBaseContext()).cadastroUser("keyson", "10838811400", "fornecedor@gmail.com",
                     "12345678", "Fornecedor", "Masculino");
         } catch (Exception e) {
+            Log.d("Error. ", e.toString());
         }
         setContentView(R.layout.activity_splash);
-        Banco banco = new Banco(getBaseContext());
         Session session = new Session();
         Usuario obj = Session.getSession(getBaseContext());
         if (obj != null) {

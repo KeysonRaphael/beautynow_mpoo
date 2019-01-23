@@ -1,1 +1,0 @@
-ŒJapp/build/generated/source/buildConfig/androidTest/debug/kn/beautynow/test :‹rJapp/build/generated/source/buildConfig/androidTest/debug/kn/beautynow/test

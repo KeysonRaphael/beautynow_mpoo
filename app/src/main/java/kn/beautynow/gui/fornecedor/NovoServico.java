@@ -1,31 +1,20 @@
 package kn.beautynow.gui.fornecedor;
 
-import android.Manifest;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,42 +22,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.google.gson.Gson;
-
-import java.io.ByteArrayOutputStream;
-import java.text.NumberFormat;
-import java.util.Locale;
-
 import kn.beautynow.R;
+import kn.beautynow.dominio.controller.ExceptionCases;
 import kn.beautynow.dominio.controller.MascaraMonetaria;
-import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.fornecedor.Servico;
 import kn.beautynow.dominio.usuario.Usuario;
-import kn.beautynow.negocio.ImagemNegocio;
 import kn.beautynow.negocio.fornecedor.ServicoNegocio;
-import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 
 public class NovoServico extends Fragment {
     private OnFragmentInteractionListener mListener;
-    public static String idfornecedor = "";
-    public static String idservico = "";
-    public static Bitmap imagen;
+    private String idservico = "";
+    private Bitmap imagen = null;
 
     public NovoServico() {
         // Required empty public constructor
-        NovoServico.idservico = "";
-        NovoServico.idfornecedor = "";
-        NovoServico.imagen = null;
     }
 
     public static NovoServico newInstance() {
-        NovoServico fragment = new NovoServico();
-        return fragment;
+        return new NovoServico();
     }
 
     @Override
@@ -88,7 +61,7 @@ public class NovoServico extends Fragment {
         valorMonetario.addTextChangedListener(new MascaraMonetaria(valorMonetario));
         if (!idservico.equals("")) {
             ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-            Servico servico = servicoNegocio.BuscarServicoFornecedor(idservico);
+            Servico servico = servicoNegocio.buscarServicoFornecedor(idservico);
             EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
             String servicoNome = servico.getDescricao();
             inputServicoNome.setText(servicoNome);
@@ -101,14 +74,6 @@ public class NovoServico extends Fragment {
         }
         Button incluirServicoImagem = inf.findViewById(R.id.inserirImagemServico);
         final boolean[] naomudouimagem = {true};
-        final int PICK_FROM_GALLERY = 1;
-        try {
-            if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, PICK_FROM_GALLERY);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         incluirServicoImagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,16 +97,17 @@ public class NovoServico extends Fragment {
                     BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
                     Bitmap servicoImagem = servicoImage.getBitmap();
                     Bitmap imagemgaleria = servicoImage.getBitmap();
-                    if (NovoServico.imagen == null) {
+                    if (imagen == null) {
                         servicoImagem = Bitmap.createScaledBitmap(servicoImagem,300, 300, false);
                         imagemgaleria = Bitmap.createScaledBitmap(servicoImagem,75, 75, false);
-                    }
-                    ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-                    if (!idservico.equals("")) {
+                    }else{
                         if (!naomudouimagem[0]){
                             imagemgaleria = Bitmap.createScaledBitmap(servicoImagem,75, 75, false);
                         }
-                        servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, NovoServico.idservico, imagemgaleria);
+                    }
+                    ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
+                    if (!idservico.equals("")) {
+                        servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, idservico, imagemgaleria);
                     } else {
                         servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem, imagemgaleria);
                     }
@@ -223,8 +189,7 @@ public class NovoServico extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
 
@@ -232,6 +197,10 @@ public class NovoServico extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void setIdservico(String idservico) {
+        this.idservico = idservico;
     }
 
     public interface OnFragmentInteractionListener {

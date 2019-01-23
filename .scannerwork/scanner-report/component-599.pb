@@ -1,1 +1,0 @@
-×;app/build/intermediates/incremental/mergeDebugJniLibFolders :Ör;app/build/intermediates/incremental/mergeDebugJniLibFolders

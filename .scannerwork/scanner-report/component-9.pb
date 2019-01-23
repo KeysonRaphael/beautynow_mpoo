@@ -1,1 +1,1 @@
-	uapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/livedata/core :ruapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/livedata/core
+	Happ/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java 2javaX)hrHapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java

@@ -1,1 +1,1 @@
-qapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/viewmodel :rqapp/build/generated/not_namespaced_r_class_sources/debug/processDebugResources/r/android/arch/lifecycle/viewmodel
+<app/src/main/java/kn/beautynow/dominio/usuario/Endereco.java 2javaXHhr<app/src/main/java/kn/beautynow/dominio/usuario/Endereco.java
