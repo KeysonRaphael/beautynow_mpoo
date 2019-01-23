@@ -1,1 +1,1 @@
-Kapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadeInfoGUI.java 2javaXÖhrKapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadeInfoGUI.java
+Dapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AgendaGui.java 2javaXghrDapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AgendaGui.java

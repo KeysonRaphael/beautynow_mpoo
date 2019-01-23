@@ -21,8 +21,6 @@ import sun.bob.mcalendarview.vo.DateData;
 
 public class AgendaGui extends Fragment {
 
-    private OnFragmentInteractionListener mListener;
-
     public AgendaGui() {
         // Required empty public constructor
     }
@@ -85,18 +83,14 @@ public class AgendaGui extends Fragment {
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
@@ -104,10 +98,5 @@ public class AgendaGui extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }

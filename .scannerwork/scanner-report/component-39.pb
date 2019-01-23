@@ -1,1 +1,1 @@
-'>app/src/main/java/kn/beautynow/gui/usuario/EditarEndereco.java 2javaX¶hr>app/src/main/java/kn/beautynow/gui/usuario/EditarEndereco.java
+'Eapp/src/main/java/kn/beautynow/gui/fornecedor/ServicosFornecedor.java 2javaXˆhrEapp/src/main/java/kn/beautynow/gui/fornecedor/ServicosFornecedor.java

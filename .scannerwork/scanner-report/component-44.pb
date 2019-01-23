@@ -1,1 +1,1 @@
-,Happ/src/main/java/kn/beautynow/negocio/fornecedor/FornecedorNegocio.java 2javaXhrHapp/src/main/java/kn/beautynow/negocio/fornecedor/FornecedorNegocio.java
+,6app/src/main/java/kn/beautynow/gui/usuario/Perfil.java 2javaX«hr6app/src/main/java/kn/beautynow/gui/usuario/Perfil.java

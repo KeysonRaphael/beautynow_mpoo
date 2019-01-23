@@ -1,1 +1,1 @@
-Lapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java 2javaXYhrLapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java
+>app/src/main/java/kn/beautynow/gui/cliente/ClienteServico.java 2javaXuhr>app/src/main/java/kn/beautynow/gui/cliente/ClienteServico.java

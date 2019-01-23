@@ -1,1 +1,1 @@
-*Oapp/src/main/java/kn/beautynow/negocio/clienteefornecedor/AtividadeNegocio.java 2javaX4hrOapp/src/main/java/kn/beautynow/negocio/clienteefornecedor/AtividadeNegocio.java
+*Japp/src/main/java/kn/beautynow/negocio/clienteefornecedor/NotaNegocio.java 2javaXhrJapp/src/main/java/kn/beautynow/negocio/clienteefornecedor/NotaNegocio.java

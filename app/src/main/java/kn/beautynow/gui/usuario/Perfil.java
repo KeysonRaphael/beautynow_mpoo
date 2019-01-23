@@ -36,8 +36,6 @@ import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 
 public class Perfil extends Fragment {
-
-    private OnFragmentInteractionListener mListener;
     public final int IMAGEM_SELECIONADA = 1000;
     public Perfil() {
         // Required empty public constructor
@@ -153,18 +151,10 @@ public class Perfil extends Fragment {
         nomeusuario.setText(text);
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
@@ -172,7 +162,6 @@ public class Perfil extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     public interface OnFragmentInteractionListener {

@@ -1,1 +1,2 @@
-	Happ/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java 2javaX)hrHapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java
+	1app/src/main/java/kn/beautynow/dominio/controller :
+r1app/src/main/java/kn/beautynow/dominio/controller

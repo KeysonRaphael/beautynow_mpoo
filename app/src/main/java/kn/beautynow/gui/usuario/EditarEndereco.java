@@ -22,7 +22,6 @@ import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class EditarEndereco extends Fragment implements Perfil.OnFragmentInteractionListener {
-    private OnFragmentInteractionListener mListener;
     private EditText cep;
     private EditText rua;
     private EditText numero;
@@ -148,18 +147,10 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
         return resultadoEndereco;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
@@ -167,7 +158,6 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override

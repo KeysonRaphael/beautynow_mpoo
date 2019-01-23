@@ -1,1 +1,1 @@
-.app/src/main/java/kn/beautynow/dominio/cliente :r.app/src/main/java/kn/beautynow/dominio/cliente
+9app/src/main/java/kn/beautynow/dominio/clienteefornecedor :r9app/src/main/java/kn/beautynow/dominio/clienteefornecedor

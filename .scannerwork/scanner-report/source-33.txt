@@ -32,7 +32,6 @@ import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.fornecedor.ServicoNegocio;
 
 public class NovoServico extends Fragment {
-    private OnFragmentInteractionListener mListener;
     private String idservico = "";
     private Bitmap imagen = null;
 
@@ -177,18 +176,14 @@ public class NovoServico extends Fragment {
         return resultado;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void setIdservico(String idservico) {
+        this.idservico = idservico;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
@@ -196,11 +191,7 @@ public class NovoServico extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    public void setIdservico(String idservico) {
-        this.idservico = idservico;
+        idservico = "";
     }
 
     public interface OnFragmentInteractionListener {

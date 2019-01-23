@@ -1,1 +1,1 @@
-<<app/src/main/java/kn/beautynow/persistencia/EnderecoDao.java 2javaXYhr<app/src/main/java/kn/beautynow/persistencia/EnderecoDao.java
+<6app/src/main/java/kn/beautynow/persistencia/Banco.java 2javaX¹hr6app/src/main/java/kn/beautynow/persistencia/Banco.java

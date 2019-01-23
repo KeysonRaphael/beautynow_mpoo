@@ -1,1 +1,1 @@
-4.app/src/main/java/kn/beautynow/negocio/usuario :23r.app/src/main/java/kn/beautynow/negocio/usuario
+4.app/src/main/java/kn/beautynow/negocio/usuario :32r.app/src/main/java/kn/beautynow/negocio/usuario

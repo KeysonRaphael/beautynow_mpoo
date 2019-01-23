@@ -1,1 +1,1 @@
-Gapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadeGui.java 2javaX¿hrGapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadeGui.java
+5app/src/main/java/kn/beautynow/gui/clienteefornecedor :r5app/src/main/java/kn/beautynow/gui/clienteefornecedor

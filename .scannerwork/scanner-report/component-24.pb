@@ -1,1 +1,1 @@
-5app/src/main/java/kn/beautynow/gui/clienteefornecedor :"r5app/src/main/java/kn/beautynow/gui/clienteefornecedor
+?app/src/main/java/kn/beautynow/gui/cliente/RecomendacaoGUI.java 2javaX[hr?app/src/main/java/kn/beautynow/gui/cliente/RecomendacaoGUI.java

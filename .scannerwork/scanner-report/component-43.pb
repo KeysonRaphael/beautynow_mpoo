@@ -1,1 +1,1 @@
-+9app/src/main/java/kn/beautynow/negocio/clienteefornecedor :*.r9app/src/main/java/kn/beautynow/negocio/clienteefornecedor
++9app/src/main/java/kn/beautynow/negocio/clienteefornecedor :)*r9app/src/main/java/kn/beautynow/negocio/clienteefornecedor

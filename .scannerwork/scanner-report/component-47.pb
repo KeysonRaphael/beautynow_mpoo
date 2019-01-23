@@ -1,1 +1,1 @@
-/Eapp/src/main/java/kn/beautynow/negocio/fornecedor/ServicoNegocio.java 2javaXYhrEapp/src/main/java/kn/beautynow/negocio/fornecedor/ServicoNegocio.java
+/1app/src/main/java/kn/beautynow/negocio/fornecedor :-.r1app/src/main/java/kn/beautynow/negocio/fornecedor

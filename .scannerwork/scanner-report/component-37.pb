@@ -1,1 +1,1 @@
-%Eapp/src/main/java/kn/beautynow/gui/fornecedor/ServicosFornecedor.java 2javaX’hrEapp/src/main/java/kn/beautynow/gui/fornecedor/ServicosFornecedor.java
+%8app/src/main/java/kn/beautynow/gui/usuario/Cadastro.java 2javaX~hr8app/src/main/java/kn/beautynow/gui/usuario/Cadastro.java

@@ -23,7 +23,6 @@ import kn.beautynow.negocio.clienteefornecedor.NotaNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class AtividadeInfoGUI extends Fragment {
-    private OnFragmentInteractionListener mListener;
     private Atividade atividade;
 
     public AtividadeInfoGUI() {
@@ -181,30 +180,21 @@ public class AtividadeInfoGUI extends Fragment {
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void setAtividade(Atividade atividade) {
+        this.atividade = atividade;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
+        if (!(context instanceof OnFragmentInteractionListener)) {
+            throw new ExceptionCases("implement OnFragmentInteractionListener");
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    public void setAtividade(Atividade atividade) {
-        this.atividade = atividade;
     }
 
     public interface OnFragmentInteractionListener {

@@ -1,181 +1,135 @@
-package kn.beautynow.gui.usuario;
+package kn.beautynow.gui.fornecedor;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.ArrayList;
-
 import kn.beautynow.R;
 import kn.beautynow.dominio.controller.ExceptionCases;
-import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
-import kn.beautynow.dominio.usuario.Endereco;
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servicos;
 import kn.beautynow.dominio.usuario.Usuario;
-import kn.beautynow.negocio.usuario.UsuarioNegocio;
+import kn.beautynow.gui.cliente.ClienteServico;
+import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
+import kn.beautynow.negocio.fornecedor.ServicoNegocio;
 
-public class EditarEndereco extends Fragment implements Perfil.OnFragmentInteractionListener {
-    private OnFragmentInteractionListener mListener;
-    private EditText cep;
-    private EditText rua;
-    private EditText numero;
-    private EditText complemento;
-    private EditText bairro;
-    private EditText cidade;
-    private EditText estado;
+public class ServicosFornecedor extends Fragment
+        implements
+        NovoServico.OnFragmentInteractionListener,
+        AtividadeGui.OnFragmentInteractionListener,
+        ClienteServico.OnFragmentInteractionListener {
 
-    public EditarEndereco() {
+    private String predict = "";
+
+    public ServicosFornecedor() {
         // Required empty public constructor
     }
 
-    public static EditarEndereco newInstance() {
-        return new EditarEndereco();
+    public static ServicosFornecedor newInstance() {
+        return new ServicosFornecedor();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View inf = inflater.inflate(R.layout.fragment_editar_endereco, container, false);
-        this.cep = inf.findViewById(R.id.editCep);
-        this.rua = inf.findViewById(R.id.editRua);
-        this.numero = inf.findViewById(R.id.editNumero);
-        this.complemento = inf.findViewById(R.id.editComplemento);
-        this.bairro = inf.findViewById(R.id.editBairro);
-        this.cidade = inf.findViewById(R.id.editCidade);
-        this.estado = inf.findViewById(R.id.editEstado);
-        cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
-        final String id = Session.getSession(inf.getContext()).getId();
-        if (!Session.getSession(getContext()).getEndereco().getRua().equals("")) {
-            Endereco enderecoAnt = new UsuarioNegocio(getContext()).buscarEndereco(Session.getSession(getContext()).getId());
-            cep.setText(enderecoAnt.getCep());
-            rua.setText(enderecoAnt.getRua());
-            numero.setText(enderecoAnt.getNumero());
-            complemento.setText(enderecoAnt.getComplemento());
-            bairro.setText(enderecoAnt.getBairro());
-            cidade.setText(enderecoAnt.getCidade());
-            estado.setText(enderecoAnt.getEstado());
-        }
-        Button cadastrarEndereco = inf.findViewById(R.id.cadastrarEndereco);
-        cadastrarEndereco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean camposCorretos = validarcampos();
-                if (camposCorretos) {
-                    UsuarioNegocio usuarioneg = new UsuarioNegocio(getContext());
-                    ArrayList<String> array = new ArrayList<String>();
-                    array.add(0,id);
-                    array.add(1,rua.getText().toString());
-                    array.add(2,numero.getText().toString());
-                    array.add(3,complemento.getText().toString());
-                    array.add(4,bairro.getText().toString());
-                    array.add(5,cidade.getText().toString());
-                    array.add(6,estado.getText().toString());
-                    array.add(7,cep.getText().toString());
-                    usuarioneg.cadastrarEndereco(array);
-                    irPerfil();
-                }
-            }
-        });
-        Button voltar = inf.findViewById(R.id.voltarPerfil);
-        voltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                irPerfil();
-            }
-        });
-        return inf;
-    }
-
-    public void irPerfil(){
-        getActivity().setTitle("Perfil");
-        FragmentTransaction t = getFragmentManager().beginTransaction();
-        Fragment mFrag = new Perfil();
-        Usuario obj = Session.getSession(getContext());
-        if (obj.getTipoUsuario().equals("Cliente")) {
-            t.replace(R.id.frame, mFrag);
-        } else {
+        // Inflate the layout for this fragment
+        View inf = inflater.inflate(R.layout.fragment_servicos_fornecedor, container, false);
+        final Fornecedor obj = Session.getSessionFornecedor(getContext());
+        final Usuario user = Session.getSession(getContext());
+        if (user.getTipoUsuario().equals("Fornecedor") && obj.getServicos().getListaServicos().size() == 0) {
+            getActivity().setTitle("Novo Serviço");
+            FragmentTransaction t = getFragmentManager().beginTransaction();
+            Fragment mFrag = new NovoServico();
             t.replace(R.id.fornecedor_frame, mFrag);
-        }
-        t.commit();
-    }
+            t.commit();
+        } else {
+            final RecyclerView reciclerview = inf.findViewById(R.id.recycler);
+            final EditText buscaServico = inf.findViewById(R.id.findServico);
+            final Servicos servicos;
+            if (!predict.equals("")) {
+                servicos = new ServicoNegocio(getContext()).listarServicosFornecedor(predict);
+                predict = "";
+            } else if (user.getTipoUsuario().equals("Cliente")) {
+                servicos = new ServicoNegocio(getContext()).listarServicos();
+            } else {
+                servicos = new Servicos();
+                servicos.setListaServicos(obj.getServicos().getListaServicos());
+            }
+            RecyclerView.Adapter adapter = new AdapterServicos(servicos);
+            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            reciclerview.setLayoutManager(llm);
+            reciclerview.setAdapter(adapter);
+            buscaServico.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    //nothing to do
+                }
 
-    public boolean validarcampos() {
-        String ruat = rua.getText().toString();
-        String numerot = numero.getText().toString();
-        String bairrot = bairro.getText().toString();
-        String cidadet = cidade.getText().toString();
-        String estadot = estado.getText().toString();
-        String cept = cep.getText().toString();
-        boolean resultadoEndereco = false;
-        if (ruat.equals("")) {
-            rua.setError("Digite a rua!");
-            return resultadoEndereco;
-        }
-        if (numerot.equals("")) {
-            numero.setError("Digite o numero!");
-            return resultadoEndereco;
-        }
-        if (bairrot.equals("")) {
-            bairro.setError("Digite o bairro!");
-            return resultadoEndereco;
-        }
-        if (cidadet.equals("")) {
-            cidade.setError("Digite a cidade!");
-            return resultadoEndereco;
-        }
-        if (estadot.equals("")) {
-            estado.setError("Digite o estado!");
-            return resultadoEndereco;
-        }
-        if (cept.equals("")) {
-            cep.setError("Digite o cep!");
-            return resultadoEndereco;
-        }
-        resultadoEndereco = true;
-        return resultadoEndereco;
-    }
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    Servicos servicosad = new Servicos();
+                    int indice = 0;
+                    for (int i = 0; i < servicos.getListaServicos().size(); i++) {
+                        if (servicos.getListaServicos().get(i).getDescricao().contains(buscaServico.getText().toString())) {
+                            servicosad.getListaServicos().add(indice, servicos.getListaServicos().get(i));
+                            indice += 1;
+                        }
+                    }
+                    RecyclerView.Adapter adapter = new AdapterServicos(servicosad);
+                    LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    reciclerview.setLayoutManager(llm);
+                    reciclerview.setAdapter(adapter);
+                }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+                @Override
+                public void afterTextChanged(Editable s) {
+                    //nothing to do
+                }
+            });
         }
+        return inf;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
+    }
+
+    public void setPredict(String predict) {
+        this.predict = predict;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
         //nothing
     }
-
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+
     }
 }

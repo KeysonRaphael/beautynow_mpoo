@@ -1,1 +1,1 @@
->app/src/main/java/kn/beautynow/gui/cliente/ClienteServico.java 2javaXhr>app/src/main/java/kn/beautynow/gui/cliente/ClienteServico.java
+Kapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadesDiaGui.java 2javaXChrKapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AtividadesDiaGui.java

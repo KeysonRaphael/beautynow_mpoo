@@ -29,7 +29,6 @@ public class ServicosFornecedor extends Fragment
         AtividadeGui.OnFragmentInteractionListener,
         ClienteServico.OnFragmentInteractionListener {
 
-    private OnFragmentInteractionListener mListener;
     private String predict = "";
 
     public ServicosFornecedor() {
@@ -108,38 +107,29 @@ public class ServicosFornecedor extends Fragment
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
+    }
+
+    public void setPredict(String predict) {
+        this.predict = predict;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     @Override
     public void onFragmentInteraction(Uri uri) {
         //nothing
     }
-
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
-    }
 
-    public void setPredict(String predict) {
-        this.predict = predict;
     }
 }

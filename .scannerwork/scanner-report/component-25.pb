@@ -1,1 +1,1 @@
-?app/src/main/java/kn/beautynow/gui/cliente/RecomendacaoGUI.java 2javaXfhr?app/src/main/java/kn/beautynow/gui/cliente/RecomendacaoGUI.java
+Lapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java 2javaXYhrLapp/src/main/java/kn/beautynow/gui/clienteefornecedor/AdapterAtividades.java

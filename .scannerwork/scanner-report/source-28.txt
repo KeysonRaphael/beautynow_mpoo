@@ -1,37 +1,32 @@
 package kn.beautynow.gui.clienteefornecedor;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.TextView;
-
 import kn.beautynow.R;
+import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.clienteefornecedor.Atividade;
 import kn.beautynow.dominio.controller.ExceptionCases;
 import kn.beautynow.dominio.controller.Session;
 import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
-import kn.beautynow.negocio.clienteefornecedor.NotaNegocio;
-import kn.beautynow.negocio.usuario.UsuarioNegocio;
+import sun.bob.mcalendarview.MCalendarView;
+import sun.bob.mcalendarview.listeners.OnDateClickListener;
+import sun.bob.mcalendarview.vo.DateData;
 
-public class AtividadeInfoGUI extends Fragment {
-    private OnFragmentInteractionListener mListener;
-    private Atividade atividade;
+public class AgendaGui extends Fragment {
 
-    public AtividadeInfoGUI() {
+    public AgendaGui() {
         // Required empty public constructor
     }
 
-    public static AtividadeInfoGUI newInstance() {
-        return new AtividadeInfoGUI();
+    public static AgendaGui newInstance() {
+        return new AgendaGui();
     }
 
     @Override
@@ -42,157 +37,60 @@ public class AtividadeInfoGUI extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View inf = inflater.inflate(R.layout.fragment_atividade_info_gui, container, false);
-        String clientec = "Cliente";
-        TextView data = inf.findViewById(R.id.inputdataview);
-        data.setText(atividade.getData());
-        TextView hora = inf.findViewById(R.id.inputhoraview);
-        hora.setText(atividade.getHora());
-        TextView servico = inf.findViewById(R.id.inputservicoview);
-        servico.setText(atividade.getServico());
-        TextView valor = inf.findViewById(R.id.inputvalorview);
-        valor.setText(atividade.getValor());
-        final TextView cliente = inf.findViewById(R.id.inputclienteview);
-        TextView fornecedor = inf.findViewById(R.id.inputfornecedorview);
-        fornecedor.setText(atividade.getFornecedor());
-        final Button confirmarAtendimento = inf.findViewById(R.id.confirmarAtendimento);
-        final Button rejeitarAtendimento = inf.findViewById(R.id.rejeitarAtendimento);
-        final Button finalizarAtendimento = inf.findViewById(R.id.finalizarAtendimento);
-        final Button darNotaFornecedor = inf.findViewById(R.id.darNotaFornecedor);
-        final TextView ativo = inf.findViewById(R.id.inputativoview);
-        final TextView finalizado = inf.findViewById(R.id.inputfinalizadoview);
-        final GridLayout grid = inf.findViewById(R.id.darnota);
-        final Button maps = inf.findViewById(R.id.mapsi);
-        TextView inputendereco = inf.findViewById(R.id.inputenderecoview);
-        Usuario userAtivo = Session.getSession(getContext());
-        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor");
-        inputendereco.setText(user.getEndereco().printEndereco());
-        maps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("google.navigation:q="+ user.getEndereco().getCep()));
-                startActivity(intent);
-            }
-        });
-        darNotaFornecedor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                grid.setVisibility(View.VISIBLE);
-            }
-        });
-        Button enviarNota = inf.findViewById(R.id.enviarNota);
-        enviarNota.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText nota = inf.findViewById(R.id.inputNota);
-                new NotaNegocio(getContext()).inserirNotaNegocio(nota.getText().toString(), atividade.getCliente(), atividade.getFornecedor());
-                new AtividadeNegocio(getContext()).notainseridaAtividade(atividade.getId());
-                darNotaFornecedor.setVisibility(View.INVISIBLE);
-                grid.setVisibility(View.INVISIBLE);
-
-            }
-        });
-        if (atividade.getNotaAtribuida().equals("S")) {
-            darNotaFornecedor.setVisibility(View.INVISIBLE);
-        }
-        finalizarAtendimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finalizado.setText("Sim");
-                new AtividadeNegocio(getContext()).finalizarAtividade(atividade.getId());
-                finalizarAtendimento.setVisibility(View.INVISIBLE);
-            }
-        });
-        confirmarAtendimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AtividadeNegocio(getContext()).confirmarAtividade(atividade.getId());
-                ativo.setText("Sim");
-                finalizado.setVisibility(View.VISIBLE);
-                TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
-                finalizadotext.setVisibility(View.VISIBLE);
-                confirmarAtendimento.setVisibility(View.GONE);
-                rejeitarAtendimento.setVisibility(View.INVISIBLE);
-                finalizarAtendimento.setVisibility(View.VISIBLE);
-            }
-        });
-        rejeitarAtendimento.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AtividadeNegocio(getContext()).recusarAtividade(atividade.getId());
-                ativo.setText("Atendimento Rejeitado");
-                rejeitarAtendimento.setVisibility(View.INVISIBLE);
-                confirmarAtendimento.setVisibility(View.GONE);
-            }
-        });
-        if (userAtivo.getTipoUsuario().equals(clientec)) {
-            cliente.setVisibility(View.INVISIBLE);
-            TextView clientetexto = inf.findViewById(R.id.clienteview);
-            clientetexto.setVisibility(View.INVISIBLE);
-            confirmarAtendimento.setVisibility(View.INVISIBLE);
-            rejeitarAtendimento.setVisibility(View.INVISIBLE);
-            finalizarAtendimento.setVisibility(View.INVISIBLE);
-            fornecedor.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor").getNome());
-            TextView enderecotexto = inf.findViewById(R.id.enderecoview);
-            enderecotexto.setVisibility(View.VISIBLE);
-            inputendereco.setVisibility(View.VISIBLE);
-            maps.setVisibility(View.VISIBLE);
+        final View inf = inflater.inflate(R.layout.fragment_agenda_gui, container, false);
+        final Usuario usuario = Session.getSession(getContext());
+        final Agenda agenda;
+        if (usuario.getTipoUsuario().equals("Cliente")) {
+            agenda = new AtividadeNegocio(getContext()).carregarAgendaClienteNegocio(Session.getSession(getContext()).getIdUser());
         } else {
-            fornecedor.setVisibility(View.INVISIBLE);
-            TextView fornecedortexto = inf.findViewById(R.id.fornecedorview);
-            fornecedortexto.setVisibility(View.INVISIBLE);
-            cliente.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getCliente(), clientec).getNome());
+            agenda = new AtividadeNegocio(getContext()).carregarAgendaFornecedorNegocio(Session.getSession(getContext()).getIdUser());
         }
-        switch (atividade.getAtivo()) {
-            case "N":
-                if (Session.getSession(getContext()).getTipoUsuario().equals(clientec)) {
-                    ativo.setText("Aguardando Fornecedor");
-                } else {
-                    ativo.setText("Confirme ou Rejeite!");
+        final MCalendarView cv = inf.findViewById(R.id.mcalendarView);
+        cv.getMarkedDates().getAll().clear();
+        for (int i = 0; i < agenda.getCalendario().size(); i++) {
+            Atividade atividade = agenda.getCalendario().get(i);
+            String[] date = atividade.getData().split("/");
+            cv.markDate(Integer.parseInt(date[2]), Integer.parseInt(date[1]), Integer.parseInt(date[0]));
+        }
+        cv.setOnDateClickListener(new OnDateClickListener() {
+            @Override
+            public void onDateClick(View view, DateData date) {
+                int count = 0;
+                Agenda agendan = new Agenda();
+                for (int i = 0; i < agenda.getCalendario().size(); i++) {
+                    Atividade atividade = agenda.getCalendario().get(i);
+                    String[] dates = atividade.getData().split("/");
+                    cv.markDate(Integer.parseInt(dates[2]), Integer.parseInt(dates[1]), Integer.parseInt(dates[0]));
+                    if (dates[0].equals(date.getDayString()) && dates[1].equals(date.getMonthString())) {
+                        agendan.getCalendario().add(count, atividade);
+                        count += 1;
+                    }
                 }
-                finalizado.setVisibility(View.INVISIBLE);
-                TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
-                finalizadotext.setVisibility(View.INVISIBLE);
-                break;
-            case "S":
-                ativo.setText("Sim");
-                rejeitarAtendimento.setVisibility(View.INVISIBLE);
-                confirmarAtendimento.setVisibility(View.INVISIBLE);
-                finalizarAtendimento.setVisibility(View.VISIBLE);
-                break;
-            default:
-                ativo.setText("NÃ£o, Atendimento Rejeitado");
-                rejeitarAtendimento.setVisibility(View.INVISIBLE);
-                confirmarAtendimento.setVisibility(View.INVISIBLE);
-                break;
-        }
-        if (atividade.getFinalizado().equals("N")) {
-            finalizado.setText("NÃ£o");
-        } else {
-            finalizado.setText("Sim");
-            rejeitarAtendimento.setVisibility(View.INVISIBLE);
-            confirmarAtendimento.setVisibility(View.INVISIBLE);
-            finalizarAtendimento.setVisibility(View.INVISIBLE);
-            if (userAtivo.getTipoUsuario().equals(clientec)&& atividade.getNotaAtribuida().equals("N")){
-                darNotaFornecedor.setVisibility(View.VISIBLE);
+                if (agendan.getCalendario().size() > 0) {
+                    getActivity().setTitle("Marcações");
+                    Fragment fragment = new AtividadesDiaGui();
+                    new AtividadesDiaGui().setAgenda(agendan);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    if (usuario.getTipoUsuario().equals("Cliente")) {
+                        ft.replace(R.id.frame, fragment);
+                    } else {
+                        ft.replace(R.id.fornecedor_frame, fragment);
+                    }
+                    ft.commit();
+                }
             }
-        }
+        });
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
     }
@@ -200,14 +98,5 @@ public class AtividadeInfoGUI extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    public void setAtividade(Atividade atividade) {
-        this.atividade = atividade;
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 }

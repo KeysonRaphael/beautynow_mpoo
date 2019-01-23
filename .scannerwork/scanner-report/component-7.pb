@@ -1,1 +1,1 @@
-Fapp/src/main/java/kn/beautynow/dominio/controller/FixCursorWindow.java 2javaXhrFapp/src/main/java/kn/beautynow/dominio/controller/FixCursorWindow.java
+Happ/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java 2javaX)hrHapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Avaliacao.java

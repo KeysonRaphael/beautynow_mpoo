@@ -1,39 +1,28 @@
-package kn.beautynow.gui.cliente;
+package kn.beautynow.gui.clienteefornecedor;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import kn.beautynow.R;
+import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.controller.ExceptionCases;
-import kn.beautynow.dominio.fornecedor.Servico;
-import kn.beautynow.dominio.usuario.Usuario;
-import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
-import kn.beautynow.negocio.fornecedor.ServicoNegocio;
-import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
-import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
-public class ClienteServico extends Fragment {
-    private OnFragmentInteractionListener mListener;
-    private String idfornecedor = "";
-    private String idservico = "";
+public class AtividadesDiaGui extends Fragment {
+    private Agenda agenda;
 
-    public ClienteServico() {
+    public AtividadesDiaGui() {
         // Required empty public constructor
     }
 
-    public static ClienteServico newInstance() {
-        return new ClienteServico();
+    public static AtividadesDiaGui newInstance() {
+        return new AtividadesDiaGui();
     }
 
     @Override
@@ -44,83 +33,34 @@ public class ClienteServico extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View inf = inflater.inflate(R.layout.fragment_cliente_servico, container, false);
-        ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-        Servico servico = servicoNegocio.buscarServicoFornecedor(idservico);
-        TextView inputServicoNome = inf.findViewById(R.id.textoServico);
-        final String servicoNome = servico.getDescricao();
-        inputServicoNome.setText(servicoNome);
-        TextView inputServicoValor = inf.findViewById(R.id.valorServico);
-        final String servicoValor = servico.getValor();
-        inputServicoValor.setText(servicoValor);
-        ImageView inputImage = inf.findViewById(R.id.imageServico);
-        inputImage.setImageBitmap(servico.getImagem());
-        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(idfornecedor, "Fornecedor");
-        String idUser = user.getId();
-        Bitmap fornecedorimagem = new ImagemPerfilNegocio(getContext()).getImgPerfil(idUser);
-        ImageView imageFornecedor = inf.findViewById(R.id.imageFornecedor);
-        imageFornecedor.setImageBitmap(fornecedorimagem);
-        TextView nomeFornecedor = inf.findViewById(R.id.nomeFornecedor);
-        nomeFornecedor.setText(user.getNome());
-        TextView enderecoFornecedor = inf.findViewById(R.id.enderecoFornecedor);
-        enderecoFornecedor.setText(user.getEndereco().printEndereco());
-        Button marcarAtividade = inf.findViewById(R.id.marcarAtendimento);
-        marcarAtividade.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().setTitle("Marcar Atendimento");
-                Fragment fragment = new AtividadeGui();
-                new AtividadeGui().setServico(servicoNome);
-                new AtividadeGui().setValor(servicoValor);
-                new AtividadeGui().setFornecedor(idfornecedor);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                ft.replace(R.id.frame, fragment);
-                ft.commit();
-            }
-        });
-        Button abrirMaps = inf.findViewById(R.id.maps);
-        abrirMaps.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("google.navigation:q="+user.getEndereco().getCep()));
-                startActivity(intent);
-            }
-        });
+        final View inf = inflater.inflate(R.layout.fragment_atividades_dia_gui, container, false);
+        final RecyclerView reciclerview = inf.findViewById(R.id.recyclerAtividade);
+        RecyclerView.Adapter adapter = new AdapterAtividades(agenda);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        reciclerview.setLayoutManager(llm);
+        reciclerview.setAdapter(adapter);
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
-        }
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
     }
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
-    }
 
-    public void setIdservico(String idservico) {
-        this.idservico = idservico;
     }
-
-    public void setIdfornecedor(String idfornecedor) {
-        this.idfornecedor = idfornecedor;
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!(context instanceof OnFragmentInteractionListener)) {
+            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
+        }
     }
 }

@@ -24,7 +24,6 @@ import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class ClienteServico extends Fragment {
-    private OnFragmentInteractionListener mListener;
     private String idfornecedor = "";
     private String idservico = "";
 
@@ -90,30 +89,12 @@ public class ClienteServico extends Fragment {
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
+        if (!(context instanceof OnFragmentInteractionListener)) {
             throw new ExceptionCases(" must implement OnFragmentInteractionListener");
         }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
     }
 
     public void setIdservico(String idservico) {
@@ -122,5 +103,14 @@ public class ClienteServico extends Fragment {
 
     public void setIdfornecedor(String idfornecedor) {
         this.idfornecedor = idfornecedor;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
+
     }
 }

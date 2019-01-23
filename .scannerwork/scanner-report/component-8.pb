@@ -1,2 +1,1 @@
-1app/src/main/java/kn/beautynow/dominio/controller :
-r1app/src/main/java/kn/beautynow/dominio/controller
+Eapp/src/main/java/kn/beautynow/dominio/controller/ExceptionCases.java 2javaXhrEapp/src/main/java/kn/beautynow/dominio/controller/ExceptionCases.java

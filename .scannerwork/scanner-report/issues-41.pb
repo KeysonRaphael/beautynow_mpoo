@@ -1,3 +1,2 @@
-=
-squidS1170!Make this final field static too. 2)) 'z
-squidS00116]Rename this field "IMAGEM_SELECIONADA" to match the regular expression '^[a-z][a-zA-Z0-9]*$'. 2)) '
+Ž
+squidS1319rThe type of the "valores" object should be an interface such as "List" rather than the implementation "ArrayList". 2  1

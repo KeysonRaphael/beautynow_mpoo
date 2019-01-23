@@ -15,7 +15,6 @@ import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.controller.ExceptionCases;
 
 public class AtividadesDiaGui extends Fragment {
-    private OnFragmentInteractionListener mListener;
     private Agenda agenda;
 
     public AtividadesDiaGui() {
@@ -44,33 +43,24 @@ public class AtividadesDiaGui extends Fragment {
         return inf;
     }
 
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
-        }
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
-    }
-
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
     }
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
+
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!(context instanceof OnFragmentInteractionListener)) {
+            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
+        }
     }
 }

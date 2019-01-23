@@ -1,1 +1,1 @@
-8+app/src/main/java/kn/beautynow/persistencia :	79:<;=>?@r+app/src/main/java/kn/beautynow/persistencia
+8+app/src/main/java/kn/beautynow/persistencia :	79;:<=>?@r+app/src/main/java/kn/beautynow/persistencia

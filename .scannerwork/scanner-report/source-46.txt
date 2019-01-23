@@ -1,18 +1,28 @@
-package kn.beautynow.negocio.clienteefornecedor;
+package kn.beautynow.negocio.fornecedor;
 
 import android.content.Context;
 
-import kn.beautynow.persistencia.NotaDao;
+import java.util.ArrayList;
 
-public class NotaNegocio {
+import kn.beautynow.dominio.fornecedor.Servico;
+import kn.beautynow.dominio.fornecedor.Servicos;
+import kn.beautynow.persistencia.ServicosDao;
+
+public class FornecedorNegocio {
     private Context contexto;
 
-    public NotaNegocio(Context context) {
-        this.contexto = context;
+    public FornecedorNegocio(Context contextot) {
+        contexto = contextot;
     }
 
-    public void inserirNotaNegocio(String nota, String cliente, String fornecedor) {
-        NotaDao atividadedao = new NotaDao(contexto);
-        atividadedao.InserirNota(nota, cliente, fornecedor);
+    public ArrayList<Servico> carregarServicos(String idfornecedor) {
+        Servicos servicos = new Servicos();
+        ServicosDao servicosDao = new ServicosDao(contexto);
+        ArrayList result = servicosDao.selectServicos(idfornecedor);
+        for (int i = 0; i < result.size(); ++i) {
+            Servico obj = (Servico) result.get(i);
+            servicos.getListaServicos().add(i, obj);
+        }
+        return servicos.getListaServicos();
     }
 }
