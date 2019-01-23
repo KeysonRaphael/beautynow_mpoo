@@ -32,8 +32,8 @@ import kn.beautynow.dominio.usuario.Usuario;
 import kn.beautynow.negocio.fornecedor.ServicoNegocio;
 
 public class NovoServico extends Fragment {
-    private String idservico = "";
-    private Bitmap imagen = null;
+    private static String idservico = "";
+    private static Bitmap imagen = null;
 
     public NovoServico() {
         // Required empty public constructor

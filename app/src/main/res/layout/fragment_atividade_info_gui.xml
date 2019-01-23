@@ -240,7 +240,7 @@
             android:paddingRight="10dp"
             android:text="Dar nota pelo servico"
             android:textColor="@color/white"
-            android:visibility="invisible"/>
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/rejeitarAtendimento"
@@ -250,6 +250,7 @@
             android:layout_columnSpan="2"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
             android:background="@android:color/holo_blue_light"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

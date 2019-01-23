@@ -38,7 +38,7 @@ public class EnderecoDao {
         ContentValues cv = new ContentValues();
         cv.put(Banco.COLUMN_ENDERECO_RUA, array.get(1));
         cv.put(Banco.COLUMN_ENDERECO_NUMERO, array.get(2));
-        cv.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, array.get(4));
+        cv.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, array.get(3));
         cv.put(Banco.COLUMN_ENDERECO_BAIRRO, array.get(4));
         cv.put(Banco.COLUMN_ENDERECO_CIDADE, array.get(5));
         cv.put(Banco.COLUMN_ENDERECO_ESTADO, array.get(6));

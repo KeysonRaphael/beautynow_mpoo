@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,7 @@ public class EditarEndereco extends Fragment implements Perfil.OnFragmentInterac
         cep.addTextChangedListener(MaskEditUtil.mask(cep, MaskEditUtil.FORMAT_CEP));
         final String id = Session.getSession(inf.getContext()).getId();
         if (!Session.getSession(getContext()).getEndereco().getRua().equals("")) {
-            Endereco enderecoAnt = new UsuarioNegocio(getContext()).buscarEndereco(Session.getSession(getContext()).getId());
+            Endereco enderecoAnt = new UsuarioNegocio(getContext()).buscarEndereco(id);
             cep.setText(enderecoAnt.getCep());
             rua.setText(enderecoAnt.getRua());
             numero.setText(enderecoAnt.getNumero());

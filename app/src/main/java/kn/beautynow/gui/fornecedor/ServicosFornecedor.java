@@ -29,7 +29,7 @@ public class ServicosFornecedor extends Fragment
         AtividadeGui.OnFragmentInteractionListener,
         ClienteServico.OnFragmentInteractionListener {
 
-    private String predict = "";
+    private static String predict = "";
 
     public ServicosFornecedor() {
         // Required empty public constructor

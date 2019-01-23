@@ -20,7 +20,7 @@ public class ServicosDao {
         banco = new Banco(context);
     }
 
-    public ArrayList carregarServicos(String selectServicos){
+    public ArrayList<Servico> carregarServicos(String selectServicos){
         ArrayList<Servico> retorno = new ArrayList<>();
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectServicos, new String[]{});
@@ -30,6 +30,7 @@ public class ServicosDao {
             while (cursor.getCount() >= (index + 1)) {
                 Servico servico = new Servico();
                 servico.setId(cursor.getString(0));
+                servico.setIdFornecedor(cursor.getString(1));
                 servico.setDescricao(cursor.getString(5));
                 servico.setValor(cursor.getString(2));
                 byte[] imagem = cursor.getBlob(3);

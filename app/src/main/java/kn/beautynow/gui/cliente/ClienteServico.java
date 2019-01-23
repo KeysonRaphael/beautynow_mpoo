@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,8 @@ import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class ClienteServico extends Fragment {
-    private String idfornecedor = "";
-    private String idservico = "";
+    private static String idfornecedor = "";
+    private static String idservico = "";
 
     public ClienteServico() {
         // Required empty public constructor
@@ -45,7 +46,7 @@ public class ClienteServico extends Fragment {
                              Bundle savedInstanceState) {
         final View inf = inflater.inflate(R.layout.fragment_cliente_servico, container, false);
         ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-        Servico servico = servicoNegocio.buscarServicoFornecedor(idservico);
+        Servico servico = servicoNegocio.buscarServicoFornecedor(this.idservico);
         TextView inputServicoNome = inf.findViewById(R.id.textoServico);
         final String servicoNome = servico.getDescricao();
         inputServicoNome.setText(servicoNome);
@@ -54,7 +55,7 @@ public class ClienteServico extends Fragment {
         inputServicoValor.setText(servicoValor);
         ImageView inputImage = inf.findViewById(R.id.imageServico);
         inputImage.setImageBitmap(servico.getImagem());
-        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(idfornecedor, "Fornecedor");
+        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(this.idfornecedor, "Fornecedor");
         String idUser = user.getId();
         Bitmap fornecedorimagem = new ImagemPerfilNegocio(getContext()).getImgPerfil(idUser);
         ImageView imageFornecedor = inf.findViewById(R.id.imageFornecedor);

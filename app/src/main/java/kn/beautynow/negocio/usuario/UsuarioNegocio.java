@@ -1,6 +1,7 @@
 package kn.beautynow.negocio.usuario;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -71,7 +72,6 @@ public class UsuarioNegocio {
 
     public Usuario buscarUsarioPorTipo(String idfornecedor, String tipo) {
         ArrayList result = new UsuarioDao(contexto).selectUsuarioPorTipo(idfornecedor, tipo);
-        carregarUsuario(result);
         return carregarUsuario(result);
     }
 
@@ -84,7 +84,7 @@ public class UsuarioNegocio {
         user.setTipoUsuario(result.get(5).toString());
         user.setSexo((String) result.get(7));
         user.setIdUser((String) result.get(8));
-        if (9 >= result.size()) {
+        if (result.size() <= 9) {
             return user;
         }
         Endereco endereco = new Endereco();

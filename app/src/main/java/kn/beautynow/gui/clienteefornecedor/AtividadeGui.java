@@ -29,9 +29,9 @@ import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class AtividadeGui extends Fragment {
-    private String servico;
-    private String valor;
-    private String fornecedor;
+    private static String servico;
+    private static String valor;
+    private static String fornecedor;
 
 
     public AtividadeGui() {

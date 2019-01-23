@@ -15,7 +15,7 @@ import kn.beautynow.dominio.clienteefornecedor.Agenda;
 import kn.beautynow.dominio.controller.ExceptionCases;
 
 public class AtividadesDiaGui extends Fragment {
-    private Agenda agenda;
+    private static Agenda agenda;
 
     public AtividadesDiaGui() {
         // Required empty public constructor
