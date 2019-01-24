@@ -43,8 +43,8 @@ public class AtividadesDiaGui extends Fragment {
         return inf;
     }
 
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
+    public synchronized void setAgenda(Agenda agend) {
+        agenda = agend;
     }
 
     @Override

@@ -1,4 +1,4 @@
-{
-squidS1488_Immediately return this expression instead of assigning it to the temporary variable "retorno". 200 $k
-squidUselessImportCheckDRemove this unused import 'android.database.sqlite.SQLiteException'. 2 /T
-squidUselessImportCheck-Remove this unused import 'android.util.Log'. 2 
+å
+squidS1319pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList". 2 k
+squidS00100NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'. 2 ™
+squidS2293çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.) 2  6 A

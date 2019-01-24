@@ -1,24 +1,56 @@
-package kn.beautynow.dominio.cliente;
+package kn.beautynow.dominio.clienteefornecedor;
 
-import kn.beautynow.dominio.clienteefornecedor.Agenda;
-import kn.beautynow.dominio.usuario.Usuario;
-
-public class Cliente {
+public class Atividade {
     private String id;
-    private Usuario usuario;
-    private Agenda agenda;
+    private String data;
+    private String hora;
+    private String cliente;
+    private String fornecedor;
+    private String endereco;
+    private String servico;
+    private String valor;
+    private String ativo;
+    private String finalizado;
+    private String notaAtribuida;
 
-    public Cliente() {
-        usuario = new Usuario();
-        agenda = new Agenda();
+    public String getData() {
+        return data;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getServico() {
+        return servico;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
     }
 
     public String getId() {
@@ -29,12 +61,44 @@ public class Cliente {
         this.id = id;
     }
 
-    public Agenda getAgenda() {
-        return agenda;
+
+    public String getValor() {
+        return valor;
     }
 
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
+    public void setValor(String valor) {
+        this.valor = valor;
     }
 
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(String ativo) {
+        this.ativo = ativo;
+    }
+
+    public String getFinalizado() {
+        return finalizado;
+    }
+
+    public void setFinalizado(String finalizado) {
+        this.finalizado = finalizado;
+    }
+
+    public String getNotaAtribuida() {
+        return notaAtribuida;
+    }
+
+    public void setNotaAtribuida(String notaAtribuida) {
+        this.notaAtribuida = notaAtribuida;
+    }
 }

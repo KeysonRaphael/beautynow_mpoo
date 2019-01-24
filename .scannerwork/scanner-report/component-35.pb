@@ -1,1 +1,1 @@
-#>app/src/main/java/kn/beautynow/gui/usuario/EditarEndereco.java 2javaX¬hr>app/src/main/java/kn/beautynow/gui/usuario/EditarEndereco.java
+#8app/src/main/java/kn/beautynow/gui/usuario/Cadastro.java 2javaX~hr8app/src/main/java/kn/beautynow/gui/usuario/Cadastro.java

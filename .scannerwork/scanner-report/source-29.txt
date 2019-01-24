@@ -1,28 +1,37 @@
 package kn.beautynow.gui.clienteefornecedor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.TextView;
 
 import kn.beautynow.R;
-import kn.beautynow.dominio.clienteefornecedor.Agenda;
+import kn.beautynow.dominio.clienteefornecedor.Atividade;
 import kn.beautynow.dominio.controller.ExceptionCases;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.negocio.clienteefornecedor.AtividadeNegocio;
+import kn.beautynow.negocio.clienteefornecedor.NotaNegocio;
+import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
-public class AtividadesDiaGui extends Fragment {
-    private Agenda agenda;
+public class AtividadeInfoGUI extends Fragment {
+    private static Atividade atividade;
 
-    public AtividadesDiaGui() {
+    public AtividadeInfoGUI() {
         // Required empty public constructor
     }
 
-    public static AtividadesDiaGui newInstance() {
-        return new AtividadesDiaGui();
+    public static AtividadeInfoGUI newInstance() {
+        return new AtividadeInfoGUI();
     }
 
     @Override
@@ -33,18 +42,156 @@ public class AtividadesDiaGui extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View inf = inflater.inflate(R.layout.fragment_atividades_dia_gui, container, false);
-        final RecyclerView reciclerview = inf.findViewById(R.id.recyclerAtividade);
-        RecyclerView.Adapter adapter = new AdapterAtividades(agenda);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-        reciclerview.setLayoutManager(llm);
-        reciclerview.setAdapter(adapter);
+        final View inf = inflater.inflate(R.layout.fragment_atividade_info_gui, container, false);
+        String clientec = "Cliente";
+        TextView data = inf.findViewById(R.id.inputdataview);
+        data.setText(atividade.getData());
+        TextView hora = inf.findViewById(R.id.inputhoraview);
+        hora.setText(atividade.getHora());
+        TextView servico = inf.findViewById(R.id.inputservicoview);
+        servico.setText(atividade.getServico());
+        TextView valor = inf.findViewById(R.id.inputvalorview);
+        valor.setText(atividade.getValor());
+        final TextView cliente = inf.findViewById(R.id.inputclienteview);
+        TextView fornecedor = inf.findViewById(R.id.inputfornecedorview);
+        fornecedor.setText(atividade.getFornecedor());
+        final Button confirmarAtendimento = inf.findViewById(R.id.confirmarAtendimento);
+        final Button rejeitarAtendimento = inf.findViewById(R.id.rejeitarAtendimento);
+        final Button finalizarAtendimento = inf.findViewById(R.id.finalizarAtendimento);
+        final Button darNotaFornecedor = inf.findViewById(R.id.darNotaFornecedor);
+        final TextView ativo = inf.findViewById(R.id.inputativoview);
+        final TextView finalizado = inf.findViewById(R.id.inputfinalizadoview);
+        final GridLayout grid = inf.findViewById(R.id.darnota);
+        final Button maps = inf.findViewById(R.id.mapsi);
+        TextView inputendereco = inf.findViewById(R.id.inputenderecoview);
+        Usuario userAtivo = Session.getSession(getContext());
+        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor");
+        inputendereco.setText(user.getEndereco().printEndereco());
+        if (atividade.getNotaAtribuida().equals("S")) {
+            darNotaFornecedor.setVisibility(View.GONE);
+        }
+        maps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("google.navigation:q="+ user.getEndereco().printEnderecoMaps()));
+                startActivity(intent);
+            }
+        });
+        darNotaFornecedor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                grid.setVisibility(View.VISIBLE);
+            }
+        });
+        Button enviarNota = inf.findViewById(R.id.enviarNota);
+        enviarNota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText nota = inf.findViewById(R.id.inputNota);
+                new NotaNegocio(getContext()).inserirNotaNegocio(nota.getText().toString(), atividade.getCliente(), atividade.getFornecedor());
+                new AtividadeNegocio(getContext()).notainseridaAtividade(atividade.getId());
+                atividade.setNotaAtribuida("S");
+                darNotaFornecedor.setVisibility(View.GONE);
+                grid.setVisibility(View.GONE);
+
+            }
+        });
+        finalizarAtendimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finalizado.setText("Sim");
+                new AtividadeNegocio(getContext()).finalizarAtividade(atividade.getId());
+                finalizarAtendimento.setVisibility(View.GONE);
+            }
+        });
+        confirmarAtendimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AtividadeNegocio(getContext()).confirmarAtividade(atividade.getId());
+                ativo.setText("Sim");
+                finalizado.setVisibility(View.VISIBLE);
+                TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
+                finalizadotext.setVisibility(View.VISIBLE);
+                confirmarAtendimento.setVisibility(View.GONE);
+                rejeitarAtendimento.setVisibility(View.GONE);
+                finalizarAtendimento.setVisibility(View.VISIBLE);
+            }
+        });
+        rejeitarAtendimento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AtividadeNegocio(getContext()).recusarAtividade(atividade.getId());
+                ativo.setText("Atendimento Rejeitado");
+                rejeitarAtendimento.setVisibility(View.INVISIBLE);
+                confirmarAtendimento.setVisibility(View.GONE);
+            }
+        });
+        switch (atividade.getAtivo()) {
+            case "N":
+                if (Session.getSession(getContext()).getTipoUsuario().equals(clientec)) {
+                    ativo.setText("Aguardando Fornecedor");
+                } else {
+                    ativo.setText("Confirme ou Rejeite!");
+                }
+                finalizado.setVisibility(View.INVISIBLE);
+                TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
+                finalizadotext.setVisibility(View.INVISIBLE);
+                break;
+            case "S":
+                ativo.setText("Sim");
+                rejeitarAtendimento.setVisibility(View.GONE);
+                confirmarAtendimento.setVisibility(View.GONE);
+                finalizarAtendimento.setVisibility(View.VISIBLE);
+                break;
+            default:
+                ativo.setText("NÃ£o, Atendimento Rejeitado");
+                rejeitarAtendimento.setVisibility(View.GONE);
+                confirmarAtendimento.setVisibility(View.GONE);
+                break;
+        }
+        if (atividade.getFinalizado().equals("N")) {
+            finalizado.setText("NÃ£o");
+        } else {
+            finalizado.setText("Sim");
+            rejeitarAtendimento.setVisibility(View.INVISIBLE);
+            confirmarAtendimento.setVisibility(View.INVISIBLE);
+            finalizarAtendimento.setVisibility(View.INVISIBLE);
+            if (userAtivo.getTipoUsuario().equals(clientec) && atividade.getNotaAtribuida().equals("N")){
+                darNotaFornecedor.setVisibility(View.VISIBLE);
+            }
+        }
+        if (userAtivo.getTipoUsuario().equals(clientec)) {
+            cliente.setVisibility(View.INVISIBLE);
+            TextView clientetexto = inf.findViewById(R.id.clienteview);
+            clientetexto.setVisibility(View.INVISIBLE);
+            confirmarAtendimento.setVisibility(View.GONE);
+            rejeitarAtendimento.setVisibility(View.GONE);
+            finalizarAtendimento.setVisibility(View.GONE);
+            fornecedor.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getFornecedor(), "Fornecedor").getNome());
+            TextView enderecotexto = inf.findViewById(R.id.enderecoview);
+            enderecotexto.setVisibility(View.VISIBLE);
+            inputendereco.setVisibility(View.VISIBLE);
+            maps.setVisibility(View.VISIBLE);
+        } else {
+            fornecedor.setVisibility(View.INVISIBLE);
+            TextView fornecedortexto = inf.findViewById(R.id.fornecedorview);
+            fornecedortexto.setVisibility(View.INVISIBLE);
+            cliente.setText(new UsuarioNegocio(getContext()).buscarUsarioPorTipo(atividade.getCliente(), clientec).getNome());
+        }
         return inf;
     }
 
-    public void setAgenda(Agenda agenda) {
-        this.agenda = agenda;
+    public synchronized void setAtividade(Atividade atividad) {
+        atividade = atividad;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!(context instanceof OnFragmentInteractionListener)) {
+            throw new ExceptionCases("implement OnFragmentInteractionListener");
+        }
     }
 
     @Override
@@ -54,13 +201,5 @@ public class AtividadesDiaGui extends Fragment {
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
-
-    }
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (!(context instanceof OnFragmentInteractionListener)) {
-            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
-        }
     }
 }

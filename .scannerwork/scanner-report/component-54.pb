@@ -1,1 +1,1 @@
-6&app/src/main/java/kn/beautynow/negocio :5r&app/src/main/java/kn/beautynow/negocio
+6=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java 2javaXohr=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java

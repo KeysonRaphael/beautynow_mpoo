@@ -1,25 +1,40 @@
-package kn.beautynow.dominio.clienteefornecedor;
+package kn.beautynow.dominio.cliente;
 
-import java.util.ArrayList;
+import kn.beautynow.dominio.clienteefornecedor.Agenda;
+import kn.beautynow.dominio.usuario.Usuario;
 
-public class Agenda {
-    private int id;
-    private ArrayList<Atividade> calendario =  new ArrayList<>();
+public class Cliente {
+    private String id;
+    private Usuario usuario;
+    private Agenda agenda;
 
-    public int getId() {
+    public Cliente() {
+        usuario = new Usuario();
+        agenda = new Agenda();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public ArrayList<Atividade> getCalendario() {
-        return calendario;
+    public Agenda getAgenda() {
+        return agenda;
     }
 
-    public void setCalendario(ArrayList<Atividade> calendario) {
-        this.calendario = calendario;
+    public void setAgenda(Agenda agenda) {
+        this.agenda = agenda;
     }
 
 }

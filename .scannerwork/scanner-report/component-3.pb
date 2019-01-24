@@ -1,1 +1,1 @@
-Happ/src/main/java/kn/beautynow/dominio/clienteefornecedor/Atividade.java 2javaXihrHapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Atividade.java
+Eapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Agenda.java 2javaXhrEapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Agenda.java

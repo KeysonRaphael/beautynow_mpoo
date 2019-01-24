@@ -46,7 +46,7 @@ public class ClienteServico extends Fragment {
                              Bundle savedInstanceState) {
         final View inf = inflater.inflate(R.layout.fragment_cliente_servico, container, false);
         ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-        Servico servico = servicoNegocio.buscarServicoFornecedor(this.idservico);
+        Servico servico = servicoNegocio.buscarServicoFornecedor(idservico);
         TextView inputServicoNome = inf.findViewById(R.id.textoServico);
         final String servicoNome = servico.getDescricao();
         inputServicoNome.setText(servicoNome);
@@ -55,7 +55,7 @@ public class ClienteServico extends Fragment {
         inputServicoValor.setText(servicoValor);
         ImageView inputImage = inf.findViewById(R.id.imageServico);
         inputImage.setImageBitmap(servico.getImagem());
-        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(this.idfornecedor, "Fornecedor");
+        final Usuario user = new UsuarioNegocio(getContext()).buscarUsarioPorTipo(idfornecedor, "Fornecedor");
         String idUser = user.getId();
         Bitmap fornecedorimagem = new ImagemPerfilNegocio(getContext()).getImgPerfil(idUser);
         ImageView imageFornecedor = inf.findViewById(R.id.imageFornecedor);
@@ -98,12 +98,12 @@ public class ClienteServico extends Fragment {
         }
     }
 
-    public void setIdservico(String idservico) {
-        this.idservico = idservico;
+    public synchronized void setIdservico(String idservic) {
+        idservico = idservic;
     }
 
-    public void setIdfornecedor(String idfornecedor) {
-        this.idfornecedor = idfornecedor;
+    public synchronized void setIdfornecedor(String idfornecedo) {
+        idfornecedor = idfornecedo;
     }
 
     @Override

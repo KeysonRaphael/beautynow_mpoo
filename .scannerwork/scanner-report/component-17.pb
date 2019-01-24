@@ -1,1 +1,1 @@
-<app/src/main/java/kn/beautynow/dominio/usuario/Endereco.java 2javaXHhr<app/src/main/java/kn/beautynow/dominio/usuario/Endereco.java
+>app/src/main/java/kn/beautynow/dominio/fornecedor/Servico.java 2javaX=hr>app/src/main/java/kn/beautynow/dominio/fornecedor/Servico.java

@@ -1,1 +1,1 @@
-:<app/src/main/java/kn/beautynow/persistencia/EnderecoDao.java 2javaXYhr<app/src/main/java/kn/beautynow/persistencia/EnderecoDao.java
+:Eapp/src/main/java/kn/beautynow/gui/fornecedor/ServicosFornecedor.java 2javaXˆhrEapp/src/main/java/kn/beautynow/gui/fornecedor/ServicosFornecedor.java

@@ -176,8 +176,8 @@ public class NovoServico extends Fragment {
         return resultado;
     }
 
-    public void setIdservico(String idservico) {
-        this.idservico = idservico;
+    public synchronized void setIdservico(String idservic) {
+        idservico = idservic;
     }
 
     @Override
@@ -191,7 +191,7 @@ public class NovoServico extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        idservico = "";
+        setIdservico("");
     }
 
     public interface OnFragmentInteractionListener {

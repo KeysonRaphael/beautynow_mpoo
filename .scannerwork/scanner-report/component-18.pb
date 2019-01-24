@@ -1,1 +1,1 @@
-.app/src/main/java/kn/beautynow/dominio/usuario :r.app/src/main/java/kn/beautynow/dominio/usuario
+<app/src/main/java/kn/beautynow/dominio/usuario/Endereco.java 2javaXLhr<app/src/main/java/kn/beautynow/dominio/usuario/Endereco.java

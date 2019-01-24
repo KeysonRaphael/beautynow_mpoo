@@ -1,1 +1,1 @@
-2Bapp/src/main/java/kn/beautynow/negocio/usuario/UsuarioNegocio.java 2javaXfhrBapp/src/main/java/kn/beautynow/negocio/usuario/UsuarioNegocio.java
+25app/src/main/java/kn/beautynow/negocio/ValidaCpf.java 2javaXHhr5app/src/main/java/kn/beautynow/negocio/ValidaCpf.java

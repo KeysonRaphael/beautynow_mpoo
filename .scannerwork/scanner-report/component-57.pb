@@ -1,1 +1,1 @@
-9;app/src/main/java/kn/beautynow/persistencia/ClienteDao.java 2javaXhr;app/src/main/java/kn/beautynow/persistencia/ClienteDao.java
+9<app/src/main/java/kn/beautynow/persistencia/EnderecoDao.java 2javaXYhr<app/src/main/java/kn/beautynow/persistencia/EnderecoDao.java

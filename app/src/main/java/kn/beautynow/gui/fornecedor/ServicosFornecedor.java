@@ -63,7 +63,7 @@ public class ServicosFornecedor extends Fragment
             final Servicos servicos;
             if (!predict.equals("")) {
                 servicos = new ServicoNegocio(getContext()).listarServicosFornecedor(predict);
-                predict = "";
+                setPredict("");
             } else if (user.getTipoUsuario().equals("Cliente")) {
                 servicos = new ServicoNegocio(getContext()).listarServicos();
             } else {
@@ -115,8 +115,8 @@ public class ServicosFornecedor extends Fragment
         }
     }
 
-    public void setPredict(String predict) {
-        this.predict = predict;
+    public synchronized void setPredict(String predic) {
+        predict = predic;
     }
 
     @Override

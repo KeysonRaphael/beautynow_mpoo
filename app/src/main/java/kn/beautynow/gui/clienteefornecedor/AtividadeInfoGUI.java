@@ -74,7 +74,7 @@ public class AtividadeInfoGUI extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("google.navigation:q="+ user.getEndereco().getCep()));
+                        Uri.parse("google.navigation:q="+ user.getEndereco().printEnderecoMaps()));
                 startActivity(intent);
             }
         });
@@ -158,7 +158,6 @@ public class AtividadeInfoGUI extends Fragment {
             confirmarAtendimento.setVisibility(View.INVISIBLE);
             finalizarAtendimento.setVisibility(View.INVISIBLE);
             if (userAtivo.getTipoUsuario().equals(clientec) && atividade.getNotaAtribuida().equals("N")){
-                Log.d("atividadea", atividade.getNotaAtribuida());
                 darNotaFornecedor.setVisibility(View.VISIBLE);
             }
         }
@@ -183,8 +182,8 @@ public class AtividadeInfoGUI extends Fragment {
         return inf;
     }
 
-    public void setAtividade(Atividade atividade) {
-        this.atividade = atividade;
+    public synchronized void setAtividade(Atividade atividad) {
+        atividade = atividad;
     }
 
     @Override

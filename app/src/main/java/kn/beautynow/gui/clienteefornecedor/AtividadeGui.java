@@ -149,16 +149,16 @@ public class AtividadeGui extends Fragment {
         return true;
     }
 
-    public void setServico(String servico) {
-        this.servico = servico;
+    public synchronized void setServico(String servic) {
+        servico = servic;
     }
 
-    public void setValor(String valor) {
-        this.valor = valor;
+    public synchronized void setValor(String valo) {
+        valor = valo;
     }
 
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
+    public synchronized void setFornecedor(String fornecedo) {
+        fornecedor = fornecedo;
     }
 
     @Override

@@ -1,1 +1,1 @@
-3Gapp/src/main/java/kn/beautynow/negocio/usuario/ImagemPerfilNegocio.java 2javaX1hrGapp/src/main/java/kn/beautynow/negocio/usuario/ImagemPerfilNegocio.java
+3&app/src/main/java/kn/beautynow/negocio :2r&app/src/main/java/kn/beautynow/negocio

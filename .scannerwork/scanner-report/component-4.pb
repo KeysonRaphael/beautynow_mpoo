@@ -1,1 +1,1 @@
-;app/src/main/java/kn/beautynow/dominio/cliente/Cliente.java 2javaX)hr;app/src/main/java/kn/beautynow/dominio/cliente/Cliente.java
+Happ/src/main/java/kn/beautynow/dominio/clienteefornecedor/Atividade.java 2javaXihrHapp/src/main/java/kn/beautynow/dominio/clienteefornecedor/Atividade.java

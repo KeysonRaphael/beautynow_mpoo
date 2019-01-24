@@ -1,1 +1,1 @@
-=Aapp/src/main/java/kn/beautynow/persistencia/GaleriaPerfilDao.java 2javaX<hrAapp/src/main/java/kn/beautynow/persistencia/GaleriaPerfilDao.java
+=8app/src/main/java/kn/beautynow/persistencia/NotaDao.java 2javaX4hr8app/src/main/java/kn/beautynow/persistencia/NotaDao.java

@@ -1,1 +1,1 @@
-Aapp/src/main/java/kn/beautynow/gui/fornecedor/FornecedorMenu.java 2javaX„hrAapp/src/main/java/kn/beautynow/gui/fornecedor/FornecedorMenu.java
+Bapp/src/main/java/kn/beautynow/gui/fornecedor/AdapterServicos.java 2javaXehrBapp/src/main/java/kn/beautynow/gui/fornecedor/AdapterServicos.java

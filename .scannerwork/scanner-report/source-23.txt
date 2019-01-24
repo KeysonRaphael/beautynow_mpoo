@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,8 @@ import kn.beautynow.negocio.usuario.ImagemPerfilNegocio;
 import kn.beautynow.negocio.usuario.UsuarioNegocio;
 
 public class ClienteServico extends Fragment {
-    private String idfornecedor = "";
-    private String idservico = "";
+    private static String idfornecedor = "";
+    private static String idservico = "";
 
     public ClienteServico() {
         // Required empty public constructor
@@ -97,12 +98,12 @@ public class ClienteServico extends Fragment {
         }
     }
 
-    public void setIdservico(String idservico) {
-        this.idservico = idservico;
+    public synchronized void setIdservico(String idservic) {
+        idservico = idservic;
     }
 
-    public void setIdfornecedor(String idfornecedor) {
-        this.idfornecedor = idfornecedor;
+    public synchronized void setIdfornecedor(String idfornecedo) {
+        idfornecedor = idfornecedo;
     }
 
     @Override

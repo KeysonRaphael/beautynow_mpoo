@@ -1,200 +1,131 @@
 package kn.beautynow.gui.fornecedor;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.provider.MediaStore;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import kn.beautynow.R;
-import kn.beautynow.dominio.controller.ExceptionCases;
-import kn.beautynow.dominio.controller.MascaraMonetaria;
 import kn.beautynow.dominio.controller.Session;
-import kn.beautynow.dominio.fornecedor.Servico;
-import kn.beautynow.dominio.usuario.Usuario;
-import kn.beautynow.negocio.fornecedor.ServicoNegocio;
+import kn.beautynow.gui.clienteefornecedor.AgendaGui;
+import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
+import kn.beautynow.gui.clienteefornecedor.AtividadeInfoGUI;
+import kn.beautynow.gui.clienteefornecedor.AtividadesDiaGui;
+import kn.beautynow.gui.usuario.EditarEndereco;
+import kn.beautynow.gui.usuario.Login;
+import kn.beautynow.gui.usuario.Perfil;
 
-public class NovoServico extends Fragment {
-    private String idservico = "";
-    private Bitmap imagen = null;
-
-    public NovoServico() {
-        // Required empty public constructor
-    }
-
-    public static NovoServico newInstance() {
-        return new NovoServico();
-    }
+public class FornecedorMenu extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener,
+        Perfil.OnFragmentInteractionListener,
+        EditarEndereco.OnFragmentInteractionListener,
+        ServicosFornecedor.OnFragmentInteractionListener,
+        AgendaGui.OnFragmentInteractionListener,
+        AtividadeGui.OnFragmentInteractionListener,
+        AtividadeInfoGUI.OnFragmentInteractionListener,
+        AtividadesDiaGui.OnFragmentInteractionListener,
+        NovoServico.OnFragmentInteractionListener {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View inf = inflater.inflate(R.layout.fragment_novo_servico, container, false);
-        final Usuario obj = Session.getSession(this.getActivity().getBaseContext());
-        final ImageView inputImage = inf.findViewById(R.id.inputServicoImage);
-        final EditText valorMonetario = (EditText) inf.findViewById(R.id.inputServicoValor);
-        valorMonetario.addTextChangedListener(new MascaraMonetaria(valorMonetario));
-        if (!idservico.equals("")) {
-            ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-            Servico servico = servicoNegocio.buscarServicoFornecedor(idservico);
-            EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
-            String servicoNome = servico.getDescricao();
-            inputServicoNome.setText(servicoNome);
-            EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
-            String servicoValor = servico.getValor();
-            inputServicoValor.setText(servicoValor);
-            inputImage.setImageBitmap(servico.getImagem());
-            Button atualizar = inf.findViewById(R.id.salvarServico);
-            atualizar.setText("Atualizar");
-        }
-        Button incluirServicoImagem = inf.findViewById(R.id.inserirImagemServico);
-        final boolean[] naomudouimagem = {true};
-        incluirServicoImagem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                naomudouimagem[0] = false;
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, 1000);
-            }
-        });
-        Button salvarServico = inf.findViewById(R.id.salvarServico);
-        salvarServico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean camposCorretos = NovoServico.validarcampos(inf);
-                if (camposCorretos) {
-                    EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
-                    String servicoNome = inputServicoNome.getText().toString();
-                    EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
-                    String servicoValor = inputServicoValor.getText().toString();
-                    BitmapDrawable servicoImage = (BitmapDrawable) inputImage.getDrawable();
-                    Bitmap servicoImagem = servicoImage.getBitmap();
-                    Bitmap imagemgaleria = servicoImage.getBitmap();
-                    if (imagen == null) {
-                        servicoImagem = Bitmap.createScaledBitmap(servicoImagem,300, 300, false);
-                        imagemgaleria = Bitmap.createScaledBitmap(servicoImagem,75, 75, false);
-                    }else{
-                        if (!naomudouimagem[0]){
-                            imagemgaleria = Bitmap.createScaledBitmap(servicoImagem,75, 75, false);
-                        }
-                    }
-                    ServicoNegocio servicoNegocio = new ServicoNegocio(getContext());
-                    if (!idservico.equals("")) {
-                        servicoNegocio.updateServicoFornecedor(servicoNome, servicoValor, servicoImagem, idservico, imagemgaleria);
-                    } else {
-                        servicoNegocio.inserirServicoFornecedor(servicoNome, servicoValor, obj.getIdUser(), servicoImagem, imagemgaleria);
-                    }
-                    new CountDownTimer(4000, 1000) {
-
-                        public void onTick(long millisUntilFinished) {
-                            RelativeLayout progress = inf.findViewById(R.id.progress_circular);
-                            progress.setVisibility(View.VISIBLE);
-                        }
-
-                        public void onFinish() {
-                            RelativeLayout progress = inf.findViewById(R.id.progress_circular);
-                            progress.setVisibility(View.INVISIBLE);
-                            GridLayout inserido = inf.findViewById(R.id.concluido);
-                            inserido.setVisibility(View.VISIBLE);
-                        }
-                    }.start();
-                }
-            }
-        });
-        Button irservicos = inf.findViewById(R.id.irservicos);
-        irservicos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().setTitle("ServiÃ§os");
-                FragmentTransaction t = getFragmentManager().beginTransaction();
-                Fragment mFrag = new ServicosFornecedor();
-                t.replace(R.id.fornecedor_frame, mFrag);
-                t.commit();
-            }
-        });
-        return inf;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1000 && resultCode == Activity.RESULT_OK) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getActivity().getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            ImageView inputImage = getView().findViewById(R.id.inputServicoImage);
-            Bitmap img = BitmapFactory.decodeFile(picturePath);
-            inputImage.setImageBitmap(img);
-        }
-    }
-
-    public static boolean validarcampos(View inf) {
-        EditText inputServicoNome = inf.findViewById(R.id.inputServicoNome);
-        EditText inputServicoValor = inf.findViewById(R.id.inputServicoValor);
-        String nome = inputServicoNome.getText().toString();
-        String valor = inputServicoValor.getText().toString();
-        boolean resultado = false;
-        if (nome.equals("")) {
-            inputServicoNome.setError("Digite um nome para seu servico!");
-            return resultado;
-        }
-        if (valor.equals("")) {
-            inputServicoValor.setError("Digite o valor do servico!");
-            return resultado;
-        }
-        resultado = true;
-        return resultado;
-    }
-
-    public void setIdservico(String idservico) {
-        this.idservico = idservico;
+        setContentView(R.layout.activity_fornecedor_menu);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        setTitle("Perfil");
+        navigationView.setCheckedItem(R.id.perfil_fornecedor);
+        Fragment fragment = new Perfil();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.fornecedor_frame, fragment);
+        ft.commit();
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (!(context instanceof OnFragmentInteractionListener)) {
-            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 
     @Override
-    public void onDetach() {
-        super.onDetach();
-        idservico = "";
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.fornecedor_menu, menu);
+        return true;
     }
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            Session sessao = new Session();
+            sessao.clear(getApplicationContext());
+            Intent login = new Intent(FornecedorMenu.this, Login.class);
+            startActivity(login);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        if (id == R.id.perfil_fornecedor) {
+            setTitle("Perfil");
+            Fragment fragment = new Perfil();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        } else if (id == R.id.agenda_fornecedor) {
+            setTitle("Agenda");
+            Fragment fragment = new AgendaGui();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        } else if (id == R.id.servicos) {
+            setTitle("ServiÃ§os");
+            Fragment fragment = new ServicosFornecedor();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        } else if (id == R.id.novo_servicos) {
+            setTitle("Adicionar ServiÃ§o");
+            Fragment fragment = new NovoServico();
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.fornecedor_frame, fragment);
+            ft.commit();
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        //empty
     }
 }

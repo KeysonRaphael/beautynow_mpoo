@@ -1,59 +1,51 @@
 package kn.beautynow.persistencia;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.Cursor;
 import android.content.ContentValues;
-import android.database.sqlite.SQLiteException;
-import android.util.Log;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 
-public class GaleriaPerfilDao {
-    private SQLiteDatabase db;
+import kn.beautynow.dominio.clienteefornecedor.Avaliacao;
+
+public class NotaDao {
     private Banco banco;
+    private SQLiteDatabase db;
 
-    public GaleriaPerfilDao(Context context) {
+    public NotaDao(Context context) {
         banco = new Banco(context);
     }
 
-    public String insereImagemGaleria(String iduser, byte[] img) {
+    public void InserirNota(String nota, String cliente, String fornecedor) {
         ContentValues valores;
-        long resultado;
         db = banco.getWritableDatabase();
         valores = new ContentValues();
-        valores.put(Banco.COLUMN_GALERIA_PERFIL_USUARIO_ID, iduser);
-        valores.put(Banco.COLUMN_GALERIA_PERFIL_IMAGE, img);
-        resultado = db.insert(Banco.TABLE_GALERIA_PERFIL, null, valores);
+        valores.put(Banco.COLUMN_NOTA_NOTA_FORNECEDOR, nota);
+        valores.put(Banco.COLUMN_NOTA_CLIENTE, cliente);
+        valores.put(Banco.COLUMN_NOTA_FORNECEDOR, fornecedor);
+        db.insert(Banco.TABLE_NOTA, null, valores);
         db.close();
-        if (resultado == -1)
-            return "Erro ao inserir registro";
-        else
-            return "Registro Inserido com sucesso";
-
     }
 
-    public byte[] getImagem(String id) {
+    public ArrayList<Avaliacao> carregarTodasAsNotas() {
+        ArrayList<Avaliacao> resultado = new ArrayList<Avaliacao>();
+        String selectNotas = "SELECT * FROM " + Banco.TABLE_NOTA;
         db = banco.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + Banco.TABLE_GALERIA_PERFIL + " WHERE id_usuario = '" + id + "'";
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.getCount() == 1) {
-            cursor.moveToFirst();
-            byte[] retorno = cursor.getBlob(cursor.getColumnIndex(Banco.COLUMN_GALERIA_PERFIL_IMAGE));
-            cursor.close();
-            db.close();
-            return retorno;
+        Cursor cursor = db.rawQuery(selectNotas, new String[]{});
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                Avaliacao avaliacao = new Avaliacao();
+                avaliacao.setId(cursor.getString(0));
+                avaliacao.setCliente(cursor.getString(1));
+                avaliacao.setFornecedor(cursor.getString(2));
+                avaliacao.setNota(cursor.getDouble(3));
+                resultado.add(avaliacao);
+            }
         }
         cursor.close();
         db.close();
-        byte[] retorno = new byte[0];
-        return retorno;
+        return resultado;
     }
 
-    public boolean updateimgPerfil(String id, byte[] img) {
-        db = banco.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(Banco.COLUMN_GALERIA_PERFIL_IMAGE, img);
-        db.update(Banco.TABLE_GALERIA_PERFIL, cv, "id_usuario=?", new String[]{id});
-        return true;
-    }
 }

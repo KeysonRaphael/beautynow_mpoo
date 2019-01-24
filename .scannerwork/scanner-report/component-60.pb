@@ -1,1 +1,1 @@
-<6app/src/main/java/kn/beautynow/persistencia/Banco.java 2javaX¹hr6app/src/main/java/kn/beautynow/persistencia/Banco.java
+<Aapp/src/main/java/kn/beautynow/persistencia/GaleriaPerfilDao.java 2javaX<hrAapp/src/main/java/kn/beautynow/persistencia/GaleriaPerfilDao.java

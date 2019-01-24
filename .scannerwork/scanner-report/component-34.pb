@@ -1,1 +1,1 @@
-"Bapp/src/main/java/kn/beautynow/gui/fornecedor/AdapterServicos.java 2javaXehrBapp/src/main/java/kn/beautynow/gui/fornecedor/AdapterServicos.java
+">app/src/main/java/kn/beautynow/gui/fornecedor/NovoServico.java 2javaXÉhr>app/src/main/java/kn/beautynow/gui/fornecedor/NovoServico.java

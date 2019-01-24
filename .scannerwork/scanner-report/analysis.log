@@ -133,7 +133,7 @@ SonarQube plugins:
   - SonarVB 7.7.0.7192 (vbnet)
 Global properties:
   - sonar.core.id=BF41A1F2-AWeula0Hg8M-_1s_7zgf
-  - sonar.core.startTime=2019-01-22T18:49:36-0300
+  - sonar.core.startTime=2019-01-24T11:28:49-0300
 Settings for module: beautynow_mpoo
   - sonar.host.url=http://localhost:9000
   - sonar.java.binaries=app

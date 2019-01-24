@@ -1,88 +1,135 @@
-package kn.beautynow.persistencia;
+package kn.beautynow.gui.fornecedor;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import kn.beautynow.R;
+import kn.beautynow.dominio.controller.ExceptionCases;
+import kn.beautynow.dominio.controller.Session;
+import kn.beautynow.dominio.fornecedor.Fornecedor;
+import kn.beautynow.dominio.fornecedor.Servicos;
+import kn.beautynow.dominio.usuario.Usuario;
+import kn.beautynow.gui.cliente.ClienteServico;
+import kn.beautynow.gui.clienteefornecedor.AtividadeGui;
+import kn.beautynow.negocio.fornecedor.ServicoNegocio;
 
-import java.util.ArrayList;
+public class ServicosFornecedor extends Fragment
+        implements
+        NovoServico.OnFragmentInteractionListener,
+        AtividadeGui.OnFragmentInteractionListener,
+        ClienteServico.OnFragmentInteractionListener {
 
-public class EnderecoDao {
-    private Banco banco;
-    private SQLiteDatabase db;
+    private static String predict = "";
 
-
-    public EnderecoDao(Context context) {
-        banco = new Banco(context);
+    public ServicosFornecedor() {
+        // Required empty public constructor
     }
 
-    public void inserirEndereco(ArrayList<String> array) {
-        ContentValues valores;
-        db = banco.getWritableDatabase();
-        valores = new ContentValues();
-        valores.put(Banco.COLUMN_ENDERECO_ID_USER, array.get(0));
-        valores.put(Banco.COLUMN_ENDERECO_CEP, array.get(7));
-        valores.put(Banco.COLUMN_ENDERECO_RUA, array.get(1));
-        valores.put(Banco.COLUMN_ENDERECO_NUMERO, array.get(2));
-        valores.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, array.get(3));
-        valores.put(Banco.COLUMN_ENDERECO_BAIRRO, array.get(4));
-        valores.put(Banco.COLUMN_ENDERECO_CIDADE, array.get(5));
-        valores.put(Banco.COLUMN_ENDERECO_ESTADO, array.get(6));
-        db.insert(Banco.TABLE_ENDERECO, null, valores);
-        db.close();
+    public static ServicosFornecedor newInstance() {
+        return new ServicosFornecedor();
     }
 
-    public void updateEndereco(ArrayList<String> array) {
-        db = banco.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put(Banco.COLUMN_ENDERECO_RUA, array.get(1));
-        cv.put(Banco.COLUMN_ENDERECO_NUMERO, array.get(2));
-        cv.put(Banco.COLUMN_ENDERECO_COMPLEMENTO, array.get(4));
-        cv.put(Banco.COLUMN_ENDERECO_BAIRRO, array.get(4));
-        cv.put(Banco.COLUMN_ENDERECO_CIDADE, array.get(5));
-        cv.put(Banco.COLUMN_ENDERECO_ESTADO, array.get(6));
-        cv.put(Banco.COLUMN_ENDERECO_CEP, array.get(7));
-        db.update(Banco.TABLE_ENDERECO, cv, "id_user=?", new String[]{array.get(0)});
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
-    public boolean existeEndereco(String iduser) {
-        String querySql = "SELECT * FROM endereco WHERE id_user = ?";
-        db = banco.getReadableDatabase();
-        Cursor cursor = db.rawQuery(querySql, new String[]{iduser});
-        if (cursor.getCount() > 0) {
-            cursor.close();
-            db.close();
-            return true;
-        }
-        cursor.close();
-        db.close();
-        return false;
-    }
-
-    public ArrayList<String> buscarEndereco(String iduser) {
-        ArrayList<String> retorno = new ArrayList<>();
-        String selectEndereco = "SELECT * FROM " + Banco.TABLE_ENDERECO + " WHERE id_user = '" + iduser
-                + "' limit 1";
-        db = banco.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectEndereco, new String[]{});
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            retorno.add(0, cursor.getString(0));
-            retorno.add(1, cursor.getString(1));
-            retorno.add(2, cursor.getString(2));
-            retorno.add(3, cursor.getString(3));
-            retorno.add(4, cursor.getString(4));
-            retorno.add(5, cursor.getString(5));
-            retorno.add(6, cursor.getString(6));
-            retorno.add(7, cursor.getString(7));
-            cursor.close();
-            db.close();
-            return retorno;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View inf = inflater.inflate(R.layout.fragment_servicos_fornecedor, container, false);
+        final Fornecedor obj = Session.getSessionFornecedor(getContext());
+        final Usuario user = Session.getSession(getContext());
+        if (user.getTipoUsuario().equals("Fornecedor") && obj.getServicos().getListaServicos().size() == 0) {
+            getActivity().setTitle("Novo Serviço");
+            FragmentTransaction t = getFragmentManager().beginTransaction();
+            Fragment mFrag = new NovoServico();
+            t.replace(R.id.fornecedor_frame, mFrag);
+            t.commit();
         } else {
-            cursor.close();
-            db.close();
-            return retorno;
+            final RecyclerView reciclerview = inf.findViewById(R.id.recycler);
+            final EditText buscaServico = inf.findViewById(R.id.findServico);
+            final Servicos servicos;
+            if (!predict.equals("")) {
+                servicos = new ServicoNegocio(getContext()).listarServicosFornecedor(predict);
+                setPredict("");
+            } else if (user.getTipoUsuario().equals("Cliente")) {
+                servicos = new ServicoNegocio(getContext()).listarServicos();
+            } else {
+                servicos = new Servicos();
+                servicos.setListaServicos(obj.getServicos().getListaServicos());
+            }
+            RecyclerView.Adapter adapter = new AdapterServicos(servicos);
+            LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+            llm.setOrientation(LinearLayoutManager.VERTICAL);
+            reciclerview.setLayoutManager(llm);
+            reciclerview.setAdapter(adapter);
+            buscaServico.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    //nothing to do
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    Servicos servicosad = new Servicos();
+                    int indice = 0;
+                    for (int i = 0; i < servicos.getListaServicos().size(); i++) {
+                        if (servicos.getListaServicos().get(i).getDescricao().contains(buscaServico.getText().toString())) {
+                            servicosad.getListaServicos().add(indice, servicos.getListaServicos().get(i));
+                            indice += 1;
+                        }
+                    }
+                    RecyclerView.Adapter adapter = new AdapterServicos(servicosad);
+                    LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+                    llm.setOrientation(LinearLayoutManager.VERTICAL);
+                    reciclerview.setLayoutManager(llm);
+                    reciclerview.setAdapter(adapter);
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    //nothing to do
+                }
+            });
         }
+        return inf;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (!(context instanceof OnFragmentInteractionListener)) {
+            throw new ExceptionCases(" must implement OnFragmentInteractionListener");
+        }
+    }
+
+    public synchronized void setPredict(String predic) {
+        predict = predic;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+        //nothing
+    }
+    public interface OnFragmentInteractionListener {
+        void onFragmentInteraction(Uri uri);
+
     }
 }

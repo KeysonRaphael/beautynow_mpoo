@@ -1,1 +1,1 @@
-@;app/src/main/java/kn/beautynow/persistencia/UsuarioDao.java 2javaXwhr;app/src/main/java/kn/beautynow/persistencia/UsuarioDao.java
+@;app/src/main/java/kn/beautynow/persistencia/ClienteDao.java 2javaXhr;app/src/main/java/kn/beautynow/persistencia/ClienteDao.java

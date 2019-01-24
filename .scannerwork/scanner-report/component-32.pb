@@ -1,1 +1,1 @@
- -app/src/main/java/kn/beautynow/gui/fornecedor :!"'r-app/src/main/java/kn/beautynow/gui/fornecedor
+ -app/src/main/java/kn/beautynow/gui/fornecedor :!":r-app/src/main/java/kn/beautynow/gui/fornecedor

@@ -1,1 +1,1 @@
-?8app/src/main/java/kn/beautynow/persistencia/NotaDao.java 2javaX4hr8app/src/main/java/kn/beautynow/persistencia/NotaDao.java
+?;app/src/main/java/kn/beautynow/persistencia/UsuarioDao.java 2javaXwhr;app/src/main/java/kn/beautynow/persistencia/UsuarioDao.java

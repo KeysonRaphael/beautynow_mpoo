@@ -1,1 +1,1 @@
-13app/src/main/java/kn/beautynow/negocio/recomendacao :0r3app/src/main/java/kn/beautynow/negocio/recomendacao
+1Bapp/src/main/java/kn/beautynow/negocio/usuario/UsuarioNegocio.java 2javaXfhrBapp/src/main/java/kn/beautynow/negocio/usuario/UsuarioNegocio.java

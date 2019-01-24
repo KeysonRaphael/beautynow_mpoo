@@ -1,1 +1,1 @@
-!>app/src/main/java/kn/beautynow/gui/fornecedor/NovoServico.java 2javaXÉhr>app/src/main/java/kn/beautynow/gui/fornecedor/NovoServico.java
+!Aapp/src/main/java/kn/beautynow/gui/fornecedor/FornecedorMenu.java 2javaX„hrAapp/src/main/java/kn/beautynow/gui/fornecedor/FornecedorMenu.java

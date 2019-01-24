@@ -1,1 +1,1 @@
-1app/src/main/java/kn/beautynow/dominio/fornecedor :r1app/src/main/java/kn/beautynow/dominio/fornecedor
+1app/src/main/java/kn/beautynow/dominio/fornecedor :r1app/src/main/java/kn/beautynow/dominio/fornecedor

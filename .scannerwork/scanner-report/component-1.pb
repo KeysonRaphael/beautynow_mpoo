@@ -1,1 +1,1 @@
-beautynow_mpoo :	 $+/1468J1.0Rbeautynow_mpoo
+beautynow_mpoo :	 $*.0357J1.0Rbeautynow_mpoo

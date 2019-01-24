@@ -58,7 +58,6 @@ public class UsuarioDao {
     public ArrayList<String> selectUsuarioPorTipo(String idfornecedor, String tipo) {
         String selectUser = select + Banco.TABLE_USUARIO + " WHERE id_user_tipo = '" + idfornecedor
                 + "' AND tipo = '" + tipo + limit;
-        Log.d("query1", selectUser);
         return carregarUsuarioDados(selectUser);
     }
 

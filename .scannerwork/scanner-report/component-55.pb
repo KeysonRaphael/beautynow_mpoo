@@ -1,1 +1,1 @@
-7=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java 2javaXohr=app/src/main/java/kn/beautynow/persistencia/AtividadeDao.java
+7+app/src/main/java/kn/beautynow/persistencia :	689;<=>?@r+app/src/main/java/kn/beautynow/persistencia
