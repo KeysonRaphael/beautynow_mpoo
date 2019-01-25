@@ -83,7 +83,7 @@ public class ClienteServico extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                        Uri.parse("google.navigation:q="+user.getEndereco().getCep()));
+                        Uri.parse("google.navigation:q="+user.getEndereco().printEnderecoMaps()));
                 startActivity(intent);
             }
         });

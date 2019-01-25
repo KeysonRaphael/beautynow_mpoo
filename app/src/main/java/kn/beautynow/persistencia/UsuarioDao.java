@@ -49,8 +49,8 @@ public class UsuarioDao {
         db.close();
     }
 
-    public ArrayList<String> selectUsuario(String vemail, String vsenha, String vtipo) {
-        String selectUser = select + Banco.TABLE_USUARIO + " WHERE email = '" + vemail
+    public ArrayList<String> selectUsuario(String vcpf, String vsenha, String vtipo) {
+        String selectUser = select + Banco.TABLE_USUARIO + " WHERE cpf = '" + vcpf
                 + "' AND senha = '" + vsenha + "' AND tipo = '" + vtipo + limit;
         return carregarUsuarioDados(selectUser);
     }

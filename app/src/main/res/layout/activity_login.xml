@@ -42,7 +42,7 @@
         app:srcCompat="@drawable/name" />
 
     <EditText
-        android:id="@+id/inputEmail"
+        android:id="@+id/inputCPF"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -52,8 +52,8 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="@string/digite_seu_e_mail"
-        android:inputType="textEmailAddress"
+        android:hint="@string/digite_seu_CPF"
+        android:inputType="number"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:backgroundTint="@color/black"

@@ -123,7 +123,7 @@ public class AtividadeInfoGUI extends Fragment {
             public void onClick(View v) {
                 new AtividadeNegocio(getContext()).recusarAtividade(atividade.getId());
                 ativo.setText("Atendimento Rejeitado");
-                rejeitarAtendimento.setVisibility(View.INVISIBLE);
+                rejeitarAtendimento.setVisibility(View.GONE);
                 confirmarAtendimento.setVisibility(View.GONE);
             }
         });
@@ -134,9 +134,9 @@ public class AtividadeInfoGUI extends Fragment {
                 } else {
                     ativo.setText("Confirme ou Rejeite!");
                 }
-                finalizado.setVisibility(View.INVISIBLE);
+                finalizado.setVisibility(View.GONE);
                 TextView finalizadotext = inf.findViewById(R.id.finalizadoview);
-                finalizadotext.setVisibility(View.INVISIBLE);
+                finalizadotext.setVisibility(View.GONE);
                 break;
             case "S":
                 ativo.setText("Sim");
@@ -154,9 +154,9 @@ public class AtividadeInfoGUI extends Fragment {
             finalizado.setText("Não");
         } else {
             finalizado.setText("Sim");
-            rejeitarAtendimento.setVisibility(View.INVISIBLE);
-            confirmarAtendimento.setVisibility(View.INVISIBLE);
-            finalizarAtendimento.setVisibility(View.INVISIBLE);
+            rejeitarAtendimento.setVisibility(View.GONE);
+            confirmarAtendimento.setVisibility(View.GONE);
+            finalizarAtendimento.setVisibility(View.GONE);
             if (userAtivo.getTipoUsuario().equals(clientec) && atividade.getNotaAtribuida().equals("N")){
                 darNotaFornecedor.setVisibility(View.VISIBLE);
             }

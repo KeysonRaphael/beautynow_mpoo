@@ -4,8 +4,6 @@ public class Usuario {
     private String id;
     private String nome;
     private String cpf;
-    private String telefone;
-    private String celular;
     private Endereco endereco;
     private String email;
     private String tipoUsuario;
@@ -16,8 +14,6 @@ public class Usuario {
         id = "";
         nome = "";
         cpf = "";
-        telefone = "";
-        celular = "";
         endereco = new Endereco();
         email = "";
     }
@@ -36,22 +32,6 @@ public class Usuario {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getCelular() {
-        return celular;
-    }
-
-    public void setCelular(String celular) {
-        this.celular = celular;
     }
 
     public Endereco getEndereco() {

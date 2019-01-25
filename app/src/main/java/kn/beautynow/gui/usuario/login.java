@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import kn.beautynow.R;
 import kn.beautynow.dominio.cliente.Cliente;
+import kn.beautynow.dominio.controller.MaskEditUtil;
 import kn.beautynow.dominio.controller.Session;
 
 import kn.beautynow.dominio.fornecedor.Fornecedor;
@@ -37,6 +38,8 @@ public class Login extends AppCompatActivity {
                 R.array.tipos_usuario, R.layout.spinner_item);
         adaptert.setDropDownViewResource(R.layout.spinner_dropdown_item);
         tipo.setAdapter(adaptert);
+        EditText cpf = findViewById(R.id.inputCPF);
+        cpf.addTextChangedListener(MaskEditUtil.mask(cpf, MaskEditUtil.FORMAT_CPF));
         final int PICK_FROM_GALLERY = 1;
         try {
             if (ActivityCompat.checkSelfPermission(getBaseContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -48,16 +51,16 @@ public class Login extends AppCompatActivity {
     }
 
     public void Logar(View view) {
-        EditText email = findViewById(R.id.inputEmail);
+        EditText cpf = findViewById(R.id.inputCPF);
         EditText senha = findViewById(R.id.inputSenha);
         Spinner tipo = findViewById(R.id.tipo);
-        String semail = email.getText().toString();
+        String scpf = MaskEditUtil.unmask(cpf.getText().toString());
         String ssenha = senha.getText().toString();
         String stipo = tipo.getSelectedItem().toString();
         UsuarioNegocio validar = new UsuarioNegocio(getBaseContext());
-        Usuario user = validar.existeBanco(semail, ssenha, stipo);
+        Usuario user = validar.existeBanco(scpf, ssenha, stipo);
         if (user.getNome().equals("")) {
-            Toast.makeText(getBaseContext(), "E-mail ou senha incorretos!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(), "CPF ou senha incorretos!", Toast.LENGTH_LONG).show();
         } else {
             Session session = new Session();
             session.editSessao(user, getBaseContext());

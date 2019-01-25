@@ -20,7 +20,7 @@ public class ServicosDao {
         banco = new Banco(context);
     }
 
-    public ArrayList<Servico> carregarServicos(String selectServicos){
+    public ArrayList<Servico> carregarServicos(String selectServicos, boolean recycler){
         ArrayList<Servico> retorno = new ArrayList<>();
         db = banco.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectServicos, new String[]{});
@@ -33,9 +33,11 @@ public class ServicosDao {
                 servico.setIdFornecedor(cursor.getString(1));
                 servico.setDescricao(cursor.getString(5));
                 servico.setValor(cursor.getString(2));
-                byte[] imagem = cursor.getBlob(3);
-                Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
-                servico.setImagem(bitmap);
+                if (!recycler){
+                    byte[] imagem = cursor.getBlob(3);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+                    servico.setImagem(bitmap);
+                }
                 byte[] imagemg = cursor.getBlob(4);
                 Bitmap bitmapg = BitmapFactory.decodeByteArray(imagemg, 0, imagemg.length);
                 servico.setImagemGaleria(bitmapg);
@@ -55,12 +57,12 @@ public class ServicosDao {
     public ArrayList selectServicos(String idfornecedor) {
         String selectServicos = select + Banco.TABLE_SERVICOS_FORNECEDOR + " WHERE id_fornecedor = '" + idfornecedor
                 + "' ";
-        return carregarServicos(selectServicos);
+        return carregarServicos(selectServicos, true);
     }
 
     public ArrayList<Servico> selectServicos() {
         String selectServicos = select + Banco.TABLE_SERVICOS_FORNECEDOR + " ";
-        return carregarServicos(selectServicos);
+        return carregarServicos(selectServicos, true);
     }
 
     public void inserirServico(String descricao) {
@@ -139,6 +141,6 @@ public class ServicosDao {
 
     public ArrayList<Servico> selectServicosFornecedorDao(String id) {
         String selectServicos = select + Banco.TABLE_SERVICOS_FORNECEDOR + " WHERE " + Banco.COLUMN_SERVICOS_FORNECEDOR_ID_FORNECEDOR + " = " + id;
-        return carregarServicos(selectServicos);
+        return carregarServicos(selectServicos, true);
     }
 }

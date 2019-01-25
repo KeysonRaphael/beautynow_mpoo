@@ -28,9 +28,9 @@ public class UsuarioNegocio {
         }
     }
 
-    public Usuario existeBanco(String email, String senha, String tipo) {
+    public Usuario existeBanco(String cpf, String senha, String tipo) {
         UsuarioDao usuariodao = new UsuarioDao(this.contexto);
-        ArrayList result = usuariodao.selectUsuario(email, senha, tipo);
+        ArrayList result = usuariodao.selectUsuario(cpf, senha, tipo);
         carregarUsuario(result);
         return carregarUsuario(result);
     }
